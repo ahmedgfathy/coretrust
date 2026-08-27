@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import ScrollToTop from './components/ScrollToTop'
 import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
@@ -29,6 +30,7 @@ function HomePage() {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-[#0a0a1a]">
         <Navbar />
         <Routes>
