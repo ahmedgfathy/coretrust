@@ -1,17 +1,32 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
-import { api } from '../admin/api'
+
+const fallbackProjects = [
+  { id: '1', titleEn: 'Sabbia Resort', titleAr: 'منتجع سببيا', categoryEn: 'Real Estate Development', categoryAr: 'التطوير العقاري', locationEn: 'Marsa Matrouh', locationAr: 'مرسى مطروح', descriptionEn: 'Luxury resort with private beach and modern architecture.', descriptionAr: 'منتجع فاخر بشاطئ خاص وعمارة عصرية.', year: '2024', status: 'current', image: '/images/sabbia-resort.jpg' },
+  { id: '2', titleEn: 'Core Complex', titleAr: 'مجمع كور', categoryEn: 'Real Estate Development', categoryAr: 'التطوير العقاري', locationEn: 'Autostrad Road', locationAr: 'طريق الأوتوستراد', descriptionEn: 'Mixed-use residential and commercial complex.', descriptionAr: 'مجمع سكني تجاري متعدد الاستخدامات.', year: '2024', status: 'current', image: '/images/core-complex.jpg' },
+  { id: '3', titleEn: 'La Nova Towers', titleAr: 'أبراج لانوفا', categoryEn: 'Real Estate Development', categoryAr: 'التطوير العقاري', locationEn: 'Nasr City', locationAr: 'مدينة نصر', descriptionEn: 'Modern residential towers in El-Waha neighborhood.', descriptionAr: 'أبراج سكنية عصرية في حي الواحة.', year: '2023', status: 'current', image: '/images/la-nova-towers.jpg' },
+  { id: '4', titleEn: 'Suez Governorate HQ', titleAr: 'مبنى محافظة السويس', categoryEn: 'Government Projects', categoryAr: 'المشاريع الحكومية', locationEn: 'Suez', locationAr: 'السويس', descriptionEn: 'Renovation of the main government building.', descriptionAr: 'تجديد المبنى الحكومي الرئيسي.', year: '2022', status: 'completed', image: '/images/suez-governorate.jpg' },
+  { id: '5', titleEn: 'Agricultural Bank Renovation', titleAr: 'تجديد البنك الزراعي', categoryEn: 'Government Projects', categoryAr: 'المشاريع الحكومية', locationEn: 'Minya', locationAr: 'المنيا', descriptionEn: 'Developing 5 branches of the Agricultural Bank.', descriptionAr: 'تطوير 5 فروع للبنك الزراعي.', year: '2023', status: 'completed', image: '/images/agricultural-bank.jpg' },
+  { id: '6', titleEn: 'Villa El-Nakheel', titleAr: 'فيلات النخيل', categoryEn: 'Real Estate Development', categoryAr: 'التطوير العقاري', locationEn: '5th Settlement', locationAr: 'التجمع الخامس', descriptionEn: '7 luxury villas in El-Nakheel compound.', descriptionAr: '7 فيلات فاخرة في كمبوند النخيل.', year: '2018', status: 'completed', image: '/images/villa-nakheel.jpg' },
+]
 
 const Projects = () => {
   const { t } = useLanguage()
   const [projects, setProjects] = useState<any[]>([])
 
   useEffect(() => {
-    api.getProjects().then(setProjects).catch(console.error)
+    fetch('/api/projects')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data) && data.length > 0) {
+          setProjects(data)
+        } else {
+          setProjects(fallbackProjects)
+        }
+      })
+      .catch(() => setProjects(fallbackProjects))
   }, [])
-
-  if (projects.length === 0) return null
 
   return (
     <section id="projects" className="py-16 sm:py-20 lg:py-24 bg-[#0a0a1a] relative overflow-hidden">
@@ -34,7 +49,7 @@ const Projects = () => {
               <div className="aspect-[4/3] overflow-hidden">
                 <img 
                   src={project.image} 
-                  alt={t(project.title?.en || project.titleEn, project.title?.ar || project.titleAr)} 
+                  alt={t(project.titleEn || project.title?.en, project.titleAr || project.title?.ar)} 
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
                   loading="lazy" 
                 />
@@ -44,12 +59,12 @@ const Projects = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-[#0a0a1a]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 lg:p-6">
                   <div className="flex items-center space-x-2 mb-2">
-                    <span className="text-[#d4a017] text-[10px] sm:text-xs uppercase tracking-wider">{t(project.category?.en || project.categoryEn, project.category?.ar || project.categoryAr)}</span>
+                    <span className="text-[#d4a017] text-[10px] sm:text-xs uppercase tracking-wider">{t(project.categoryEn || project.category?.en, project.categoryAr || project.category?.ar)}</span>
                     <span className="text-gray-600 text-[10px] sm:text-xs">•</span>
                     <span className="text-gray-500 text-[10px] sm:text-xs">{project.year}</span>
                   </div>
-                  <h3 className="text-white text-sm sm:text-base lg:text-xl font-semibold mb-2 sm:mb-3">{t(project.title?.en || project.titleEn, project.title?.ar || project.titleAr)}</h3>
-                  <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">{t(project.description?.en || project.descriptionEn, project.description?.ar || project.descriptionAr)}</p>
+                  <h3 className="text-white text-sm sm:text-base lg:text-xl font-semibold mb-2 sm:mb-3">{t(project.titleEn || project.title?.en, project.titleAr || project.title?.ar)}</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">{t(project.descriptionEn || project.description?.en, project.descriptionAr || project.description?.ar)}</p>
                   
                   {/* Read More Button */}
                   <Link 
