@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "titleEn": "Innovating Spaces, Building Futures",
+    "titleAr": "ابتكار المساحات، بناء المستقبل",
+    "subtitleEn": "Est. 2004 - Architect Mohamed Yehia Group",
+    "subtitleAr": "تأسست عام 2004 - مجموعة المهندس محمد يحيى",
+    "descriptionEn": "A multidisciplinary real estate and engineering company established in 2004.",
+    "descriptionAr": "شركة عقارية وهندسية متعددة التخصصات تأسست عام 2004."
+  },
+  "about": {
+    "titleEn": "Who We Are",
+    "titleAr": "من نحن",
+    "descriptionEn": "Architect Mohamed Yehia Group was established in 2004 in cooperation with Gulf Countries.",
+    "descriptionAr": "تأسست مجموعة المهندس محمد يحيى في عام 2004 بالتعاون مع دول الخليج."
+  },
+  "services": {
+    "titleEn": "Our Divisions",
+    "titleAr": "أقسامنا",
+    "descriptionEn": "A multidisciplinary company with 6 specialized divisions.",
+    "descriptionAr": "شركة متعددة التخصصات مع 6 أقسام متخصصة."
+  },
+  "contact": {
+    "addressEn": "Zaher Towers Bldg 2, Apt 316B, Maamoun St., Nasr City, Cairo",
+    "addressAr": "أبراج زاهر برج 2 شقة 316 ب، شارع المأمون، مدينة نصر، القاهرة",
+    "phone": "02-20776044",
+    "email": "info@mygroup-eg.com",
+    "facebook": "https://facebook.com/mohamedyehiagroup",
+    "instagram": "https://instagram.com/mohamed_yehia_group",
+    "linkedin": "https://linkedin.com/company/mohamed-yehia-group"
+  },
+  "social": {
+    "facebook": "https://facebook.com/mohamedyehiagroup",
+    "instagram": "https://instagram.com/mohamed_yehia_group",
+    "linkedin": "https://linkedin.com/company/mohamed-yehia-group"
+  }
+}

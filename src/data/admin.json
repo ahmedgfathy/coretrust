@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "xinreal",
+      "password": "$2b$10$MchPmxIMCD0iNJqNOp1atuepe3kL2M4kw3QpkFFvRYtvfXaoDLCga",
+      "role": "admin"
+    }
+  ]
+}

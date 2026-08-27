@@ -12,6 +12,7 @@ import ProjectsPage from './components/ProjectsPage'
 import ProjectDetail from './components/ProjectDetail'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
+import { AdminLogin, AdminLayout, AdminDashboard, AdminProjects, AdminContent, AdminImages } from './admin'
 
 // Home Page Component
 function HomePage() {
@@ -34,13 +35,29 @@ function App() {
       <LanguageProvider>
         <ScrollToTop />
         <div className="min-h-screen bg-[#0a0a1a]">
-          <Navbar />
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/project/:id" element={<ProjectDetail />} />
+            {/* Admin Routes - No Navbar/Footer */}
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="projects" element={<AdminProjects />} />
+              <Route path="content" element={<AdminContent />} />
+              <Route path="images" element={<AdminImages />} />
+            </Route>
+
+            {/* Public Routes */}
+            <Route path="/*" element={
+              <>
+                <Navbar />
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/projects" element={<ProjectsPage />} />
+                  <Route path="/project/:id" element={<ProjectDetail />} />
+                </Routes>
+                <Footer />
+              </>
+            } />
           </Routes>
-          <Footer />
         </div>
       </LanguageProvider>
     </Router>
