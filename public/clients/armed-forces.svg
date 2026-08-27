@@ -1,12 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 60">
-  <defs>
-    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1a237e;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#283593;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <rect width="180" height="60" rx="5" fill="url(#bg4)"/>
-  <text x="90" y="25" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#d4a017">ARMED FORCES</text>
-  <text x="90" y="40" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#d4a017">ENGINEERING</text>
-  <text x="90" y="52" text-anchor="middle" font-family="Arial" font-size="8" fill="white">الهيئة الهندسية للقوات المسلحة</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
+  <rect width="150" height="150" rx="8" fill="#1a237e"/>
+  <polygon points="75,25 85,50 110,50 90,65 98,90 75,75 52,90 60,65 40,50 65,50" fill="#d4a017"/>
+  <text x="75" y="108" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="white">ARMED FORCES</text>
+  <text x="75" y="120" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="white">ENGINEERING</text>
+  <text x="75" y="135" text-anchor="middle" font-family="Arial" font-size="7" fill="#d4a017">الهيئة الهندسية</text>
 </svg>

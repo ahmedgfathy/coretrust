@@ -2,13 +2,13 @@ import { useEffect, useRef } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 
 const clients = [
-  { id: 1, name: 'Agricultural Bank of Egypt', nameAr: 'البنك الزراعي المصري', logo: '/clients/agricultural-bank.svg', large: true },
-  { id: 2, name: 'Egyptian Engineers Syndicate', nameAr: 'نقابة المهندسين المصرية', logo: '/clients/engineers-syndicate.svg', large: true },
-  { id: 3, name: 'Suez Governorate', nameAr: 'محافظة السويس', logo: '/clients/suez-governorate.svg', large: false },
-  { id: 4, name: 'Armed Forces Engineering', nameAr: 'الهيئة الهندسية للقوات المسلحة', logo: '/clients/armed-forces.svg', large: true },
-  { id: 5, name: 'Cairo University', nameAr: 'جامعة القاهرة', logo: '/clients/cairo-university.svg', large: false },
-  { id: 6, name: 'Egyptian Tabletop Trading (ETTC)', nameAr: 'الشركة المصرية لتجارة أدوات المائدة', logo: '/clients/ettc.svg', large: false },
-  { id: 7, name: 'Civil Defense', nameAr: 'الدفاع المدني', logo: '/clients/civil-defense.svg', large: false },
+  { id: 1, name: 'Agricultural Bank of Egypt', nameAr: 'البنك الزراعي المصري', logo: '/clients/agricultural-bank.svg' },
+  { id: 2, name: 'Egyptian Engineers Syndicate', nameAr: 'نقابة المهندسين المصرية', logo: '/clients/engineers-syndicate.svg' },
+  { id: 3, name: 'Suez Governorate', nameAr: 'محافظة السويس', logo: '/clients/suez-governorate.svg' },
+  { id: 4, name: 'Armed Forces Engineering', nameAr: 'الهيئة الهندسية للقوات المسلحة', logo: '/clients/armed-forces.svg' },
+  { id: 5, name: 'Cairo University', nameAr: 'جامعة القاهرة', logo: '/clients/cairo-university.svg' },
+  { id: 6, name: 'Egyptian Tabletop Trading (ETTC)', nameAr: 'الشركة المصرية لتجارة أدوات المائدة', logo: '/clients/ettc.svg' },
+  { id: 7, name: 'Civil Defense', nameAr: 'الدفاع المدني', logo: '/clients/civil-defense.svg' },
 ]
 
 const Clients = () => {
@@ -84,14 +84,12 @@ const Clients = () => {
           {[...clients, ...clients].map((client, index) => (
             <div 
               key={`${client.id}-${index}`} 
-              className={`flex-shrink-0 flex items-center justify-center transition-all duration-300 ${
-                client.large ? 'w-36 h-20 sm:w-44 sm:h-24 lg:w-52 lg:h-28' : 'w-28 h-16 sm:w-36 sm:h-20 lg:w-40 lg:h-24'
-              }`}
+              className="flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32"
             >
               <img 
                 src={client.logo} 
                 alt={t(client.name, client.nameAr)}
-                className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                className="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300 rounded-lg"
                 loading="lazy"
               />
             </div>

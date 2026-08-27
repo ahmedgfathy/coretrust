@@ -1,12 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 60">
-  <defs>
-    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0e6655;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1abc9c;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <rect width="180" height="60" rx="5" fill="url(#bg3)"/>
-  <text x="90" y="25" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="white">SUEZ</text>
-  <text x="90" y="40" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="white">GOVERNORATE</text>
-  <text x="90" y="52" text-anchor="middle" font-family="Arial" font-size="8" fill="#f1c40f">محافظة السويس</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
+  <rect width="150" height="150" rx="8" fill="#0e6655"/>
+  <path d="M45 70 Q75 30 105 70" fill="none" stroke="white" stroke-width="3"/>
+  <path d="M55 75 Q75 45 95 75" fill="none" stroke="#f1c40f" stroke-width="2"/>
+  <text x="75" y="100" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="white">SUEZ</text>
+  <text x="75" y="115" text-anchor="middle" font-family="Arial" font-size="9" fill="#f1c40f">GOVERNORATE</text>
+  <text x="75" y="130" text-anchor="middle" font-family="Arial" font-size="8" fill="white">محافظة السويس</text>
 </svg>
