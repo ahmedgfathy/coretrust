@@ -18,6 +18,7 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use('/uploads', express.static(UPLOAD_DIR));
+app.use('/images', express.static(UPLOAD_DIR));
 
 // Ensure directories exist
 if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -128,6 +129,11 @@ const upload = multer({
     if (extname && mimetype) return cb(null, true);
     cb(new Error('Only image files allowed'));
   }
+});
+
+// Health check
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', port: PORT });
 });
 
 // ==================== AUTH ROUTES ====================
