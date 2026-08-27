@@ -4,3 +4,7 @@ dist/
 *.log
 .DS_Store
 Thumbs.db
+
+# Large files to ignore
+public/Company Profile.pdf
+public/images/
