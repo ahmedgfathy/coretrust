@@ -15,8 +15,19 @@ html {
 body {
   background-color: #0a0a1a;
   color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
+}
+
+/* Arabic font */
+html[lang="ar"] body,
+html[lang="ar"] {
+  font-family: 'Cairo', sans-serif;
+}
+
+/* RTL support */
+html[dir="rtl"] {
+  text-align: right;
 }
 
 /* Gold shimmer text */

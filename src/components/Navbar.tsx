@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
 import Logo from './Logo'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { language, setLanguage, t } = useLanguage()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -21,12 +23,17 @@ const Navbar = () => {
     return () => { document.body.style.overflow = 'unset' }
   }, [menuOpen])
 
+  useEffect(() => {
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
+    document.documentElement.lang = language
+  }, [language])
+
   const links = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/#about' },
-    { name: 'Services', href: '/#services' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'Contact', href: '/#contact' },
+    { name: t('Home', 'الرئيسية'), href: '/' },
+    { name: t('About', 'من نحن'), href: '/#about' },
+    { name: t('Services', 'خدماتنا'), href: '/#services' },
+    { name: t('Projects', 'المشاريع'), href: '/projects' },
+    { name: t('Contact', 'اتصل بنا'), href: '/#contact' },
   ]
 
   return (
@@ -37,19 +44,58 @@ const Navbar = () => {
             <Link to="/">
               <Logo />
             </Link>
+            
+            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               {links.map((l) => (
                 <Link key={l.name} to={l.href} className="text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-sm uppercase tracking-wider font-medium">{l.name}</Link>
               ))}
-              <Link to="/#contact" className="btn-gold text-sm">Get a Quote</Link>
+              
+              {/* Language Switcher */}
+              <div className="flex items-center border border-[#d4a017]/30 rounded overflow-hidden">
+                <button
+                  onClick={() => setLanguage('en')}
+                  className={`px-3 py-1.5 text-xs font-medium transition-colors ${language === 'en' ? 'bg-[#d4a017] text-black' : 'text-gray-400 hover:text-[#d4a017]'}`}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => setLanguage('ar')}
+                  className={`px-3 py-1.5 text-xs font-medium transition-colors ${language === 'ar' ? 'bg-[#d4a017] text-black' : 'text-gray-400 hover:text-[#d4a017]'}`}
+                >
+                  AR
+                </button>
+              </div>
+              
+              <Link to="/#contact" className="btn-gold text-sm">{t('Get a Quote', 'احصل على عرض سعر')}</Link>
             </div>
-            <button className="lg:hidden text-[#d4a017] p-2" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {menuOpen
-                  ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
-              </svg>
-            </button>
+            
+            {/* Mobile Menu Button */}
+            <div className="flex lg:hidden items-center space-x-3">
+              {/* Mobile Language Switcher */}
+              <div className="flex items-center border border-[#d4a017]/30 rounded overflow-hidden">
+                <button
+                  onClick={() => setLanguage('en')}
+                  className={`px-2 py-1 text-[10px] font-medium transition-colors ${language === 'en' ? 'bg-[#d4a017] text-black' : 'text-gray-400'}`}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => setLanguage('ar')}
+                  className={`px-2 py-1 text-[10px] font-medium transition-colors ${language === 'ar' ? 'bg-[#d4a017] text-black' : 'text-gray-400'}`}
+                >
+                  AR
+                </button>
+              </div>
+              
+              <button className="text-[#d4a017] p-2" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {menuOpen
+                    ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -69,7 +115,7 @@ const Navbar = () => {
             {links.map((l, i) => (
               <Link key={l.name} to={l.href} className="block py-3 text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-lg font-medium border-b border-[#d4a017]/10" onClick={() => setMenuOpen(false)} style={{ animationDelay: `${i * 50}ms` }}>{l.name}</Link>
             ))}
-            <Link to="/#contact" className="block btn-gold text-center mt-6 py-3" onClick={() => setMenuOpen(false)}>Get a Quote</Link>
+            <Link to="/#contact" className="block btn-gold text-center mt-6 py-3" onClick={() => setMenuOpen(false)}>{t('Get a Quote', 'احصل على عرض سعر')}</Link>
           </div>
         </div>
       </div>

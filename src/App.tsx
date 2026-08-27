@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { LanguageProvider } from './context/LanguageContext'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
 import Hero from './components/Hero'
@@ -30,16 +31,18 @@ function HomePage() {
 function App() {
   return (
     <Router>
-      <ScrollToTop />
-      <div className="min-h-screen bg-[#0a0a1a]">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/project/:id" element={<ProjectDetail />} />
-        </Routes>
-        <Footer />
-      </div>
+      <LanguageProvider>
+        <ScrollToTop />
+        <div className="min-h-screen bg-[#0a0a1a]">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/project/:id" element={<ProjectDetail />} />
+          </Routes>
+          <Footer />
+        </div>
+      </LanguageProvider>
     </Router>
   )
 }

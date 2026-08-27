@@ -1,11 +1,15 @@
-const stats = [
-  { number: '90+', label: 'Projects Completed' },
-  { number: '20+', label: 'Years Experience' },
-  { number: '6', label: 'Service Divisions' },
-  { number: '4+', label: 'Countries Served' },
-]
+import { useLanguage } from '../context/LanguageContext'
 
 const Stats = () => {
+  const { t } = useLanguage()
+
+  const stats = [
+    { number: '90+', label: t('Projects Completed', 'مشاريع مكتملة') },
+    { number: '20+', label: t('Years Experience', 'سنوات خبرة') },
+    { number: '6', label: t('Service Divisions', 'أقسام الخدمات') },
+    { number: '4+', label: t('Countries Served', 'دول نخدمها') },
+  ]
+
   return (
     <section className="py-14 sm:py-18 lg:py-20 bg-[#0a0a1a] relative overflow-hidden">
       <div className="absolute inset-0">

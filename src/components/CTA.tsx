@@ -1,4 +1,8 @@
+import { useLanguage } from '../context/LanguageContext'
+
 const CTA = () => {
+  const { t } = useLanguage()
+
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-[#0f0f22] relative overflow-hidden">
       <div className="absolute inset-0">
@@ -11,14 +15,27 @@ const CTA = () => {
         <div className="text-center max-w-3xl mx-auto">
           <div className="flex items-center justify-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
             <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>
-            <span className="text-[#d4a017] text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">Get Started</span>
+            <span className="text-[#d4a017] text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">
+              {t('Get Started', 'ابدأ الآن')}
+            </span>
             <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>Build Your Vision With Us</h2>
-          <p className="text-gray-400 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 px-4">From real estate development to interior design, we deliver innovative and sustainable solutions. Contact us today for a free consultation.</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+            {t('Build Your Vision With Us', 'ابنِ رؤيتك معنا')}
+          </h2>
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 px-4">
+            {t(
+              'From real estate development to interior design, we deliver innovative and sustainable solutions. Contact us today for a free consultation.',
+              'من التطوير العقاري إلى التصميم الداخلي، نقدم حلولاً مبتكرة ومستدامة. اتصل بنا اليوم للحصول على استشارة مجانية.'
+            )}
+          </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <a href="#contact" className="btn-gold text-sm sm:text-base">Get Free Consultation</a>
-            <a href="tel:0220776044" className="inline-block px-6 sm:px-8 py-3 sm:py-4 border border-[#d4a017]/50 text-[#d4a017] hover:bg-[#d4a017]/10 transition-all duration-300 text-center uppercase tracking-wider text-xs sm:text-sm font-medium">Call Us Now</a>
+            <a href="#contact" className="btn-gold text-sm sm:text-base">
+              {t('Get Free Consultation', 'احصل على استشارة مجانية')}
+            </a>
+            <a href="tel:0220776044" className="inline-block px-6 sm:px-8 py-3 sm:py-4 border border-[#d4a017]/50 text-[#d4a017] hover:bg-[#d4a017]/10 transition-all duration-300 text-center uppercase tracking-wider text-xs sm:text-sm font-medium">
+              {t('Call Us Now', 'اتصل بنا الآن')}
+            </a>
           </div>
         </div>
       </div>
