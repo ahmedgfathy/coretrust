@@ -43,18 +43,21 @@ const Navbar = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a1a]/90 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
-            <Link to="/">
-              <Logo />
-            </Link>
+            {/* Logo - always first in DOM, flexbox will position it */}
+            <div className="flex-shrink-0">
+              <Link to="/">
+                <Logo />
+              </Link>
+            </div>
             
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center gap-8">
               {links.map((l) => (
-                <Link key={l.name} to={l.href} className="text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-sm uppercase tracking-wider font-medium">{l.name}</Link>
+                <Link key={l.name} to={l.href} className="text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-sm uppercase tracking-wider font-medium whitespace-nowrap">{l.name}</Link>
               ))}
               
               {/* Language Switcher */}
-              <div className="flex items-center border border-[#d4a017]/30 rounded overflow-hidden">
+              <div className="flex items-center border border-[#d4a017]/30 rounded overflow-hidden flex-shrink-0">
                 <button
                   onClick={() => setLanguage('en')}
                   className={`px-3 py-1.5 text-xs font-medium transition-colors ${language === 'en' ? 'bg-[#d4a017] text-black' : 'text-gray-400 hover:text-[#d4a017]'}`}
@@ -69,11 +72,11 @@ const Navbar = () => {
                 </button>
               </div>
               
-              <Link to="/#contact" className="btn-gold text-sm">{t('Get a Quote', 'احصل على عرض سعر')}</Link>
+              <Link to="/#contact" className="btn-gold text-sm whitespace-nowrap flex-shrink-0">{t('Get a Quote', 'احصل على عرض سعر')}</Link>
             </div>
             
-            {/* Mobile Menu Button */}
-            <div className="flex lg:hidden items-center space-x-3">
+            {/* Mobile Right Side: Language + Hamburger */}
+            <div className="flex lg:hidden items-center gap-2 flex-shrink-0">
               {/* Mobile Language Switcher */}
               <div className="flex items-center border border-[#d4a017]/30 rounded overflow-hidden">
                 <button
@@ -103,33 +106,37 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-        <div className="absolute inset-0 bg-black/60" onClick={() => setMenuOpen(false)}></div>
-        <div className={`absolute top-0 h-full w-72 sm:w-80 bg-[#0a0a1a] border-l border-[#d4a017]/20 transform transition-transform duration-300 ${isArabic ? 'left-0 border-l-0 border-r border-[#d4a017]/20' : 'right-0'} ${menuOpen ? 'translate-x-0' : isArabic ? '-translate-x-full' : 'translate-x-full'}`}>
-          <div className={`flex ${isArabic ? 'justify-start' : 'justify-end'} p-4`}>
-            <button className="text-[#d4a017] p-2" onClick={() => setMenuOpen(false)}>
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <div className={`px-6 py-4 space-y-1 ${isArabic ? 'text-right' : 'text-left'}`}>
-            {links.map((l, i) => (
-              <Link
-                key={l.name}
-                to={l.href}
-                className="block py-3 text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-lg font-medium border-b border-[#d4a017]/10"
-                onClick={() => setMenuOpen(false)}
-              >
-                {l.name}
+      {menuOpen && (
+        <div className="fixed inset-0 z-40 lg:hidden">
+          <div className="absolute inset-0 bg-black/60" onClick={() => setMenuOpen(false)}></div>
+          <div className={`absolute top-0 h-full w-72 sm:w-80 bg-[#0a0a1a] border-[#d4a017]/20 transform transition-transform duration-300 ease-in-out ${isArabic ? 'left-0 border-r' : 'right-0 border-l'}`}>
+            {/* Close Button */}
+            <div className={`flex p-4 ${isArabic ? 'justify-start' : 'justify-end'}`}>
+              <button className="text-[#d4a017] p-2" onClick={() => setMenuOpen(false)}>
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            {/* Menu Links */}
+            <div className={`px-6 py-2 ${isArabic ? 'text-right' : 'text-left'}`}>
+              {links.map((l) => (
+                <Link
+                  key={l.name}
+                  to={l.href}
+                  className={`block py-3 text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-lg font-medium border-b border-[#d4a017]/10 ${isArabic ? 'font-[Cairo]' : ''}`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {l.name}
+                </Link>
+              ))}
+              <Link to="/#contact" className="block btn-gold text-center mt-6 py-3" onClick={() => setMenuOpen(false)}>
+                {t('Get a Quote', 'احصل على عرض سعر')}
               </Link>
-            ))}
-            <Link to="/#contact" className="block btn-gold text-center mt-6 py-3" onClick={() => setMenuOpen(false)}>
-              {t('Get a Quote', 'احصل على عرض سعر')}
-            </Link>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   )
 }
