@@ -2,13 +2,13 @@ import { useEffect, useRef } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 
 const clients = [
-  { id: 1, name: 'Agricultural Bank of Egypt', nameAr: 'البنك الزراعي المصري', logo: '/clients/agricultural-bank.svg' },
-  { id: 2, name: 'Egyptian Engineers Syndicate', nameAr: 'نقابة المهندسين المصرية', logo: '/clients/engineers-syndicate.svg' },
-  { id: 3, name: 'Suez Governorate', nameAr: 'محافظة السويس', logo: '/clients/suez-governorate.svg' },
-  { id: 4, name: 'Armed Forces Engineering', nameAr: 'الهيئة الهندسية للقوات المسلحة', logo: '/clients/armed-forces.svg' },
-  { id: 5, name: 'Cairo University', nameAr: 'جامعة القاهرة', logo: '/clients/cairo-university.svg' },
-  { id: 6, name: 'Egyptian Tabletop Trading (ETTC)', nameAr: 'الشركة المصرية لتجارة أدوات المائدة', logo: '/clients/ettc.svg' },
-  { id: 7, name: 'Civil Defense', nameAr: 'الدفاع المدني', logo: '/clients/civil-defense.svg' },
+  { id: 1, name: 'Agricultural Bank of Egypt', nameAr: 'البنك الزراعي المصري', logo: '/clients/logo-1.svg' },
+  { id: 2, name: 'Egyptian Engineers Syndicate', nameAr: 'نقابة المهندسين المصرية', logo: '/clients/logo-2.svg' },
+  { id: 3, name: 'Suez Governorate', nameAr: 'محافظة السويس', logo: '/clients/logo-3.svg' },
+  { id: 4, name: 'Armed Forces Engineering', nameAr: 'الهيئة الهندسية للقوات المسلحة', logo: '/clients/logo-4.svg' },
+  { id: 5, name: 'Cairo University', nameAr: 'جامعة القاهرة', logo: '/clients/logo-5.svg' },
+  { id: 6, name: 'Egyptian Tabletop Trading (ETTC)', nameAr: 'الشركة المصرية لتجارة أدوات المائدة', logo: '/clients/logo-6.svg' },
+  { id: 7, name: 'Civil Defense', nameAr: 'الدفاع المدني', logo: '/clients/logo-7.svg' },
 ]
 
 const Clients = () => {
@@ -84,12 +84,12 @@ const Clients = () => {
           {[...clients, ...clients].map((client, index) => (
             <div 
               key={`${client.id}-${index}`} 
-              className="flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32"
+              className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40"
             >
               <img 
                 src={client.logo} 
                 alt={t(client.name, client.nameAr)}
-                className="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300 rounded-lg"
+                className="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                 loading="lazy"
               />
             </div>

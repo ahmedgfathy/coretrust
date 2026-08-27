@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
-  <rect width="150" height="150" rx="8" fill="#922b21"/>
-  <rect x="35" y="35" width="80" height="40" rx="5" fill="none" stroke="white" stroke-width="2"/>
-  <text x="75" y="60" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="white">ETTC</text>
-  <text x="75" y="100" text-anchor="middle" font-family="Arial" font-size="9" fill="#f1c40f">EGYPTIAN TABLETOP</text>
-  <text x="75" y="112" text-anchor="middle" font-family="Arial" font-size="9" fill="#f1c40f">TRADING COMPANY</text>
-  <text x="75" y="128" text-anchor="middle" font-family="Arial" font-size="7" fill="white">الشركة المصرية لتجارة أدوات المائدة</text>
-</svg>

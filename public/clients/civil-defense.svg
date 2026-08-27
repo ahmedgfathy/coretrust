@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
-  <rect width="150" height="150" rx="8" fill="#b7950b"/>
-  <circle cx="75" cy="55" r="30" fill="#1a1a2e"/>
-  <text x="75" y="62" text-anchor="middle" font-family="Arial" font-size="28" font-weight="bold" fill="#f1c40f">CD</text>
-  <text x="75" y="105" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#1a1a2e">CIVIL DEFENSE</text>
-  <text x="75" y="120" text-anchor="middle" font-family="Arial" font-size="9" fill="#1a1a2e">الدفاع المدني</text>
-</svg>

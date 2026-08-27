@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a237e"/>
+      <stop offset="100%" stop-color="#283593"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="16" fill="url(#g4)"/>
+  <polygon points="100,30 115,65 155,65 122,88 135,125 100,102 65,125 78,88 45,65 85,65" fill="#d4a017"/>
+  <text x="100" y="150" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="white">ARMED FORCES</text>
+  <text x="100" y="168" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#d4a017">ENGINEERING</text>
+  <text x="100" y="188" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="white">الهيئة الهندسية</text>
+</svg>

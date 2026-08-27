@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="g7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e65100"/>
+      <stop offset="100%" stop-color="#f57c00"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="16" fill="url(#g7)"/>
+  <circle cx="100" cy="80" r="40" fill="#1a1a2e"/>
+  <text x="100" y="90" text-anchor="middle" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="#ffc107">CD</text>
+  <text x="100" y="145" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white">CIVIL</text>
+  <text x="100" y="165" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white">DEFENSE</text>
+  <text x="100" y="188" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#ffc107">الدفاع المدني</text>
+</svg>

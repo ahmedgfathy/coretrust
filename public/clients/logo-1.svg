@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d47a1"/>
+      <stop offset="100%" stop-color="#1565c0"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="16" fill="url(#g1)"/>
+  <path d="M100 40 L130 80 L100 65 L70 80 Z" fill="#ffc107"/>
+  <rect x="85" y="80" width="30" height="50" fill="#ffc107"/>
+  <rect x="60" y="130" width="80" height="15" rx="2" fill="#ffc107"/>
+  <text x="100" y="165" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white">AGRICULTURAL</text>
+  <text x="100" y="182" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#ffc107">BANK OF EGYPT</text>
+</svg>

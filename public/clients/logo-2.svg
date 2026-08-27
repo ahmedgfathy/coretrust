@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#263238"/>
+      <stop offset="100%" stop-color="#37474f"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="16" fill="url(#g2)"/>
+  <circle cx="100" cy="85" r="45" fill="none" stroke="#d4a017" stroke-width="4"/>
+  <text x="100" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="40" font-weight="bold" fill="#d4a017">E</text>
+  <text x="100" y="155" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#d4a017">ENGINEERS</text>
+  <text x="100" y="172" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white">SYNDICATE</text>
+  <text x="100" y="188" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#d4a017">نقابة المهندسين</text>
+</svg>

@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
-  <rect width="150" height="150" rx="8" fill="#1a237e"/>
-  <polygon points="75,25 85,50 110,50 90,65 98,90 75,75 52,90 60,65 40,50 65,50" fill="#d4a017"/>
-  <text x="75" y="108" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="white">ARMED FORCES</text>
-  <text x="75" y="120" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="white">ENGINEERING</text>
-  <text x="75" y="135" text-anchor="middle" font-family="Arial" font-size="7" fill="#d4a017">الهيئة الهندسية</text>
-</svg>
