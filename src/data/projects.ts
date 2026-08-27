@@ -1,237 +1,344 @@
 export interface Project {
   id: string
-  title: string
-  titleAr: string
-  category: string
-  location: string
+  title: { en: string; ar: string }
+  category: { en: string; ar: string }
+  location: { en: string; ar: string }
   year: string
+  description: { en: string; ar: string }
+  details: { en: string; ar: string }[]
   image: string
   gallery: string[]
-  description: string
-  descriptionAr: string
-  scope: string[]
-  challenges: string
-  results: string
-  client: string
-  area: string
-  duration: string
-  value: string
+  status: 'current' | 'completed'
+  area?: string
 }
+
+export const categories = [
+  { id: 'all', en: 'All Projects', ar: 'جميع المشاريع' },
+  { id: 'real-estate', en: 'Real Estate', ar: 'الاستثمار العقاري' },
+  { id: 'contracting', en: 'Contracting', ar: 'المقاولات' },
+  { id: 'interior', en: 'Interior Design', ar: 'التصميم الداخلي' },
+  { id: 'maintenance', en: 'Maintenance', ar: 'الصيانة' },
+]
 
 export const projects: Project[] = [
   {
-    id: 'sabbia-compound',
-    title: 'Sabbia Resort - Marsa Matrouh',
-    titleAr: 'منتجع صبية - مرسى مطروح',
-    category: 'Construction',
-    location: 'Al-Qasr, Marsa Matrouh, Egypt',
+    id: 'sabbia-resort',
+    title: { en: 'Sabbia Resort', ar: 'منتجع صبية' },
+    category: { en: 'Real Estate', ar: 'الاستثمار العقاري' },
+    location: { en: 'Marsa Matrouh', ar: 'مرسى مطروح' },
     year: '2022-Present',
-    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80',
-      'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1200&q=80',
-      'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1200&q=80',
+    description: {
+      en: 'Luxury beach resort in Al-Qasr area, Marsa Matrouh, overlooking the mesmerizing beach. Features 7 districts with coastal units, private beach spanning half km, and water sports activities.',
+      ar: 'منتجع فاخر على الشاطئ في منطقة القصر بمرسى مطروح، يطل على الشاطئ الساحر. يتكون من 7 حارات بوحدات ساحلية وشاطئ خاص يمتد لنصف كيلومتر وأنشطة رياضات مائية.'
+    },
+    details: [
+      { en: 'Private beach over 0.5 km', ar: 'شاطئ خاص يمتد لأكثر من 0.5 كم' },
+      { en: '7 districts with coastal units', ar: '7 حارات بوحدات ساحلية' },
+      { en: 'Water sports: jet skis & parasailing', ar: 'رياضات مائية: زالجات نفاثة وتزلج هوائي' },
+      { en: 'Fully furnished units with sea view', ar: 'وحدات مفروشة بالكامل مع إطلالة على البحر' },
     ],
-    description: 'A premium beach resort located in Al-Qasr area, Marsa Matrouh, next to Porto Matrouh. The resort features modern architecture with natural colors, fully furnished units offering comfort, luxury, and privacy. Sabbia\'s private beach spans over half a kilometer with water sports activities including jet skis and parasailing.',
-    descriptionAr: 'منتجع ساحلي فاخر located في منطقة القصر، مرسى مطروح، بجوار بورتو مطروح. يتميز المنتجع بالعمارة الحديثة والألوان الطبيعية، ووحدات مفروشة بالكامل توفر الراحة والرفاهية والخصوصية. يمتد شاطئ صبيا الخاص على أكثر من نصف كيلومتر.',
-    scope: ['Resort Architecture', 'Coastal Construction', 'Interior Fit-out', 'Landscaping', 'Marine Works'],
-    challenges: 'Building in a coastal environment with extreme heat and humidity. Coordinating with multiple suppliers for specialized resort equipment and maintaining design standards across 7 districts.',
-    results: 'One of the few swimmable beaches in Marsa Matrouh with unique modern architecture. Resort includes cafes, water sports, and fully furnished luxury units.',
-    client: 'Private Development',
-    area: 'Multiple Districts',
-    duration: 'Ongoing',
-    value: 'Confidential',
+    image: '/images/sabbia-resort.jpg',
+    gallery: ['/images/sabbia-resort.jpg'],
+    status: 'current',
   },
   {
     id: 'core-complex',
-    title: 'Core Complex - Autostrad',
-    titleAr: 'مجمع كور - الأتوستراد',
-    category: 'Construction',
-    location: 'Autostrad & Ring Road Intersection, Cairo',
+    title: { en: 'Core Complex', ar: 'مجمع كور' },
+    category: { en: 'Real Estate', ar: 'الاستثمار العقاري' },
+    location: { en: 'Autostrad, Cairo', ar: 'الأتوستRAD، القاهرة' },
     year: '2022-Present',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80',
+    description: {
+      en: 'Residential and commercial complex at the intersection of Autostrad road & ring road. 13,000 sqm area with residential units, offices, commercial units, landscape, and club on upper floors.',
+      ar: 'مجمع سكني تجاري في تقاطع طريق الأتوستراد والطريق الدائري. مساحة 13,000 متر مربع مع وحدات سكنية ومكاتب ووحدات تجارية ومناظر طبيعية ونادي في الطوابق العليا.'
+    },
+    details: [
+      { en: 'Total area: 13,000 sqm', ar: 'المساحة الإجمالية: 13,000 متر مربع' },
+      { en: 'Residential, commercial & office units', ar: 'وحدات سكنية وتجارية وإدارية' },
+      { en: 'Club on upper floors as landmark', ar: 'نادي في الطوابق العليا كمعلم مميز' },
+      { en: 'Construction supervision & finishing', ar: 'إشراف على البناء والتشطيب من الداخل والخارج' },
     ],
-    description: 'A landmark residential and commercial complex located at the intersection of Autostrad Road and Ring Road with an area of 13,000 sqm. The complex consists of residential units, offices, commercial units, landscape, infrastructure network, and a club on the upper floors serving as a project landmark.',
-    descriptionAr: 'مجمع سكني تجاري مميز يقع في تقاطع طريق الأتوستراد والطريق الدائري بمساحة 13,000 متر مربع. يتكون المجمع من وحدات سكنية ومكاتب ووحدات تجارية ومناظر طبيعية وشبكة بنية تحتية ونادي في الطوابق العليا.',
-    scope: ['Mixed-use Development', 'Construction Supervision', 'Interior & Exterior Finishing', 'Infrastructure', 'Landscape Design'],
-    challenges: 'Complex intersection location requiring careful traffic management during construction. Integrating multiple building functions within a single landmark structure.',
-    results: 'Unique landmark project at a major Cairo intersection. Company responsible for construction supervision and complete interior/exterior finishing.',
-    client: 'Private Developer',
-    area: '13,000 sqm',
-    duration: 'Ongoing',
-    value: 'Confidential',
+    image: '/images/core-complex.jpg',
+    gallery: ['/images/core-complex.jpg'],
+    status: 'current',
   },
   {
-    id: 'waha-4-la-nova',
-    title: 'La Nova Towers - Waha 4',
-    titleAr: 'أبراج لا نوفا - الواحة 4',
-    category: 'Construction',
-    location: 'El-Waha, Nasr City, Cairo',
-    year: '2021-Present',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80',
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80',
+    id: 'la-nova-towers',
+    title: { en: 'La Nova Towers', ar: 'أبراج لا نوفا' },
+    category: { en: 'Real Estate', ar: 'الاستثمار العقاري' },
+    location: { en: 'El-Waha, Nasr City', ar: 'الواحة، مدينة نصر' },
+    year: '2022-Present',
+    description: {
+      en: 'Residential towers consisting of basement, ground floor, 9 floors & roof. Each floor has 6 apartments. Located in El-Waha with easy access from many corridors.',
+      ar: 'أبراج سكنية تتكون من بدروم ودور أرضي و9 طوابق وروف. كل طابق يحتوي على 6 شقق. تقع في الواحة مع سهولة الوصول من المحاور المتعددة.'
+    },
+    details: [
+      { en: 'Basement + Ground + 9 floors + Roof', ar: 'بدروم + دور أرضي + 9 طوابق + روف' },
+      { en: '6 apartments per floor', ar: '6 شقق لكل طابق' },
+      { en: 'Apartments: 108 - 162 sqm', ar: 'الشقق: 108 - 162 متر مربع' },
+      { en: 'Land area: 870 sqm', ar: 'مساحة الأرض: 870 متر مربع' },
     ],
-    description: 'La Nova residential towers consisting of basement, ground floor, 9 floors & roof. Located in El-Waha neighborhood, easily reachable from many corridors. Each floor consists of 6 apartments offering variety in area, design and spaces distribution.',
-    descriptionAr: 'أبراج نوفا السكنية تتكون من بدروم ودور أرضي و 9 طوابق وروف. تقع في حي الواحة ويمكن الوصول إليها بسهولة من العديد من المحاور. يتكون كل طابق من 6 شقق.',
-    scope: ['High-rise Construction', 'Structural Engineering', 'MEP Systems', 'Interior Design', 'Parking Structure'],
-    challenges: 'Maximizing apartment variety while maintaining structural integrity. Ensuring easy accessibility from multiple road corridors.',
-    results: 'Premium residential towers in prime Nasr City location with 6 apartments per floor offering diverse layouts for different client needs.',
-    client: 'El-Waha Development',
-    area: '870 sqm (land), 435 sqm (ground), 478.5 sqm (typical)',
-    duration: '24 months',
-    value: 'Confidential',
+    image: '/images/la-nova-towers.jpg',
+    gallery: ['/images/la-nova-towers.jpg'],
+    status: 'current',
   },
   {
-    id: 'conakry-vip-lounge',
-    title: 'VIP Lounge - Conakry Airport',
-    titleAr: 'صالة كبار الزوار - مطار كوناكري',
-    category: 'International',
-    location: 'Conakry, Guinea',
-    year: '2016-2017',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80',
+    id: 'waha-building',
+    title: { en: 'Waha Buildings', ar: 'مباني الواحة' },
+    category: { en: 'Real Estate', ar: 'الاستثمار العقاري' },
+    location: { en: 'El-Waha, Nasr City', ar: 'الواحة، مدينة نصر' },
+    year: '2016-2019',
+    description: {
+      en: 'Multiple residential buildings in El-Waha neighborhood, Nasr City. Buildings 2, 3, and 4 with 10-11 floors each, featuring 3 apartments per floor. Remarkable location overlooking Khamseen Street.',
+      ar: 'مباني سكنية متعددة في حي الواحة بمدينة نصر. مباني 2 و 3 و 4 بـ 10-11 طابق لكل منها، تتميز بـ 3 شقق لكل طابق. موقع مميز يطل على شارع الخمسين.'
+    },
+    details: [
+      { en: '10-11 floors per building', ar: '10-11 طابق لكل مبنى' },
+      { en: '3 apartments per floor', ar: '3 شقق لكل طابق' },
+      { en: 'Apartments: 115 - 190 sqm', ar: 'الشقق: 115 - 190 متر مربع' },
+      { en: 'Overlooking Khamseen Street', ar: 'يطل على شارع الخمسين' },
     ],
-    description: 'Raising the efficiency of a VIP Lounge in Conakry International Airport, Guinea. The execution was done within the scope of developing and raising efficiency of the whole airport in coordination with a local team.',
-    descriptionAr: 'رفع كفاءة استراحة كبار الزوار بمطار كوناكري الدولي غينيا. تم التنفيذ في إطار مراحل تطوير ورفع كفاءة المطار بالكامل بالتنسيق مع فريق عمل محلي.',
-    scope: ['Airport Infrastructure', 'VIP Facilities', 'Interior Fit-out', 'MEP Systems', 'Efficiency Upgrading'],
-    challenges: 'Working within an active international airport while upgrading facilities. Coordinating with local teams and meeting international aviation standards.',
-    results: 'Successfully upgraded VIP lounge as part of complete airport development. Enhanced Guinea\'s international aviation facilities.',
-    client: 'Guinea Ministry of Transport',
-    area: 'VIP Lounge Facility',
-    duration: '14 months',
-    value: 'Confidential',
+    image: '/images/waha-building.jpg',
+    gallery: ['/images/waha-building.jpg'],
+    status: 'completed',
   },
   {
-    id: 'tanzania-parking',
-    title: 'Julius Nyerere Airport Parking',
-    titleAr: 'ساحة انتظار مطار جوليوس نيريري',
-    category: 'International',
-    location: 'Dar es Salaam, Tanzania',
-    year: '2016-2017',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80',
+    id: 'el-merghany',
+    title: { en: 'El-Merghany Building', ar: 'مبنى الميرغني' },
+    category: { en: 'Real Estate', ar: 'الاستثمار العقاري' },
+    location: { en: 'Heliopolis, Cairo', ar: 'مصر الجديدة، القاهرة' },
+    year: '2020',
+    description: {
+      en: 'Elegant residential building in Heliopolis, one of Cairo\'s most elegant areas. Classic design with bright yellow stone terraces and beige color. Divided into apartments, commercial units and parking.',
+      ar: 'مبنى سكني أنيق في مصر الجديدة، واحدة من أرقى مناطق القاهرة. تصميم كلاسيكي مع تراسات من الحجر الأصفر واللون البيج. مقسم إلى شقق ووحدات تجارية ومواقف سيارات.'
+    },
+    details: [
+      { en: 'Classic design with yellow stone', ar: 'تصميم كلاسيكي مع حجر أصفر' },
+      { en: 'Residential & commercial units', ar: 'وحدات سكنية وتجارية' },
+      { en: 'Parking facilities', ar: 'مرافق مواقف سيارات' },
+      { en: 'Premium Heliopolis location', ar: 'موقع مميز في مصر الجديدة' },
     ],
-    description: 'Execution of parking lot in front of Terminal 3 in Julius Nyerere International Airport (previously known as Dar El-Salam) in Tanzania, including security rooms and exterior lighting.',
-    descriptionAr: 'تنفيذ ساحة انتظار سيارات أمام رقم 3 بمطار جوليوس نيريري الدولي المعروف سابقا بمطار دار السلام الدولي في تانزانيا شاملة غرف الحراسة والإنارة الخارجية.',
-    scope: ['Airport Infrastructure', 'Parking Structure', 'Security Systems', 'External Lighting', 'Terminal Access'],
-    challenges: 'Meeting international airport security requirements while maintaining efficient traffic flow. Working within strict airport operational constraints.',
-    results: 'Doubled airport parking capacity. Project became a model for airport infrastructure in East Africa.',
-    client: 'Tanzania Airports Authority',
-    area: 'Terminal 3 Parking',
-    duration: '16 months',
-    value: 'Confidential',
+    image: '/images/el-merghany.jpg',
+    gallery: ['/images/el-merghany.jpg'],
+    status: 'completed',
   },
   {
-    id: 'asmarat-maintenance',
-    title: 'Asmarat Compound Maintenance',
-    titleAr: 'صيانة مجمع الأسمرات',
-    category: 'Maintenance',
-    location: 'Mokattam, Cairo, Egypt',
-    year: '2019-Present',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80',
+    id: 'villa-nakheel',
+    title: { en: 'Villa El-Nakheel', ar: 'فيلا النخيل' },
+    category: { en: 'Real Estate', ar: 'الاستثمار العقاري' },
+    location: { en: 'Fifth Settlement, New Cairo', ar: 'التجمع الخامس، القاهرة الجديدة' },
+    year: '2007-2010',
+    description: {
+      en: 'Luxury villas in El-Nakheel compound, Fifth Settlement. Multiple villas executed with complete finishing and modern designs. Premium location in one of New Cairo\'s finest compounds.',
+      ar: 'فيلات فاخرة في كمبوند النخيل بالتجمع الخامس. فيلات متعددة بتشطيبات كاملة وتصاميم عصرية. موقع مميز في أحد أرقى مجمعات القاهرة الجديدة.'
+    },
+    details: [
+      { en: 'Multiple villas in El-Nakheel', ar: 'فيلات متعددة في النخيل' },
+      { en: 'Complete finishing works', ar: 'أعمال تشطيب كاملة' },
+      { en: 'Modern architectural design', ar: 'تصميم معماري عصري' },
+      { en: 'Premium compound location', ar: 'موقع مميز في الكمبوند' },
     ],
-    description: 'Maintenance of 42 elevators in 21 residential buildings, providing operators and malfunction technicians for each building. The crew uses walkie-talkies for communication and quick response. Maintenance includes electrical systems and general site lighting.',
-    descriptionAr: 'صيانة 42 مصعد في 21 عمارة سكنية وتشمل الأعمال توفير مشغلين وفني أعطال لكل عمارة. فريق العمل مزود بأجهزة الاتصال للتواصل وسرعة الاستجابة لل أعطال. تتضمن الصيانة الأنظمة الكهربائية والإنارة للموقع العام.',
-    scope: ['Elevator Maintenance', 'Electrical Systems', 'Lighting Maintenance', 'Emergency Response', 'Technician Deployment'],
-    challenges: 'Managing maintenance for 42 elevators across 21 buildings while minimizing disruption to residents. Implementing quick response systems for malfunctions.',
-    results: 'Reliable maintenance service with walkie-talkie equipped crew for rapid response. All building systems maintained at optimal performance.',
-    client: 'Asmarat Development Company',
-    area: '21 Residential Buildings, 42 Elevators',
-    duration: 'Ongoing (5+ years)',
-    value: 'Confidential',
+    image: '/images/villa-nakheel.jpg',
+    gallery: ['/images/villa-nakheel.jpg'],
+    status: 'completed',
   },
   {
-    id: 'suez-governorate',
-    title: 'Suez Governorate Renovation',
-    titleAr: 'gregarization محافظة السويس',
-    category: 'Maintenance',
-    location: 'Suez Governorate, Egypt',
-    year: '2021-2023',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80',
+    id: 'narges-building',
+    title: { en: 'Narges Building', ar: 'مبنى النرجس' },
+    category: { en: 'Real Estate', ar: 'الاستثمار العقاري' },
+    location: { en: 'Fifth Settlement, New Cairo', ar: 'التجمع الخامس، القاهرة الجديدة' },
+    year: '2010-2012',
+    description: {
+      en: 'Residential building in El-Narges 6 compound, Fifth Settlement. Complete construction and finishing works with modern design and quality materials.',
+      ar: 'مبنى سكني في كمبوند النرجس 6 بالتجمع الخامس. أعمال بناء وتشطيب كاملة بتصميم عصري ومواد عالية الجودة.'
+    },
+    details: [
+      { en: 'Location: El-Narges 6', ar: 'الموقع: النرجس 6' },
+      { en: 'Complete construction & finishing', ar: 'بناء وتشطيب كامل' },
+      { en: 'Modern design', ar: 'تصميم عصري' },
+      { en: 'Quality materials', ar: 'مواد عالية الجودة' },
     ],
-    description: 'Elevation renovation from old to new modern design with cladding for Suez Governorate buildings. Also includes residential buildings elevation renovation and landscape in Attaka division. Received visit from Prime Minister and Governor of Suez.',
-    descriptionAr: 'تغير تصميم الواجهة القديمة للمحافظة الى تصميم جديد بأعمال الكلدينج. يشمل أيضا رفع كفاءة واجهات العمارات السكنية واللاندسكيب بحي عتاقه. تمت زيارة من رئيس الوزراء ومحافظ السويس.',
-    scope: ['Facade Renovation', 'Cladding Works', 'Landscape Design', 'Government Buildings', 'Structural Assessment'],
-    challenges: 'Working on government buildings while maintaining operations. Meeting strict design standards for official buildings.',
-    results: 'Complete modernization of Suez Governorate building facades. Project inspected by Prime Minister and Suez Governor.',
-    client: 'Suez Governorate',
-    area: 'Multiple Government Buildings',
-    duration: '24 months',
-    value: 'Confidential',
+    image: '/images/narges-building.jpg',
+    gallery: ['/images/narges-building.jpg'],
+    status: 'completed',
+  },
+  {
+    id: 'yasmine-building',
+    title: { en: 'Yasmine Building', ar: 'مبنى الياسمين' },
+    category: { en: 'Real Estate', ar: 'الاستثمار العقاري' },
+    location: { en: 'Fifth Settlement, New Cairo', ar: 'التجمع الخامس، القاهرة الجديدة' },
+    year: '2007-2009',
+    description: {
+      en: 'Residential buildings in El-Yasmeen 7 compound, Fifth Settlement. Two villas and residential buildings with complete finishing and modern architectural solutions.',
+      ar: 'مباني سكنية في كمبوند الياسمين 7 بالتجمع الخامس. فيلات ومباني سكنية بتشطيبات كاملة وحلول معمارية عصرية.'
+    },
+    details: [
+      { en: 'Location: El-Yasmeen 7', ar: 'الموقع: الياسمين 7' },
+      { en: 'Villas & residential buildings', ar: 'فيلات ومباني سكنية' },
+      { en: 'Complete finishing', ar: 'تشطيبات كاملة' },
+      { en: 'Modern solutions', ar: 'حلول عصرية' },
+    ],
+    image: '/images/yasmine-building.jpg',
+    gallery: ['/images/yasmine-building.jpg'],
+    status: 'completed',
+  },
+  {
+    id: 'banafseg-building',
+    title: { en: 'Banafseg Buildings', ar: 'مباني البنفسج' },
+    category: { en: 'Real Estate', ar: 'الاستثمار العقاري' },
+    location: { en: 'Fifth Settlement, New Cairo', ar: 'التجمع الخامس، القاهرة الجديدة' },
+    year: '2006-2011',
+    description: {
+      en: 'Multiple residential buildings in El-Banafseg district. Buildings 3, 8 and residential apartments with complete finishing and modern design standards.',
+      ar: 'مباني سكنية متعددة في حي البنفسج. مباني 3 و 8 وشقق سكنية بتشطيبات كاملة ومعايير تصميم عصرية.'
+    },
+    details: [
+      { en: 'Multiple buildings in El-Banafseg', ar: 'مباني متعددة في البنفسج' },
+      { en: 'Residential apartments', ar: 'شقق سكنية' },
+      { en: 'Complete finishing works', ar: 'أعمال تشطيب كاملة' },
+      { en: 'Quality construction', ar: 'بناء عالي الجودة' },
+    ],
+    image: '/images/banafseg-building.jpg',
+    gallery: ['/images/banafseg-building.jpg'],
+    status: 'completed',
+  },
+  {
+    id: 'mostashareen',
+    title: { en: 'Mostashareen Building', ar: 'مبنى المستشارين' },
+    category: { en: 'Real Estate', ar: 'الاستثمار العقاري' },
+    location: { en: 'Fifth Settlement, New Cairo', ar: 'التجمع الخامس، القاهرة الجديدة' },
+    year: '2009',
+    description: {
+      en: 'Building in El-Mostsharen compound, Fifth Settlement. Located in the Northern Investors area with modern design and complete finishing.',
+      ar: 'مبنى في كمبوند المستشارين بالتجمع الخامس. يقع في منطقة المستثمرين الشمالية بتصميم عصري وتشطيبات كاملة.'
+    },
+    details: [
+      { en: 'Location: El-Mostsharen', ar: 'الموقع: المستشارين' },
+      { en: 'Northern Investors area', ar: 'منطقة المستثمرين الشمالية' },
+      { en: 'Modern design', ar: 'تصميم عصري' },
+      { en: 'Complete finishing', ar: 'تشطيبات كاملة' },
+    ],
+    image: '/images/mostashareen.jpg',
+    gallery: ['/images/mostashareen.jpg'],
+    status: 'completed',
+  },
+  {
+    id: 'engineers-club',
+    title: { en: 'Engineers Syndicate Club', ar: 'نادي نقابة المهندسين' },
+    category: { en: 'Contracting', ar: 'المقاولات' },
+    location: { en: 'Fifth Settlement, New Cairo', ar: 'التجمع الخامس، القاهرة الجديدة' },
+    year: '2022-Present',
+    description: {
+      en: 'Proposal design for courts and other activities in Egyptian Engineers Syndicate club in the 5th settlement. Comprehensive sporting facilities design.',
+      ar: 'مقترح لتصميم ملاعب وخدمات لنادي نقابة المهندسين Egyptians بالتجمع الخامس. تصميم شامل لمرافق رياضية.'
+    },
+    details: [
+      { en: 'Sports courts design', ar: 'تصميم ملاعب رياضية' },
+      { en: 'Recreational facilities', ar: 'مرافق ترفيهية' },
+      { en: 'Modern sporting complex', ar: 'مجمع رياضي عصري' },
+      { en: '5th settlement location', ar: 'موقع في التجمع الخامس' },
+    ],
+    image: '/images/engineers-club.jpg',
+    gallery: ['/images/engineers-club.jpg'],
+    status: 'current',
+  },
+  {
+    id: 'nesreen-center',
+    title: { en: 'Nesreen Tafesh Center', ar: 'مركز نسرين طافش' },
+    category: { en: 'Interior', ar: 'التصميم الداخلي' },
+    location: { en: 'Al-Reef Al-Europi, Cairo', ar: 'الريف الأوروبي، القاهرة' },
+    year: '2022-Present',
+    description: {
+      en: 'Design solutions for Holistic Center project at Cairo-Alexandria Desert Road. Complete interior design and execution for wellness center.',
+      ar: 'حلول تصميمية لمشروع سنتر هوليستيك على طريق مصر الإسكندرية الصحراوي. تصميم داخلي وتنفيذ كامل لمركز عافية.'
+    },
+    details: [
+      { en: 'Holistic wellness center', ar: 'مركز عافية شامل' },
+      { en: 'Cairo-Alex Desert Road', ar: 'طريق مصر الإسكندرية الصحراوي' },
+      { en: 'Complete interior design', ar: 'تصميم داخلي كامل' },
+      { en: 'Modern execution', ar: 'تنفيذ عصري' },
+    ],
+    image: '/images/nesreen-center.jpg',
+    gallery: ['/images/nesreen-center.jpg'],
+    status: 'current',
   },
   {
     id: 'agricultural-bank',
-    title: 'Agricultural Bank Renovation',
-    titleAr: 'gagarization Bank الزراعي المصري',
-    category: 'Maintenance',
-    location: 'Multiple Governorates, Egypt',
-    year: '2020-Present',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80',
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80',
+    title: { en: 'Agricultural Bank Renovation', ar: 'تجديد البنك الزراعي' },
+    category: { en: 'Maintenance', ar: 'الصيانة' },
+    location: { en: 'Multiple Governorates, Egypt', ar: 'محافظات متعددة، مصر' },
+    year: '2020-2023',
+    description: {
+      en: 'Developing branches of the Agricultural Bank of Egypt across multiple governorates. From as-built drawings to finishing process according to typical model.',
+      ar: 'تطوير فروع البنك الزراعي المصري في محافظات متعددة. من الرسومات المبنية إلى عملية التشطيب وفقاً للنموذج النمطى.'
+    },
+    details: [
+      { en: '5 branches development', ar: 'تطوير 5 فروع' },
+      { en: 'As-built to finishing', ar: 'من الرسومات المبنية إلى التشطيب' },
+      { en: 'New plumbing systems', ar: 'أنظمة سباكة جديدة' },
+      { en: 'Facade renovation', ar: 'تجديد الواجهات' },
     ],
-    description: 'Developing 5 branches of the Agricultural Bank of Egypt in the first stage across multiple governorates. Process includes as-built drawings, workshop drawings, systems, BOQs, cash flow, time schedule, and finishing according to consultant\'s typical model.',
-    descriptionAr: 'تطوير 5 فروع للبنك الزراعي المصري في المرحلة الأولى بمحافظات مصر. تبدأ عملية التطوير من الرسومات المبنية التي تمر عبر رسومات وأنظمة ورشة العمل ثم جداول الكميات والتدفقات النقدية والجدول الزمني.',
-    scope: ['Building Renovation', 'As-built Documentation', 'MEP Systems', 'Interior Finishing', 'Project Management'],
-    challenges: 'Coordinating renovation across multiple branches while bank operations continue. Meeting typical model standards assigned by consultant.',
-    results: 'Successfully developing 5 branches in first stage. Complete renovation from documentation to finishing.',
-    client: 'Agricultural Bank of Egypt',
-    area: '5 Branches (Multiple Governorates)',
-    duration: 'Ongoing',
-    value: 'Confidential',
+    image: '/images/agricultural-bank.jpg',
+    gallery: ['/images/agricultural-bank.jpg'],
+    status: 'current',
   },
   {
-    id: 'golf-west-villa',
-    title: 'Golf West Villa Design',
-    titleAr: 'تصميم فيلا غرب الجولف',
-    category: 'Interior Design',
-    location: 'Fifth Settlement, Cairo, Egypt',
-    year: '2023-Present',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80',
-      'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80',
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80',
+    id: 'suez-governorate',
+    title: { en: 'Suez Governorate', ar: 'محافظة السويس' },
+    category: { en: 'Maintenance', ar: 'الصيانة' },
+    location: { en: 'Suez, Egypt', ar: 'السويس، مصر' },
+    year: '2021-2023',
+    description: {
+      en: 'Raising efficiency and facade renovation of Suez Governorate buildings. Including Al-Tawfiqia and Al-Kawthar buildings renovation.',
+      ar: 'رفع كفاءة وتجديد واجهات مباني محافظة السويس. تشمل تجديد عمارات التوفيقية والكوثر.'
+    },
+    details: [
+      { en: 'Facade renovation', ar: 'تجديد الواجهات' },
+      { en: 'Al-Tawfiqia buildings', ar: 'عمارات التوفيقية' },
+      { en: 'Al-Kawthar buildings', ar: 'عمارات الكوثر' },
+      { en: 'Efficiency improvement', ar: 'تحسين الكفاءة' },
     ],
-    description: 'Design solutions for a residential villa elevations in Golf West, Fifth Settlement, Cairo. Modern architectural design for luxury villa in one of Cairo\'s most prestigious compounds.',
-    descriptionAr: 'حلول تصميميه لواجهة فيلا سكنية بغرب الجولف بالتجمع الخامس - القاهرة. تصميم معماري حديث لفيلا فاخرة في أحد أكثر مناطق القاهرة تميزا.',
-    scope: ['Villa Architecture', 'Elevation Design', '3D Visualization', 'Interior Planning', 'Landscape Integration'],
-    challenges: 'Creating unique villa design that stands out while fitting into the prestigious Golf West compound aesthetic.',
-    results: 'Modern luxury villa design that distinguishes itself through contemporary elevation design.',
-    client: 'Private Client',
-    area: 'Luxury Villa',
-    duration: '12 months',
-    value: 'Confidential',
+    image: '/images/suez-governorate.jpg',
+    gallery: ['/images/suez-governorate.jpg'],
+    status: 'completed',
   },
-]
-
-export const projectCategories = [
-  { id: 'all', name: 'All Projects', nameAr: 'جميع المشاريع' },
-  { id: 'construction', name: 'Construction', nameAr: 'المقاولات' },
-  { id: 'interior-design', name: 'Interior Design', nameAr: 'التصميم الداخلي' },
-  { id: 'international', name: 'International', nameAr: 'دولي' },
-  { id: 'maintenance', name: 'Maintenance', nameAr: 'الصيانة' },
+  {
+    id: 'dr-youssef',
+    title: { en: 'Dr. Youssef Al-Amiri Apartment', ar: 'شقة الدكتور يوسف العميري' },
+    category: { en: 'Interior', ar: 'التصميم الداخلي' },
+    location: { en: 'Cairo, Egypt', ar: 'القاهرة، مصر' },
+    year: '2024-2025',
+    description: {
+      en: 'Complete interior design and finishing for Dr. Youssef Al-Amiri apartment. 3D design solutions and luxury finishing works.',
+      ar: 'تصميم داخلي وتشطيب كامل لشقة الدكتور يوسف العميري. حلول تصميم ثلاثية الأبعاد وتشطيبات فاخرة.'
+    },
+    details: [
+      { en: '3D design solutions', ar: 'حلول تصميم ثلاثية الأبعاد' },
+      { en: 'Luxury finishing', ar: 'تشطيبات فاخرة' },
+      { en: 'Complete interior design', ar: 'تصميم داخلي كامل' },
+      { en: 'Modern execution', ar: 'تنفيذ عصري' },
+    ],
+    image: '/images/dr-youssef.jpg',
+    gallery: ['/images/dr-youssef.jpg'],
+    status: 'current',
+  },
+  {
+    id: 'interior-design',
+    title: { en: 'Interior Design Projects', ar: 'مشاريع التصميم الداخلي' },
+    category: { en: 'Interior', ar: 'التصميم الداخلي' },
+    location: { en: 'Multiple Locations, Egypt', ar: 'مواقع متعددة، مصر' },
+    year: '2020-Present',
+    description: {
+      en: 'Various interior design and execution projects including administrative offices, malls, and residential units across Egypt.',
+      ar: 'مشاريع تصميم داخلي وتنفيذ متعددة تشمل مكاتب إدارية ومولات ووحدات سكنية في أنحاء مصر.'
+    },
+    details: [
+      { en: 'Administrative offices', ar: 'مكاتب إدارية' },
+      { en: 'Mall interiors', ar: 'تصميمات مولات' },
+      { en: 'Residential units', ar: 'وحدات سكنية' },
+      { en: '3D design solutions', ar: 'حلول تصميم ثلاثية الأبعاد' },
+    ],
+    image: '/images/interior-design.jpg',
+    gallery: ['/images/interior-design.jpg'],
+    status: 'current',
+  },
 ]
