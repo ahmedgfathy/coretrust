@@ -25,9 +25,77 @@ html[lang="ar"] {
   font-family: 'Cairo', sans-serif;
 }
 
+/* Heading fonts */
+.font-heading {
+  font-family: 'Playfair Display', serif;
+}
+
+html[lang="ar"] .font-heading {
+  font-family: 'Cairo', sans-serif;
+}
+
 /* RTL support */
 html[dir="rtl"] {
   text-align: right;
+}
+
+html[dir="rtl"] .text-right {
+  text-align: left !important;
+}
+
+html[dir="rtl"] .text-left {
+  text-align: right !important;
+}
+
+html[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]),
+html[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]),
+html[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]),
+html[dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+html[dir="rtl"] .ml-2,
+html[dir="rtl"] .ml-3,
+html[dir="rtl"] .ml-4,
+html[dir="rtl"] .ml-8 {
+  margin-left: 0;
+  margin-right: inherit;
+}
+
+html[dir="rtl"] .mr-2,
+html[dir="rtl"] .mr-3,
+html[dir="rtl"] .mr-4 {
+  margin-right: 0;
+  margin-left: inherit;
+}
+
+html[dir="rtl"] .pl-4,
+html[dir="rtl"] .pl-6,
+html[dir="rtl"] .pl-12,
+html[dir="rtl"] .pl-16 {
+  padding-left: 0;
+  padding-right: inherit;
+}
+
+html[dir="rtl"] .pr-4,
+html[dir="rtl"] .pr-6,
+html[dir="rtl"] .pr-12 {
+  padding-right: 0;
+  padding-left: inherit;
+}
+
+html[dir="rtl"] .left-1\/2 {
+  left: auto;
+  right: 50%;
+}
+
+html[dir="rtl"] .right-0 {
+  right: auto;
+  left: 0;
+}
+
+html[dir="rtl"] .-translate-x-1\/2 {
+  transform: translate(50%, -50%);
 }
 
 /* Gold shimmer text */

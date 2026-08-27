@@ -23,7 +23,7 @@ const Hero = () => {
                 {t('Est. 2004 - Architect Mohamed Yehia Group', 'تأسست عام 2004 - مجموعة المهندس محمد يحيى')}
               </span>
             </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 leading-tight">
               {t('Innovating Spaces,', 'ابتكار المساحات،')} <span className="gold-shimmer block mt-1 sm:mt-2">{t('Building Futures', 'بناء المستقبل')}</span>
             </h1>
             <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-10 max-w-3xl leading-relaxed">
@@ -44,21 +44,21 @@ const Hero = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 sm:flex sm:items-center sm:space-x-8 lg:space-x-16 mt-10 sm:mt-16 gap-6 sm:gap-0">
               <div className="text-center sm:text-left">
-                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017]" style={{ fontFamily: 'Playfair Display, serif' }}>90+</span>
+                <span className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017]">90+</span>
                 <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2 uppercase tracking-wider">
                   {t('Projects Completed', 'مشاريع مكتملة')}
                 </p>
               </div>
               <div className="hidden sm:block w-px h-10 lg:h-14 bg-[#d4a017]/30"></div>
               <div className="text-center sm:text-left">
-                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017]" style={{ fontFamily: 'Playfair Display, serif' }}>20+</span>
+                <span className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017]">20+</span>
                 <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2 uppercase tracking-wider">
                   {t('Years Experience', 'سنوات خبرة')}
                 </p>
               </div>
               <div className="hidden sm:block w-px h-10 lg:h-14 bg-[#d4a017]/30"></div>
               <div className="text-center sm:text-left">
-                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017]" style={{ fontFamily: 'Playfair Display, serif' }}>6</span>
+                <span className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017]">6</span>
                 <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2 uppercase tracking-wider">
                   {t('Service Divisions', 'أقسام الخدمات')}
                 </p>
