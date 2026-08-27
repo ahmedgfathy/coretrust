@@ -3,6 +3,7 @@ import { LanguageProvider } from './context/LanguageContext'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
 import Hero from './components/Hero'
+import Clients from './components/Clients'
 import About from './components/About'
 import Services from './components/Services'
 import Stats from './components/Stats'
@@ -19,6 +20,7 @@ function HomePage() {
   return (
     <>
       <Hero />
+      <Clients />
       <Projects />
       <About />
       <Services />
