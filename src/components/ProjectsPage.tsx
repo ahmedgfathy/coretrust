@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
-import { api } from '../admin/api'
 
 const categories = [
   { id: 'all', en: 'All', ar: 'الكل' },
@@ -12,19 +11,40 @@ const categories = [
   { id: 'finishing-works', en: 'Finishing', ar: 'التشطيبات' },
 ]
 
+const fallbackProjects = [
+  { id: '1', titleEn: 'Sabbia Resort', titleAr: 'منتجع سببيا', categoryEn: 'Real Estate Development', categoryAr: 'التطوير العقاري', locationEn: 'Marsa Matrouh', locationAr: 'مرسى مطروح', descriptionEn: 'Luxury resort with private beach.', descriptionAr: 'منتجع فاخر بشاطئ خاص.', year: '2024', status: 'current', image: '/images/sabbia-resort.jpg' },
+  { id: '2', titleEn: 'Core Complex', titleAr: 'مجمع كور', categoryEn: 'Real Estate Development', categoryAr: 'التطوير العقاري', locationEn: 'Autostrad Road', locationAr: 'طريق الأوتوستراد', descriptionEn: 'Mixed-use complex.', descriptionAr: 'مجمع متعدد الاستخدامات.', year: '2024', status: 'current', image: '/images/core-complex.jpg' },
+  { id: '3', titleEn: 'La Nova Towers', titleAr: 'أبراج لانوفا', categoryEn: 'Real Estate Development', categoryAr: 'التطوير العقاري', locationEn: 'Nasr City', locationAr: 'مدينة نصر', descriptionEn: 'Modern residential towers.', descriptionAr: 'أبراج سكنية عصرية.', year: '2023', status: 'current', image: '/images/la-nova-towers.jpg' },
+  { id: '4', titleEn: 'Suez Governorate HQ', titleAr: 'مبنى محافظة السويس', categoryEn: 'Government Projects', categoryAr: 'المشاريع الحكومية', locationEn: 'Suez', locationAr: 'السويس', descriptionEn: 'Government building renovation.', descriptionAr: 'تجديد مبنى حكومي.', year: '2022', status: 'completed', image: '/images/suez-governorate.jpg' },
+  { id: '5', titleEn: 'Agricultural Bank', titleAr: 'البنك الزراعي', categoryEn: 'Government Projects', categoryAr: 'المشاريع الحكومية', locationEn: 'Minya', locationAr: 'المنيا', descriptionEn: 'Bank branch renovation.', descriptionAr: 'تجديد فروع البنك.', year: '2023', status: 'completed', image: '/images/agricultural-bank.jpg' },
+  { id: '6', titleEn: 'Villa El-Nakheel', titleAr: 'فيلات النخيل', categoryEn: 'Real Estate Development', categoryAr: 'التطوير العقاري', locationEn: '5th Settlement', locationAr: 'التجمع الخامس', descriptionEn: '7 luxury villas.', descriptionAr: '7 فيلات فاخرة.', year: '2018', status: 'completed', image: '/images/villa-nakheel.jpg' },
+  { id: '7', titleEn: 'Narges Building', titleAr: 'مبنى النرجس', categoryEn: 'Real Estate Development', categoryAr: 'التطوير العقاري', locationEn: '5th Settlement', locationAr: 'التجمع الخامس', descriptionEn: 'Residential villa.', descriptionAr: 'فيلا سكنية.', year: '2019', status: 'completed', image: '/images/narges-building.jpg' },
+  { id: '8', titleEn: 'Yasmine Building', titleAr: 'مبنى الياسمين', categoryEn: 'Real Estate Development', categoryAr: 'التطوير العقاري', locationEn: '5th Settlement', locationAr: 'التجمع الخامس', descriptionEn: 'Residential buildings.', descriptionAr: 'عمارات سكنية.', year: '2018', status: 'completed', image: '/images/yasmine-building.jpg' },
+  { id: '9', titleEn: 'Moroccan Bath Spa', titleAr: 'سبا الحمام المغربي', categoryEn: 'Interior Design', categoryAr: 'التصميم الداخلي', locationEn: 'New Cairo', locationAr: 'القاهرة الجديدة', descriptionEn: 'Traditional hammam design.', descriptionAr: 'تصميم حمام تقليدي.', year: '2023', status: 'completed', image: '/images/interior-design.jpg' },
+]
+
 const ProjectsPage = () => {
   const [activeCategory, setActiveCategory] = useState('all')
   const [projects, setProjects] = useState<any[]>([])
   const { t } = useLanguage()
 
   useEffect(() => {
-    api.getProjects().then(setProjects).catch(console.error)
+    fetch('/api/projects')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data) && data.length > 0) {
+          setProjects(data)
+        } else {
+          setProjects(fallbackProjects)
+        }
+      })
+      .catch(() => setProjects(fallbackProjects))
   }, [])
 
   const filteredProjects = activeCategory === 'all' 
     ? projects 
     : projects.filter(p => {
-        const catEn = (p.category?.en || p.categoryEn || '').toLowerCase().replace(/\s+/g, '-')
+        const catEn = (p.categoryEn || p.category?.en || '').toLowerCase().replace(/\s+/g, '-')
         return catEn === activeCategory
       })
 
@@ -60,7 +80,7 @@ const ProjectsPage = () => {
               {t('All Projects', 'جميع المشاريع')}
             </h1>
             <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
-              {t('Explore our complete portfolio of residential, commercial, and international projects spanning over 20 years of excellence.', 'استكشف محفظتنا الكاملة من المشاريع السكنية والتجارية والدولية على مدى أكثر من 20 عاماً من التميز.')}
+              {t('Explore our complete portfolio spanning over 20 years of excellence.', 'استكشف محفظتنا الكاملة على مدى أكثر من 20 عاماً من التميز.')}
             </p>
           </div>
         </div>
@@ -94,7 +114,7 @@ const ProjectsPage = () => {
               <div className="aspect-[4/3] overflow-hidden">
                 <img 
                   src={project.image} 
-                  alt={t(project.title?.en || project.titleEn, project.title?.ar || project.titleAr)} 
+                  alt={t(project.titleEn || project.title?.en, project.titleAr || project.title?.ar)} 
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
                   loading="lazy" 
                 />
@@ -103,14 +123,14 @@ const ProjectsPage = () => {
               {/* Content */}
               <div className="p-4 sm:p-5 lg:p-6">
                 <div className="flex items-center space-x-2 mb-2">
-                  <span className="text-[#d4a017] text-[10px] sm:text-xs uppercase tracking-wider">{t(project.category?.en || project.categoryEn, project.category?.ar || project.categoryAr)}</span>
+                  <span className="text-[#d4a017] text-[10px] sm:text-xs uppercase tracking-wider">{t(project.categoryEn || project.category?.en, project.categoryAr || project.category?.ar)}</span>
                   <span className="text-gray-600 text-[10px] sm:text-xs">•</span>
                   <span className="text-gray-500 text-[10px] sm:text-xs">{project.year}</span>
                 </div>
-                <h3 className="text-white text-sm sm:text-base lg:text-lg font-semibold mb-2">{t(project.title?.en || project.titleEn, project.title?.ar || project.titleAr)}</h3>
-                <p className="text-gray-500 text-xs sm:text-sm mb-3 line-clamp-2">{t(project.description?.en || project.descriptionEn, project.description?.ar || project.descriptionAr)}</p>
+                <h3 className="text-white text-sm sm:text-base lg:text-lg font-semibold mb-2">{t(project.titleEn || project.title?.en, project.titleAr || project.title?.ar)}</h3>
+                <p className="text-gray-500 text-xs sm:text-sm mb-3 line-clamp-2">{t(project.descriptionEn || project.description?.en, project.descriptionAr || project.description?.ar)}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-600 text-xs">{t(project.location?.en || project.locationEn, project.location?.ar || project.locationAr)}</span>
+                  <span className="text-gray-600 text-xs">{t(project.locationEn || project.location?.en, project.locationAr || project.location?.ar)}</span>
                   <Link 
                     to={`/project/${project.id}`}
                     className="inline-flex items-center space-x-1 text-[#d4a017] hover:text-[#f0d060] transition-colors"

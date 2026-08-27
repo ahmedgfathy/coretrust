@@ -11,6 +11,7 @@ import Timeline from './components/Timeline'
 import Projects from './components/Projects'
 import ProjectsPage from './components/ProjectsPage'
 import ProjectDetail from './components/ProjectDetail'
+import DivisionPage from './components/DivisionPage'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 import { AdminLogin, AdminLayout, AdminDashboard, AdminProjects, AdminContent, AdminImages } from './admin'
@@ -55,6 +56,7 @@ function App() {
                   <Route path="/" element={<HomePage />} />
                   <Route path="/projects" element={<ProjectsPage />} />
                   <Route path="/project/:id" element={<ProjectDetail />} />
+                  <Route path="/division/:id" element={<DivisionPage />} />
                 </Routes>
                 <Footer />
               </>
