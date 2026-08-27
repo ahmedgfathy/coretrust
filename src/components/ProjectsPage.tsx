@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { projects, projectCategories } from '../data/projects'
+import { projects, categories as projectCategories } from '../data/projects'
 import { useState } from 'react'
 
 const ProjectsPage = () => {
