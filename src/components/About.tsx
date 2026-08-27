@@ -1,9 +1,11 @@
 const About = () => {
   const features = [
-    { title: 'Proven Experience', desc: 'Over 20 years delivering successful engineering and real estate projects.', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
-    { title: 'Quality Assurance', desc: 'We follow strict quality standards to ensure premium project results.', icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.403 3.403 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.403 3.403 0 00.806 1.946 3.42 3.42 0 010 4.438 3.403 3.403 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.403 3.403 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.403 3.403 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.403 3.403 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.403 3.403 0 00.806-1.946 3.42 3.42 0 013.138-3.138z' },
-    { title: 'Professional Team', desc: 'Expert engineers and designers dedicated to excellence and innovation.', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' },
-    { title: 'On-Time Delivery', desc: 'We deliver projects on schedule with full commitment and transparency.', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
+    { title: 'Real Estate Development', desc: 'From residential towers to luxury villas and commercial complexes across Egypt.', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
+    { title: 'Contracting & Construction', desc: 'Executing residential, commercial, and government projects with quality standards.', icon: 'M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z' },
+    { title: 'Interior Design', desc: 'Creating elegant, personalized interior spaces with 3D design solutions.', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+    { title: 'Maintenance Services', desc: 'Elevators, electromechanical systems, and building maintenance for compounds.', icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
+    { title: 'Castings & Hardware', desc: 'Die cast castings, sand casting, and stamp manufacturing for industry.', icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z' },
+    { title: 'Aluminum Profiles', desc: 'Hot extrusion aluminum profiles in various sizes and surface treatments.', icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z' },
   ]
 
   return (
@@ -18,24 +20,27 @@ const About = () => {
               <span className="text-[#d4a017] text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">About Us</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>Who We Are</h2>
-            <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">Founded by Architect Mohamed Yehia</p>
+            <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">Founded by Architect Mohamed Yehia in 2004</p>
             <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
-              Architect Mohamed Yehia Group was established in 2004 in cooperation with Gulf Countries in Egypt's Love. We specialize in real estate development, architectural design, construction, interior design, and maintenance services.
+              Architect Mohamed Yehia Group was established in 2004 in cooperation with Gulf Countries. We specialize in real estate development, architectural design, construction, interior design, and maintenance services.
+            </p>
+            <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
+              With over 20 years of experience and more than 90 completed projects, we have expanded internationally to Saudi Arabia, Oman, Guinea, and Tanzania. Our portfolio includes residential towers, luxury villas, commercial complexes, airport facilities, and government buildings.
             </p>
             <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8">
-              With over 20 years of experience and more than 90 completed projects across Egypt and international markets including Saudi Arabia, Oman, Guinea, and Tanzania, we deliver innovative, sustainable, and client-focused solutions that meet the highest engineering and quality standards.
+              We operate through 6 specialized divisions: Real Estate Development, Contracting & Construction, Interior Design, Maintenance Services, Castings & Hardware, and Aluminum Profiles.
             </p>
             <a href="#contact" className="btn-gold inline-block">Get Free Consultation</a>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
             {features.map((f, i) => (
-              <div key={i} className="bg-[#121226]/50 p-4 sm:p-6 border border-[#d4a017]/20 hover:border-[#d4a017]/50 transition-all duration-300 card-hover">
-                <div className="w-10 sm:w-12 lg:w-14 h-10 sm:h-12 lg:h-14 bg-[#d4a017]/10 flex items-center justify-center mb-3 sm:mb-4 text-[#d4a017]">
-                  <svg className="w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div key={i} className="bg-[#121226]/50 p-4 sm:p-5 border border-[#d4a017]/20 hover:border-[#d4a017]/50 transition-all duration-300 card-hover">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 bg-[#d4a017]/10 flex items-center justify-center mb-3 sm:mb-4 text-[#d4a017]">
+                  <svg className="w-5 sm:w-6 h-5 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={f.icon} />
                   </svg>
                 </div>
-                <h3 className="text-white font-semibold text-sm sm:text-base lg:text-lg mb-1 sm:mb-2">{f.title}</h3>
+                <h3 className="text-white font-semibold text-sm sm:text-base mb-1 sm:mb-2">{f.title}</h3>
                 <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">{f.desc}</p>
               </div>
             ))}

@@ -15,20 +15,20 @@ const Hero = () => {
           <div className="max-w-5xl mx-auto lg:mx-0">
             <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
               <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>
-              <span className="text-[#d4a017] text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">Est. 2004 - Founded by Arch. Mohamed Yehia</span>
+              <span className="text-[#d4a017] text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">Est. 2004 - Architect Mohamed Yehia Group</span>
             </div>
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
               Innovating Spaces, <span className="gold-shimmer block mt-1 sm:mt-2">Building Futures</span>
             </h1>
             <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-10 max-w-3xl leading-relaxed">
-              A multidisciplinary real estate and engineering company established in 2004, specializing in real estate development, architectural design, construction, interior design, and maintenance services across Egypt and international markets.
+              A multidisciplinary real estate and engineering company established in 2004, specializing in real estate development, architectural design, construction, interior design, maintenance services, castings, and aluminum profiles across Egypt and international markets.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a href="#projects" className="btn-gold text-sm sm:text-lg px-6 sm:px-10 py-3 sm:py-4 text-center">Explore Our Projects</a>
               <a href="#about" className="inline-block px-6 sm:px-10 py-3 sm:py-4 border border-[#d4a017]/50 text-[#d4a017] hover:bg-[#d4a017]/10 transition-all duration-300 text-center uppercase tracking-wider text-xs sm:text-sm font-medium">Learn More</a>
             </div>
 
-            {/* Stats - Mobile: 2x2 grid, Tablet+: Horizontal */}
+            {/* Stats */}
             <div className="grid grid-cols-2 sm:flex sm:items-center sm:space-x-8 lg:space-x-16 mt-10 sm:mt-16 gap-6 sm:gap-0">
               <div className="text-center sm:text-left">
                 <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017]" style={{ fontFamily: 'Playfair Display, serif' }}>90+</span>
@@ -41,8 +41,8 @@ const Hero = () => {
               </div>
               <div className="hidden sm:block w-px h-10 lg:h-14 bg-[#d4a017]/30"></div>
               <div className="text-center sm:text-left">
-                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017]" style={{ fontFamily: 'Playfair Display, serif' }}>100%</span>
-                <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2 uppercase tracking-wider">Client Satisfaction</p>
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017]" style={{ fontFamily: 'Playfair Display, serif' }}>6</span>
+                <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2 uppercase tracking-wider">Service Divisions</p>
               </div>
             </div>
           </div>
