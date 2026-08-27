@@ -1,13 +1,18 @@
 import { Link } from 'react-router-dom'
 import { projects, categories as projectCategories } from '../data/projects'
 import { useState } from 'react'
+import { useLanguage } from '../context/LanguageContext'
 
 const ProjectsPage = () => {
   const [activeCategory, setActiveCategory] = useState('all')
+  const { t } = useLanguage()
 
   const filteredProjects = activeCategory === 'all' 
     ? projects 
-    : projects.filter(p => p.category.toLowerCase().replace(' ', '-') === activeCategory)
+    : projects.filter(p => {
+        const catEn = p.category.en.toLowerCase().replace(/\s+/g, '-')
+        return catEn === activeCategory
+      })
 
   return (
     <div className="min-h-screen bg-[#0a0a1a]">
@@ -27,21 +32,21 @@ const ProjectsPage = () => {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
-              <span className="font-medium">Back to Home</span>
+              <span className="font-medium">{t('Back to Home', 'العودة للرئيسية')}</span>
             </Link>
           </div>
 
           <div className="text-center">
             <div className="flex items-center justify-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
               <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>
-              <span className="text-[#d4a017] text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">Our Portfolio</span>
+              <span className="text-[#d4a017] text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">{t('Our Portfolio', 'محفظتنا')}</span>
               <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-              All Projects
+            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6">
+              {t('All Projects', 'جميع المشاريع')}
             </h1>
             <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
-              Explore our complete portfolio of residential, commercial, and international projects spanning over 20 years of excellence.
+              {t('Explore our complete portfolio of residential, commercial, and international projects spanning over 20 years of excellence.', 'استكشف محفظتنا الكاملة من المشاريع السكنية والتجارية والدولية على مدى أكثر من 20 عاماً من التميز.')}
             </p>
           </div>
         </div>
@@ -60,7 +65,7 @@ const ProjectsPage = () => {
                   : 'bg-[#121226]/50 text-gray-400 border border-[#d4a017]/20 hover:border-[#d4a017]/50 hover:text-[#d4a017]'
               }`}
             >
-              {cat.name}
+              {t(cat.en, cat.ar)}
             </button>
           ))}
         </div>
@@ -75,7 +80,7 @@ const ProjectsPage = () => {
               <div className="aspect-[4/3] overflow-hidden">
                 <img 
                   src={project.image} 
-                  alt={project.title} 
+                  alt={t(project.title.en, project.title.ar)} 
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
                   loading="lazy" 
                 />
@@ -84,19 +89,19 @@ const ProjectsPage = () => {
               {/* Content */}
               <div className="p-4 sm:p-5 lg:p-6">
                 <div className="flex items-center space-x-2 mb-2">
-                  <span className="text-[#d4a017] text-[10px] sm:text-xs uppercase tracking-wider">{project.category}</span>
+                  <span className="text-[#d4a017] text-[10px] sm:text-xs uppercase tracking-wider">{t(project.category.en, project.category.ar)}</span>
                   <span className="text-gray-600 text-[10px] sm:text-xs">•</span>
                   <span className="text-gray-500 text-[10px] sm:text-xs">{project.year}</span>
                 </div>
-                <h3 className="text-white text-sm sm:text-base lg:text-lg font-semibold mb-2">{project.title}</h3>
-                <p className="text-gray-500 text-xs sm:text-sm mb-3 line-clamp-2">{project.description}</p>
+                <h3 className="text-white text-sm sm:text-base lg:text-lg font-semibold mb-2">{t(project.title.en, project.title.ar)}</h3>
+                <p className="text-gray-500 text-xs sm:text-sm mb-3 line-clamp-2">{t(project.description.en, project.description.ar)}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-600 text-xs">{project.location}</span>
+                  <span className="text-gray-600 text-xs">{t(project.location.en, project.location.ar)}</span>
                   <Link 
                     to={`/project/${project.id}`}
                     className="inline-flex items-center space-x-1 text-[#d4a017] hover:text-[#f0d060] transition-colors"
                   >
-                    <span className="text-xs font-medium">Details</span>
+                    <span className="text-xs font-medium">{t('Details', 'التفاصيل')}</span>
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -110,7 +115,7 @@ const ProjectsPage = () => {
         {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-gray-500 text-lg">No projects found in this category.</p>
+            <p className="text-gray-500 text-lg">{t('No projects found in this category.', 'لا توجد مشاريع في هذا التصنيف.')}</p>
           </div>
         )}
       </div>
