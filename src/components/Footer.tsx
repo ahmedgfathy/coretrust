@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Logo from './Logo'
 
 const Footer = () => {
@@ -23,9 +24,11 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold text-base sm:text-lg mb-4 sm:mb-6">Pages</h4>
             <ul className="space-y-2 sm:space-y-3">
-              {['Home', 'About Us', 'Services', 'Projects', 'Contact Us'].map((l) => (
-                <li key={l}><a href={`#${l.toLowerCase().replace(' ', '')}`} className="text-gray-400 hover:text-[#d4a017] transition-colors duration-300 text-sm">{l}</a></li>
-              ))}
+              <li><Link to="/" className="text-gray-400 hover:text-[#d4a017] transition-colors duration-300 text-sm">Home</Link></li>
+              <li><Link to="/#about" className="text-gray-400 hover:text-[#d4a017] transition-colors duration-300 text-sm">About Us</Link></li>
+              <li><Link to="/#services" className="text-gray-400 hover:text-[#d4a017] transition-colors duration-300 text-sm">Services</Link></li>
+              <li><Link to="/projects" className="text-gray-400 hover:text-[#d4a017] transition-colors duration-300 text-sm">Projects</Link></li>
+              <li><Link to="/#contact" className="text-gray-400 hover:text-[#d4a017] transition-colors duration-300 text-sm">Contact Us</Link></li>
             </ul>
           </div>
           <div>

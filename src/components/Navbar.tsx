@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Logo from './Logo'
 
 const Navbar = () => {
@@ -21,11 +22,11 @@ const Navbar = () => {
   }, [menuOpen])
 
   const links = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/#about' },
+    { name: 'Services', href: '/#services' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'Contact', href: '/#contact' },
   ]
 
   return (
@@ -33,12 +34,14 @@ const Navbar = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a1a]/90 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
             <div className="hidden lg:flex items-center space-x-8">
               {links.map((l) => (
-                <a key={l.name} href={l.href} className="text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-sm uppercase tracking-wider font-medium">{l.name}</a>
+                <Link key={l.name} to={l.href} className="text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-sm uppercase tracking-wider font-medium">{l.name}</Link>
               ))}
-              <a href="#contact" className="btn-gold text-sm">Get a Quote</a>
+              <Link to="/#contact" className="btn-gold text-sm">Get a Quote</Link>
             </div>
             <button className="lg:hidden text-[#d4a017] p-2" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -64,9 +67,9 @@ const Navbar = () => {
           </div>
           <div className="px-6 py-4 space-y-1">
             {links.map((l, i) => (
-              <a key={l.name} href={l.href} className="block py-3 text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-lg font-medium border-b border-[#d4a017]/10" onClick={() => setMenuOpen(false)} style={{ animationDelay: `${i * 50}ms` }}>{l.name}</a>
+              <Link key={l.name} to={l.href} className="block py-3 text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-lg font-medium border-b border-[#d4a017]/10" onClick={() => setMenuOpen(false)} style={{ animationDelay: `${i * 50}ms` }}>{l.name}</Link>
             ))}
-            <a href="#contact" className="block btn-gold text-center mt-6 py-3" onClick={() => setMenuOpen(false)}>Get a Quote</a>
+            <Link to="/#contact" className="block btn-gold text-center mt-6 py-3" onClick={() => setMenuOpen(false)}>Get a Quote</Link>
           </div>
         </div>
       </div>

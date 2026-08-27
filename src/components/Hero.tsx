@@ -11,7 +11,7 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="w-full px-5 sm:px-8 lg:px-20 pt-20 pb-32 sm:pb-0">
+        <div className="w-full px-5 sm:px-8 lg:px-20 pt-28 sm:pt-32 lg:pt-40 pb-32 sm:pb-0">
           <div className="max-w-5xl mx-auto lg:mx-0">
             <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
               <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>

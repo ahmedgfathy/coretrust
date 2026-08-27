@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -5,13 +6,15 @@ import Services from './components/Services'
 import Stats from './components/Stats'
 import Timeline from './components/Timeline'
 import Projects from './components/Projects'
+import ProjectsPage from './components/ProjectsPage'
+import ProjectDetail from './components/ProjectDetail'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 
-function App() {
+// Home Page Component
+function HomePage() {
   return (
-    <div className="min-h-screen bg-[#0a0a1a]">
-      <Navbar />
+    <>
       <Hero />
       <Projects />
       <About />
@@ -19,8 +22,23 @@ function App() {
       <Stats />
       <Timeline />
       <CTA />
-      <Footer />
-    </div>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen bg-[#0a0a1a]">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/project/:id" element={<ProjectDetail />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   )
 }
 

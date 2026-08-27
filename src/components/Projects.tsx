@@ -1,11 +1,5 @@
-const projects = [
-  { title: 'Residential Towers - Alexandria', cat: 'Real Estate', img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80' },
-  { title: 'Interior Design - Mountain View', cat: 'Interior Design', img: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80' },
-  { title: 'Commercial Mall - Maadi', cat: 'Construction', img: 'https://images.unsplash.com/photo-1555636222-cae831e670b3?w=800&q=80' },
-  { title: 'VIP Lounge - Guinea Airport', cat: 'International', img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80' },
-  { title: 'Duplex Villa - Fifth Settlement', cat: 'Interior Design', img: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80' },
-  { title: 'Asmarat Compound - Maintenance', cat: 'Maintenance', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80' },
-]
+import { Link } from 'react-router-dom'
+import { projects } from '../data/projects'
 
 const Projects = () => {
   return (
@@ -17,25 +11,60 @@ const Projects = () => {
             <span className="text-[#d4a017] text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">Our Work</span>
             <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>Latest Projects</h2>
-          <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">Showcasing our most recent residential, commercial, and interior design achievements.</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>Featured Projects</h2>
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">Showcasing our most significant residential, commercial, and international achievements.</p>
         </div>
+        
+        {/* 3x3 Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {projects.map((p, i) => (
-            <div key={i} className="group relative overflow-hidden border border-[#d4a017]/20 hover:border-[#d4a017]/50 transition-all duration-500">
+          {projects.map((project) => (
+            <div key={project.id} className="group relative overflow-hidden border border-[#d4a017]/20 hover:border-[#d4a017]/50 transition-all duration-500 card-hover bg-[#121226]/30">
+              {/* Image */}
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={p.img} alt={p.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
+                  loading="lazy" 
+                />
               </div>
+              
+              {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-[#0a0a1a]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 lg:p-6">
-                  <span className="text-[#d4a017] text-[10px] sm:text-xs uppercase tracking-wider">{p.cat}</span>
-                  <h3 className="text-white text-sm sm:text-base lg:text-xl font-semibold mt-1 sm:mt-2">{p.title}</h3>
+                  <div className="flex items-center space-x-2 mb-2">
+                    <span className="text-[#d4a017] text-[10px] sm:text-xs uppercase tracking-wider">{project.category}</span>
+                    <span className="text-gray-600 text-[10px] sm:text-xs">•</span>
+                    <span className="text-gray-500 text-[10px] sm:text-xs">{project.year}</span>
+                  </div>
+                  <h3 className="text-white text-sm sm:text-base lg:text-xl font-semibold mb-2 sm:mb-3">{project.title}</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">{project.description}</p>
+                  
+                  {/* Read More Button */}
+                  <Link 
+                    to={`/project/${project.id}`}
+                    className="inline-flex items-center space-x-2 text-[#d4a017] hover:text-[#f0d060] transition-colors group/btn"
+                  >
+                    <span className="text-xs sm:text-sm font-medium uppercase tracking-wider">Read More</span>
+                    <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
                 </div>
               </div>
+              
+              {/* Corner Decorations */}
               <div className="absolute top-3 sm:top-4 right-3 sm:right-4 w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 border-t border-r border-[#d4a017]/0 group-hover:border-[#d4a017]/60 transition-all duration-500"></div>
               <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 border-b border-l border-[#d4a017]/0 group-hover:border-[#d4a017]/60 transition-all duration-500"></div>
             </div>
           ))}
+        </div>
+
+        {/* View All Button */}
+        <div className="text-center mt-10 sm:mt-12 lg:mt-16">
+          <Link to="/projects" className="btn-gold inline-block text-sm sm:text-base">
+            View All Projects
+          </Link>
         </div>
       </div>
     </section>
