@@ -1,16 +1,31 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { projects, categories as projectCategories } from '../data/projects'
-import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
+import { api } from '../admin/api'
+
+const categories = [
+  { id: 'all', en: 'All', ar: 'الكل' },
+  { id: 'real-estate-development', en: 'Real Estate', ar: 'التطوير العقاري' },
+  { id: 'contracting-construction', en: 'Contracting', ar: 'المقاولات' },
+  { id: 'interior-design', en: 'Interior Design', ar: 'التصميم الداخلي' },
+  { id: 'maintenance', en: 'Maintenance', ar: 'الصيانة' },
+  { id: 'castings-hardware', en: 'Castings', ar: 'السباكة' },
+  { id: 'aluminum-profiles', en: 'Aluminum', ar: 'الألومنيوم' },
+]
 
 const ProjectsPage = () => {
   const [activeCategory, setActiveCategory] = useState('all')
+  const [projects, setProjects] = useState<any[]>([])
   const { t } = useLanguage()
+
+  useEffect(() => {
+    api.getProjects().then(setProjects).catch(console.error)
+  }, [])
 
   const filteredProjects = activeCategory === 'all' 
     ? projects 
     : projects.filter(p => {
-        const catEn = p.category.en.toLowerCase().replace(/\s+/g, '-')
+        const catEn = (p.category?.en || p.categoryEn || '').toLowerCase().replace(/\s+/g, '-')
         return catEn === activeCategory
       })
 
@@ -55,7 +70,7 @@ const ProjectsPage = () => {
       {/* Filter Tabs */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-          {projectCategories.map((cat) => (
+          {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
@@ -80,7 +95,7 @@ const ProjectsPage = () => {
               <div className="aspect-[4/3] overflow-hidden">
                 <img 
                   src={project.image} 
-                  alt={t(project.title.en, project.title.ar)} 
+                  alt={t(project.title?.en || project.titleEn, project.title?.ar || project.titleAr)} 
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
                   loading="lazy" 
                 />
@@ -89,14 +104,14 @@ const ProjectsPage = () => {
               {/* Content */}
               <div className="p-4 sm:p-5 lg:p-6">
                 <div className="flex items-center space-x-2 mb-2">
-                  <span className="text-[#d4a017] text-[10px] sm:text-xs uppercase tracking-wider">{t(project.category.en, project.category.ar)}</span>
+                  <span className="text-[#d4a017] text-[10px] sm:text-xs uppercase tracking-wider">{t(project.category?.en || project.categoryEn, project.category?.ar || project.categoryAr)}</span>
                   <span className="text-gray-600 text-[10px] sm:text-xs">•</span>
                   <span className="text-gray-500 text-[10px] sm:text-xs">{project.year}</span>
                 </div>
-                <h3 className="text-white text-sm sm:text-base lg:text-lg font-semibold mb-2">{t(project.title.en, project.title.ar)}</h3>
-                <p className="text-gray-500 text-xs sm:text-sm mb-3 line-clamp-2">{t(project.description.en, project.description.ar)}</p>
+                <h3 className="text-white text-sm sm:text-base lg:text-lg font-semibold mb-2">{t(project.title?.en || project.titleEn, project.title?.ar || project.titleAr)}</h3>
+                <p className="text-gray-500 text-xs sm:text-sm mb-3 line-clamp-2">{t(project.description?.en || project.descriptionEn, project.description?.ar || project.descriptionAr)}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-600 text-xs">{t(project.location.en, project.location.ar)}</span>
+                  <span className="text-gray-600 text-xs">{t(project.location?.en || project.locationEn, project.location?.ar || project.locationAr)}</span>
                   <Link 
                     to={`/project/${project.id}`}
                     className="inline-flex items-center space-x-1 text-[#d4a017] hover:text-[#f0d060] transition-colors"

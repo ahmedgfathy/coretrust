@@ -1,11 +1,29 @@
+import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { projects } from '../data/projects'
 import { useLanguage } from '../context/LanguageContext'
+import { api } from '../admin/api'
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>()
   const { t } = useLanguage()
-  const project = projects.find(p => p.id === id)
+  const [project, setProject] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    api.getProjects().then(projects => {
+      const found = projects.find((p: any) => p.id === id)
+      setProject(found)
+      setLoading(false)
+    }).catch(() => setLoading(false))
+  }, [id])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#0a0a1a] flex items-center justify-center">
+        <div className="text-white">Loading...</div>
+      </div>
+    )
+  }
 
   if (!project) {
     return (
@@ -18,11 +36,20 @@ const ProjectDetail = () => {
     )
   }
 
+  const title = project.title?.en || project.titleEn
+  const titleAr = project.title?.ar || project.titleAr
+  const category = project.category?.en || project.categoryEn
+  const categoryAr = project.category?.ar || project.categoryAr
+  const location = project.location?.en || project.locationEn
+  const locationAr = project.location?.ar || project.locationAr
+  const description = project.description?.en || project.descriptionEn
+  const descriptionAr = project.description?.ar || project.descriptionAr
+
   return (
     <div className="min-h-screen bg-[#0a0a1a]">
       {/* Hero Section */}
       <div className="relative h-[60vh] sm:h-[70vh] overflow-hidden">
-        <img src={project.image} alt={t(project.title.en, project.title.ar)} className="w-full h-full object-cover" />
+        <img src={project.image} alt={t(title, titleAr)} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-[#0a0a1a]/60 to-transparent"></div>
         
         {/* Back Button */}
@@ -39,12 +66,12 @@ const ProjectDetail = () => {
         <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8 lg:p-12">
           <div className="max-w-7xl mx-auto">
             <span className="inline-block px-3 py-1 bg-[#d4a017]/20 border border-[#d4a017]/50 text-[#d4a017] text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">
-              {t(project.category.en, project.category.ar)}
+              {t(category, categoryAr)}
             </span>
             <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-4">
-              {t(project.title.en, project.title.ar)}
+              {t(title, titleAr)}
             </h1>
-            <p className="text-[#d4a017] text-base sm:text-lg md:text-xl font-medium">{t(project.location.en, project.location.ar)}</p>
+            <p className="text-[#d4a017] text-base sm:text-lg md:text-xl font-medium">{t(location, locationAr)}</p>
           </div>
         </div>
       </div>
@@ -57,21 +84,23 @@ const ProjectDetail = () => {
             {/* Description */}
             <div className="mb-8 sm:mb-12">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">{t('Project Overview', 'نظرة عامة على المشروع')}</h2>
-              <p className="text-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed mb-4">{t(project.description.en, project.description.ar)}</p>
+              <p className="text-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed mb-4">{t(description, descriptionAr)}</p>
             </div>
 
             {/* Details */}
-            <div className="mb-8 sm:mb-12">
-              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">{t('Project Details', 'تفاصيل المشروع')}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                {project.details.map((item, index) => (
-                  <div key={index} className="flex items-center space-x-3 p-3 sm:p-4 bg-[#121226]/50 border border-[#d4a017]/20">
-                    <div className="w-2 h-2 bg-[#d4a017] rounded-full flex-shrink-0"></div>
-                    <span className="text-gray-300 text-sm sm:text-base">{t(item.en, item.ar)}</span>
-                  </div>
-                ))}
+            {project.details && project.details.length > 0 && (
+              <div className="mb-8 sm:mb-12">
+                <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">{t('Project Details', 'تفاصيل المشروع')}</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                  {project.details.map((item: any, index: number) => (
+                    <div key={index} className="flex items-center space-x-3 p-3 sm:p-4 bg-[#121226]/50 border border-[#d4a017]/20">
+                      <div className="w-2 h-2 bg-[#d4a017] rounded-full flex-shrink-0"></div>
+                      <span className="text-gray-300 text-sm sm:text-base">{t(item.en, item.ar)}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -91,7 +120,7 @@ const ProjectDetail = () => {
                   </div>
                   <div className="flex justify-between items-center py-2">
                     <span className="text-gray-500 text-sm">{t('Location', 'الموقع')}</span>
-                    <span className="text-white text-sm text-right">{t(project.location.en, project.location.ar)}</span>
+                    <span className="text-white text-sm text-right">{t(location, locationAr)}</span>
                   </div>
                 </div>
               </div>
@@ -106,16 +135,18 @@ const ProjectDetail = () => {
               </div>
 
               {/* Gallery Preview */}
-              <div className="bg-[#121226]/50 border border-[#d4a017]/20 p-5 sm:p-6">
-                <h3 className="font-heading text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">{t('Project Gallery', 'معرض الصور')}</h3>
-                <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                  {project.gallery.slice(0, 4).map((img, index) => (
-                    <div key={index} className="aspect-square overflow-hidden">
-                      <img src={img} alt={`${t(project.title.en, project.title.ar)} ${index + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" />
-                    </div>
-                  ))}
+              {project.gallery && project.gallery.length > 0 && (
+                <div className="bg-[#121226]/50 border border-[#d4a017]/20 p-5 sm:p-6">
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">{t('Project Gallery', 'معرض الصور')}</h3>
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                    {project.gallery.slice(0, 4).map((img: string, index: number) => (
+                      <div key={index} className="aspect-square overflow-hidden">
+                        <img src={img} alt={`${t(title, titleAr)} ${index + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
