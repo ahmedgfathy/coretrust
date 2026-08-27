@@ -36,6 +36,8 @@ const Navbar = () => {
     { name: t('Contact', 'اتصل بنا'), href: '/#contact' },
   ]
 
+  const isArabic = language === 'ar'
+
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a1a]/90 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
@@ -103,19 +105,28 @@ const Navbar = () => {
       {/* Mobile Menu Overlay */}
       <div className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
         <div className="absolute inset-0 bg-black/60" onClick={() => setMenuOpen(false)}></div>
-        <div className={`absolute top-0 right-0 h-full w-72 sm:w-80 bg-[#0a0a1a] border-l border-[#d4a017]/20 transform transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-          <div className="flex justify-end p-4">
+        <div className={`absolute top-0 h-full w-72 sm:w-80 bg-[#0a0a1a] border-l border-[#d4a017]/20 transform transition-transform duration-300 ${isArabic ? 'left-0 border-l-0 border-r border-[#d4a017]/20' : 'right-0'} ${menuOpen ? 'translate-x-0' : isArabic ? '-translate-x-full' : 'translate-x-full'}`}>
+          <div className={`flex ${isArabic ? 'justify-start' : 'justify-end'} p-4`}>
             <button className="text-[#d4a017] p-2" onClick={() => setMenuOpen(false)}>
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-          <div className="px-6 py-4 space-y-1">
+          <div className={`px-6 py-4 space-y-1 ${isArabic ? 'text-right' : 'text-left'}`}>
             {links.map((l, i) => (
-              <Link key={l.name} to={l.href} className="block py-3 text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-lg font-medium border-b border-[#d4a017]/10" onClick={() => setMenuOpen(false)} style={{ animationDelay: `${i * 50}ms` }}>{l.name}</Link>
+              <Link
+                key={l.name}
+                to={l.href}
+                className="block py-3 text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-lg font-medium border-b border-[#d4a017]/10"
+                onClick={() => setMenuOpen(false)}
+              >
+                {l.name}
+              </Link>
             ))}
-            <Link to="/#contact" className="block btn-gold text-center mt-6 py-3" onClick={() => setMenuOpen(false)}>{t('Get a Quote', 'احصل على عرض سعر')}</Link>
+            <Link to="/#contact" className="block btn-gold text-center mt-6 py-3" onClick={() => setMenuOpen(false)}>
+              {t('Get a Quote', 'احصل على عرض سعر')}
+            </Link>
           </div>
         </div>
       </div>
