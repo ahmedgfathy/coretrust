@@ -11,6 +11,15 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => { document.body.style.overflow = 'unset' }
+  }, [menuOpen])
+
   const links = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
@@ -20,34 +29,48 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a1a]/80 backdrop-blur-md' : 'bg-transparent'}`}>
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-28">
-          <Logo />
-          <div className="hidden md:flex items-center space-x-8">
-            {links.map((l) => (
-              <a key={l.name} href={l.href} className="text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-sm uppercase tracking-wider font-medium">{l.name}</a>
-            ))}
-            <a href="#contact" className="btn-gold text-sm">Get a Quote</a>
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a1a]/90 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
+            <Logo />
+            <div className="hidden lg:flex items-center space-x-8">
+              {links.map((l) => (
+                <a key={l.name} href={l.href} className="text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-sm uppercase tracking-wider font-medium">{l.name}</a>
+              ))}
+              <a href="#contact" className="btn-gold text-sm">Get a Quote</a>
+            </div>
+            <button className="lg:hidden text-[#d4a017] p-2" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {menuOpen
+                  ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
+              </svg>
+            </button>
           </div>
-          <button className="md:hidden text-[#d4a017]" onClick={() => setMenuOpen(!menuOpen)}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {menuOpen
-                ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
-            </svg>
-          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+        <div className="absolute inset-0 bg-black/60" onClick={() => setMenuOpen(false)}></div>
+        <div className={`absolute top-0 right-0 h-full w-72 sm:w-80 bg-[#0a0a1a] border-l border-[#d4a017]/20 transform transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className="flex justify-end p-4">
+            <button className="text-[#d4a017] p-2" onClick={() => setMenuOpen(false)}>
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div className="px-6 py-4 space-y-1">
+            {links.map((l, i) => (
+              <a key={l.name} href={l.href} className="block py-3 text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-lg font-medium border-b border-[#d4a017]/10" onClick={() => setMenuOpen(false)} style={{ animationDelay: `${i * 50}ms` }}>{l.name}</a>
+            ))}
+            <a href="#contact" className="block btn-gold text-center mt-6 py-3" onClick={() => setMenuOpen(false)}>Get a Quote</a>
+          </div>
         </div>
       </div>
-      {menuOpen && (
-        <div className="md:hidden bg-[#0a0a1a]/95 backdrop-blur-md px-4 pb-4 space-y-2">
-          {links.map((l) => (
-            <a key={l.name} href={l.href} className="block px-3 py-2 text-gray-300 hover:text-[#d4a017]" onClick={() => setMenuOpen(false)}>{l.name}</a>
-          ))}
-          <a href="#contact" className="block btn-gold text-center mt-4" onClick={() => setMenuOpen(false)}>Get a Quote</a>
-        </div>
-      )}
-    </nav>
+    </>
   )
 }
 

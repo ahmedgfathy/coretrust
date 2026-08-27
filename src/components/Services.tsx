@@ -7,37 +7,37 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 bg-[#0f0f22] relative overflow-hidden">
+    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-[#0f0f22] relative overflow-hidden">
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#d4a017]/20 to-transparent"></div>
         <div className="absolute top-2/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#d4a017]/20 to-transparent"></div>
         <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#d4a017]/20 to-transparent"></div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center space-x-4 mb-6">
-            <div className="w-12 h-px bg-[#d4a017]"></div>
-            <span className="text-[#d4a017] text-sm uppercase tracking-[0.3em] font-medium">Our Services</span>
-            <div className="w-12 h-px bg-[#d4a017]"></div>
+        <div className="text-center mb-10 sm:mb-14 lg:mb-16">
+          <div className="flex items-center justify-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
+            <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>
+            <span className="text-[#d4a017] text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">Our Services</span>
+            <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>Our Services</h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">Comprehensive real estate and engineering solutions through our specialized divisions.</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>Our Services</h2>
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">Comprehensive real estate and engineering solutions through our specialized divisions.</p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {services.map((s, i) => (
-            <div key={i} className="group bg-[#121226]/50 border border-[#d4a017]/20 p-8 hover:border-[#d4a017]/50 transition-all duration-500 card-hover relative overflow-hidden">
+            <div key={i} className="group bg-[#121226]/50 border border-[#d4a017]/20 p-5 sm:p-6 lg:p-8 hover:border-[#d4a017]/50 transition-all duration-500 card-hover relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-[#d4a017]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative">
-                <div className="w-16 h-16 bg-[#d4a017]/10 flex items-center justify-center mb-6 text-[#d4a017] group-hover:bg-[#d4a017]/20 transition-colors duration-300">
-                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 sm:w-14 lg:w-16 h-12 sm:h-14 lg:h-16 bg-[#d4a017]/10 flex items-center justify-center mb-4 sm:mb-5 lg:mb-6 text-[#d4a017] group-hover:bg-[#d4a017]/20 transition-colors duration-300">
+                  <svg className="w-7 sm:w-8 lg:w-10 h-7 sm:h-8 lg:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={s.icon} />
                   </svg>
                 </div>
-                <h3 className="text-white text-xl font-semibold mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>{s.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+                <h3 className="text-white text-base sm:text-lg lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>{s.title}</h3>
+                <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">{s.desc}</p>
               </div>
-              <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[#d4a017]/30 group-hover:border-[#d4a017]/60 transition-colors duration-300"></div>
-              <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[#d4a017]/30 group-hover:border-[#d4a017]/60 transition-colors duration-300"></div>
+              <div className="absolute top-0 right-0 w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 border-t border-r border-[#d4a017]/30 group-hover:border-[#d4a017]/60 transition-colors duration-300"></div>
+              <div className="absolute bottom-0 left-0 w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 border-b border-l border-[#d4a017]/30 group-hover:border-[#d4a017]/60 transition-colors duration-300"></div>
             </div>
           ))}
         </div>
