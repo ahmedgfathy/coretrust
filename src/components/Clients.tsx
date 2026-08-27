@@ -2,19 +2,13 @@ import { useEffect, useRef } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 
 const clients = [
-  { id: 1, name: 'Agricultural Bank of Egypt', nameAr: 'البنك الزراعي المصري', logo: '/clients/agricultural-bank.svg', large: true },
-  { id: 2, name: 'Egyptian Engineers Syndicate', nameAr: 'نادي نقابة المهندسين', logo: '/clients/engineers-syndicate.svg', large: false },
-  { id: 3, name: 'Suez Governorate', nameAr: 'محافظة السويس', logo: '/clients/suez-governorate.svg', large: true },
-  { id: 4, name: 'Armed Forces Engineering', nameAr: 'الهيئة الهندسية للقوات المسلحة', logo: '/clients/armed-forces.svg', large: false },
-  { id: 5, name: 'Dr. Youssef Al-Amiri', nameAr: 'الدكتور يوسف العميري', logo: '/clients/dr-youssef.svg', large: false },
-  { id: 6, name: 'Nesreen Tafesh Center', nameAr: 'مركز نسرين طافش', logo: '/clients/nesreen-tafesh.svg', large: false },
-  { id: 7, name: 'Home Friend', nameAr: 'هوم فريند', logo: '/clients/home-friend.svg', large: false },
-  { id: 8, name: 'National Trading Company', nameAr: 'الشركة المصرية للتجارة', logo: '/clients/national-company.svg', large: false },
-  { id: 9, name: 'Rich House Tower', nameAr: 'برج رتش هاوس', logo: '/clients/rich-house.svg', large: false },
-  { id: 10, name: 'Old Arab Insurance', nameAr: 'التأمين العربي القديم', logo: '/clients/old-arab-insurance.svg', large: false },
-  { id: 11, name: 'Sabbia Resort', nameAr: 'منتجع سببيا', logo: '/clients/sabbia-resort.svg', large: true },
-  { id: 12, name: 'Core Complex', nameAr: 'مجمع كور', logo: '/clients/core-complex.svg', large: false },
-  { id: 13, name: 'Civil Defense', nameAr: 'الدفاع المدني', logo: '/clients/civil-defense.svg', large: false },
+  { id: 1, name: 'Agricultural Bank of Egypt', nameAr: 'البنك الزراعي المصري', logo: '/clients/agricultural-bank.png', large: true },
+  { id: 2, name: 'Egyptian Engineers Syndicate', nameAr: 'نقابة المهندسين المصرية', logo: '/clients/engineers-syndicate.png', large: true },
+  { id: 3, name: 'Suez Governorate', nameAr: 'محافظة السويس', logo: '/clients/suez-governorate.png', large: false },
+  { id: 4, name: 'Armed Forces Engineering', nameAr: 'الهيئة الهندسية للقوات المسلحة', logo: '/clients/armed-forces.png', large: true },
+  { id: 5, name: 'Cairo University', nameAr: 'جامعة القاهرة', logo: '/clients/cairo-university.png', large: false },
+  { id: 6, name: 'Egyptian Tabletop Trading (ETTC)', nameAr: 'الشركة المصرية لتجارة أدوات المائدة', logo: '/clients/ettcegypt.png', large: false },
+  { id: 7, name: 'Civil Defense', nameAr: 'الدفاع المدني', logo: '/clients/civil-defense.png', large: false },
 ]
 
 const Clients = () => {
