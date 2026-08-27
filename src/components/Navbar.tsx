@@ -50,7 +50,8 @@ const Navbar = () => {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a1a]/90 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Full width container */}
+        <div className="w-full px-4 sm:px-6 lg:px-10">
           <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
             {/* Logo */}
             <div className="flex-shrink-0">
@@ -60,7 +61,7 @@ const Navbar = () => {
             </div>
             
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-6">
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8">
               {links.map((l) => (
                 <Link key={l.name} to={l.href} className="text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-sm uppercase tracking-wider font-medium whitespace-nowrap">{l.name}</Link>
               ))}
@@ -101,11 +102,11 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Fullscreen */}
       {menuOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
           <div className="absolute inset-0 bg-black/60" onClick={() => setMenuOpen(false)}></div>
-          <div className={`absolute top-0 h-full w-72 sm:w-80 bg-[#0a0a1a] border-[#d4a017]/20 transform transition-transform duration-300 ease-in-out ${isArabic ? 'left-0 border-r' : 'right-0 border-l'}`}>
+          <div className={`absolute top-0 h-full w-full bg-[#0a0a1a] transform transition-transform duration-300 ease-in-out ${isArabic ? 'left-0' : 'right-0'}`}>
             <div className={`flex p-4 ${isArabic ? 'justify-start' : 'justify-end'}`}>
               <button className="text-[#d4a017] p-2" onClick={() => setMenuOpen(false)}>
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,21 +116,21 @@ const Navbar = () => {
             </div>
             <div className={`px-6 py-2 ${isArabic ? 'text-right' : 'text-left'}`}>
               {links.map((l) => (
-                <Link key={l.name} to={l.href} className={`block py-3 text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-lg font-medium border-b border-[#d4a017]/10 ${isArabic ? 'font-[Cairo]' : ''}`} onClick={() => setMenuOpen(false)}>
+                <Link key={l.name} to={l.href} className={`block py-4 text-gray-300 hover:text-[#d4a017] transition-colors duration-300 text-xl font-medium border-b border-[#d4a017]/10 ${isArabic ? 'font-[Cairo]' : ''}`} onClick={() => setMenuOpen(false)}>
                   {l.name}
                 </Link>
               ))}
               
-              {/* Social Icons - Mobile */}
-              <div className="flex items-center gap-2 mt-6 pt-4 border-t border-[#d4a017]/20">
+              {/* Social Icons - Mobile Fullscreen */}
+              <div className="flex items-center gap-3 mt-8 pt-6 border-t border-[#d4a017]/20">
                 {socialLinks.map((s) => (
-                  <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full border border-[#d4a017]/20 hover:scale-110 transition-all" style={{ color: s.color }} title={s.name}>
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d={s.path}/></svg>
+                  <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center rounded-full border border-[#d4a017]/20 hover:scale-110 transition-all" style={{ color: s.color }} title={s.name}>
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d={s.path}/></svg>
                   </a>
                 ))}
               </div>
               
-              <Link to="/#contact" className="block btn-gold text-center mt-6 py-3" onClick={() => setMenuOpen(false)}>
+              <Link to="/#contact" className="block btn-gold text-center mt-8 py-4 text-lg" onClick={() => setMenuOpen(false)}>
                 {t('Get a Quote', 'احصل على عرض سعر')}
               </Link>
             </div>
