@@ -1,7 +1,9 @@
 import { useLanguage } from '../context/LanguageContext'
+import { useContent } from '../hooks/useContent'
 
 const CTA = () => {
   const { t } = useLanguage()
+  const { content } = useContent()
 
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-[#0f0f22] relative overflow-hidden">
@@ -21,17 +23,14 @@ const CTA = () => {
             <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-            {t('Build Your Vision With Us', 'ابنِ رؤيتك معنا')}
+            {t(content.cta.titleEn, content.cta.titleAr)}
           </h2>
           <p className="text-gray-400 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 px-4">
-            {t(
-              'From real estate development to interior design, we deliver innovative and sustainable solutions. Contact us today for a free consultation.',
-              'من التطوير العقاري إلى التصميم الداخلي، نقدم حلولاً مبتكرة ومستدامة. اتصل بنا اليوم للحصول على استشارة مجانية.'
-            )}
+            {t(content.cta.descriptionEn, content.cta.descriptionAr)}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <a href="#contact" className="btn-gold text-sm sm:text-base">
-              {t('Get Free Consultation', 'احصل على استشارة مجانية')}
+              {t(content.cta.buttonEn, content.cta.buttonAr)}
             </a>
             <a href="tel:0220776044" className="inline-block px-6 sm:px-8 py-3 sm:py-4 border border-[#d4a017]/50 text-[#d4a017] hover:bg-[#d4a017]/10 transition-all duration-300 text-center uppercase tracking-wider text-xs sm:text-sm font-medium">
               {t('Call Us Now', 'اتصل بنا الآن')}

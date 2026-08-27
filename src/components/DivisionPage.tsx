@@ -1,131 +1,90 @@
 import { useParams, Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
+import { useContent } from '../hooks/useContent'
 
-const divisionsData: Record<string, any> = {
+const defaultDivisions: Record<string, any> = {
   'real-estate': {
-    titleEn: 'Real Estate Development',
-    titleAr: 'التطوير العقاري',
-    subtitleEn: 'Building Tomorrow\'s Landmarks',
-    subtitleAr: 'بناء معالم الغد',
-    descriptionEn: 'Our Real Estate Development division is dedicated to creating distinctive properties across Egypt. From luxury residential towers to commercial complexes and coastal resorts, we combine innovative design with strategic location selection to deliver projects that exceed expectations.',
-    descriptionAr: 'قسم التطوير العقاري مكرس لإنشاء عقارات مميزة في جميع أنحاء مصر. من الأبراج السكنية الفاخرة إلى المجمعات التجارية والمنتجعات الساحلية، نجمع بين التصميم المبتكر واختيار الموقع الاستراتيجي لتقديم مشاريع تفوق التوقعات.',
-    features: [
-      { titleEn: 'Site Research & Evaluation', titleAr: 'بحث وتقييم المواقع', descEn: 'Strategic location analysis for maximum investment value', descAr: 'تحليل المواقع الاستراتيجية لأقصى قيمة استثمارية' },
-      { titleEn: 'Architectural Design', titleAr: 'التصميم المعماري', descEn: 'Innovative designs by specialized engineers', descEn: 'تصميمات مبتكرة من مهندسين متخصصين', descAr: 'تصميمات مبتكرة من مهندسين متخصصين' },
-      { titleEn: 'Project Execution', titleAr: 'تنفيذ المشاريع', descEn: 'Quality construction with modern techniques', descAr: 'بناء عالي الجودة بتقنيات حديثة' },
-      { titleEn: 'Delivery & Handover', titleAr: 'التسليم', descEn: 'On-time delivery as per contract terms', descAr: 'تسليم في الموعد المحدد وفقاً لشروط العقد' },
-    ],
-    stats: [
-      { value: '90+', labelEn: 'Projects Completed', labelAr: 'مشروع منجز' },
-      { value: '20+', labelEn: 'Years Experience', labelAr: 'سنة خبرة' },
-      { value: '15+', labelEn: 'Cities Covered', labelAr: 'مدينة نغطيها' },
-    ],
-    projects: ['Sabbia Resort', 'Core Complex', 'La Nova Towers', 'Obour Building', 'Andalous Building', 'Villa El-Nakheel'],
+    titleEn: 'Real Estate Development', titleAr: 'التطوير العقاري',
+    subtitleEn: 'Building Tomorrow\'s Landmarks', subtitleAr: 'بناء معالم الغد',
+    descriptionEn: 'Our Real Estate Development division is dedicated to creating distinctive properties across Egypt. From luxury residential towers to commercial complexes and coastal resorts.',
+    descriptionAr: 'قسم التطوير العقاري مكرس لإنشاء عقارات مميزة في جميع أنحاء مصر. من الأبراج السكنية الفاخرة إلى المجمعات التجارية والمنتجعات الساحلية.',
+    featuresEn: ['Site Research & Evaluation', 'Architectural Design', 'Project Execution', 'Delivery & Handover'],
+    featuresAr: ['بحث وتقييم المواقع', 'التصميم المعماري', 'تنفيذ المشاريع', 'التسليم'],
+    projectsEn: ['Sabbia Resort', 'Core Complex', 'La Nova Towers', 'Obour Building'],
+    projectsAr: ['منتجع سببيا', 'مجمع كور', 'أبراج لانوفا', 'مبنى العبور'],
+    statsValue1: '90+', statsLabel1En: 'Projects Completed', statsLabel1Ar: 'مشروع منجز',
+    statsValue2: '20+', statsLabel2En: 'Years Experience', statsLabel2Ar: 'سنة خبرة',
+    statsValue3: '15+', statsLabel3En: 'Cities Covered', statsLabel3Ar: 'مدينة نغطيها',
     image: '/images/sabbia-resort.jpg'
   },
   'contracting': {
-    titleEn: 'Contracting & Construction',
-    titleAr: 'المقاولات والبناء',
-    subtitleEn: 'Quality Execution, Lasting Results',
-    subtitleAr: 'تنفيذ عالي الجودة، نتائج دائمة',
-    descriptionEn: 'Our Contracting division executes projects with precision and quality. From residential buildings to government facilities and infrastructure projects, we ensure every construction meets the highest standards of engineering excellence.',
-    descriptionAr: 'قسم المقاولات ينفذ المشاريع بدقة وجودة. من المباني السكنية إلى المرافق الحكومية ومشاريع البنية التحتية، نضمن أن كل بناء يلبي أعلى معايير التميز الهندسي.',
-    features: [
-      { titleEn: 'Residential Construction', titleAr: 'البناء السكني', descEn: 'Apartment buildings, villas, and residential towers', descAr: 'عمارات سكنية وأبراج وفيلات' },
-      { titleEn: 'Government Projects', titleAr: 'المشاريع الحكومية', descEn: 'Public facilities and infrastructure', descAr: 'مرافق عامة وبنية تحتية' },
-      { titleEn: 'Structural Works', titleAr: 'أعمال هيكلية', descEn: 'Concrete, steel, and foundation works', descAr: 'أعمال خرسانة وحديد وأسس' },
-      { titleEn: 'Road & Infrastructure', titleAr: 'طرق وبنية تحتية', descEn: 'Paving, asphalt, and utility networks', descAr: 'أعمال رصف وأسفلت وشبكات' },
-    ],
-    stats: [
-      { value: '50+', labelEn: 'Buildings Constructed', labelAr: 'مبنى تم بناؤه' },
-      { value: '10+', labelEn: 'Gov. Projects', labelAr: 'مشاريع حكومية' },
-      { value: '100%', labelEn: 'On-Time Delivery', labelAr: 'تسليم في الموعد' },
-    ],
-    projects: ['Agricultural Bank Renovation', 'Suez Governorate', 'Civil Defense Unit', 'Engineers Club'],
+    titleEn: 'Contracting & Construction', titleAr: 'المقاولات والبناء',
+    subtitleEn: 'Quality Execution, Lasting Results', subtitleAr: 'تنفيذ عالي الجودة، نتائج دائمة',
+    descriptionEn: 'Our Contracting division executes projects with precision and quality. From residential buildings to government facilities and infrastructure projects.',
+    descriptionAr: 'قسم المقاولات ينفذ المشاريع بدقة وجودة. من المباني السكنية إلى المرافق الحكومية ومشاريع البنية التحتية.',
+    featuresEn: ['Residential Construction', 'Government Projects', 'Structural Works', 'Road & Infrastructure'],
+    featuresAr: ['البناء السكني', 'المشاريع الحكومية', 'أعمال هيكلية', 'طرق وبنية تحتية'],
+    projectsEn: ['Agricultural Bank', 'Suez Governorate', 'Civil Defense'],
+    projectsAr: ['البنك الزراعي', 'محافظة السويس', 'الدفاع المدني'],
+    statsValue1: '50+', statsLabel1En: 'Buildings Constructed', statsLabel1Ar: 'مبنى تم بناؤه',
+    statsValue2: '10+', statsLabel2En: 'Gov. Projects', statsLabel2Ar: 'مشاريع حكومية',
+    statsValue3: '100%', statsLabel3En: 'On-Time Delivery', statsLabel3Ar: 'تسليم في الموعد',
     image: '/images/construction-1.jpg'
   },
   'interior-design': {
-    titleEn: 'Interior Design & Execution',
-    titleAr: 'التصميم الداخلي والتنفيذ',
-    subtitleEn: 'Creating Inspiring Spaces',
-    subtitleAr: 'إنشاء مساحات ملهمة',
-    descriptionEn: 'Our Interior Design division transforms spaces into functional, elegant, and personalized environments. Using 3D design solutions and premium materials, we create interiors that reflect our clients\' vision and lifestyle.',
-    descriptionAr: 'قسم التصميم الداخلي يحول المساحات إلى بيئات عملية وأنيقة ومخصصة. باستخدام حلول التصميم ثلاثية الأبعاد والمواد الفاخرة، نقوم بإنشاء تصاميم تعكس رؤية عملائنا وأسلوب حياتهم.',
-    features: [
-      { titleEn: '3D Design Solutions', titleAr: 'حلول تصميم ثلاثية الأبعاد', descEn: 'Visualize your space before execution', descAr: 'تصور مساحتك قبل التنفيذ' },
-      { titleEn: 'Luxury Finishes', titleAr: 'تشطيبات فاخرة', descEn: 'Premium materials and craftsmanship', descAr: 'مواد فاخرة وحرفية عالية' },
-      { titleEn: 'Custom Furniture', titleAr: 'أثاث مخصص', descEn: 'Tailored furniture design and production', descAr: 'تصميم وإنتاج أثاث مخصص' },
-      { titleEn: 'Complete Execution', titleAr: 'تنفيذ كامل', descEn: 'From design to final handover', descAr: 'من التصميم إلى التسليم النهائي' },
-    ],
-    stats: [
-      { value: '100+', labelEn: 'Interiors Designed', labelAr: 'تصميم داخلي' },
-      { value: '50+', labelEn: 'Villas Finished', labelAr: 'فيلا تم تشطيبها' },
-      { value: '100%', labelEn: 'Client Satisfaction', labelAr: 'رضا العملاء' },
-    ],
-    projects: ['Nesreen Tafesh Center', 'Moroccan Bath Spa', 'Dr. Youssef Apartment', 'Home Friend Showroom'],
+    titleEn: 'Interior Design & Execution', titleAr: 'التصميم الداخلي والتنفيذ',
+    subtitleEn: 'Creating Inspiring Spaces', subtitleAr: 'إنشاء مساحات ملهمة',
+    descriptionEn: 'Our Interior Design division transforms spaces into functional, elegant, and personalized environments using 3D design solutions and premium materials.',
+    descriptionAr: 'قسم التصميم الداخلي يحول المساحات إلى بيئات عملية وأنيقة ومخصصة باستخدام حلول التصميم ثلاثية الأبعاد والمواد الفاخرة.',
+    featuresEn: ['3D Design Solutions', 'Luxury Finishes', 'Custom Furniture', 'Complete Execution'],
+    featuresAr: ['حلول تصميم ثلاثية الأبعاد', 'تشطيبات فاخرة', 'أثاث مخصص', 'تنفيذ كامل'],
+    projectsEn: ['Nesreen Tafesh Center', 'Moroccan Bath Spa', 'Dr. Youssef Apartment'],
+    projectsAr: ['مركز نسرين طافش', 'سبا الحمام المغربي', 'شقة د. يوسف'],
+    statsValue1: '100+', statsLabel1En: 'Interiors Designed', statsLabel1Ar: 'تصميم داخلي',
+    statsValue2: '50+', statsLabel2En: 'Villas Finished', statsLabel2Ar: 'فيلا تم تشطيبها',
+    statsValue3: '100%', statsLabel3En: 'Client Satisfaction', statsLabel3Ar: 'رضا العملاء',
     image: '/images/interior-design.jpg'
   },
   'maintenance': {
-    titleEn: 'Maintenance Services',
-    titleAr: 'خدمات الصيانة',
-    subtitleEn: 'Preserving Value, Ensuring Performance',
-    subtitleAr: ' الحفاظ على القيمة، ضمان الأداء',
-    descriptionEn: 'Our Maintenance division provides comprehensive solutions for residential compounds, commercial buildings, and government facilities. From elevator systems to electromechanical works and facade maintenance, we ensure buildings operate at peak efficiency.',
-    descriptionAr: 'قسم الصيانة يوفر حلولاً شاملة للمجمعات السكنية والمباني التجارية والمرافق الحكومية. من أنظمة المصاعد إلى الأعمال الكهربائية والميكانيكية وصيانة الواجهات، نضمن عمل المباني بكفاءة عالية.',
-    features: [
-      { titleEn: 'Elevator Systems', titleAr: 'أنظمة المصاعد', descEn: 'Maintenance and modernization of elevator systems', descAr: 'صيانة وتحديث أنظمة المصاعد' },
-      { titleEn: 'Electromechanical', titleAr: 'كهرباء وميكانيكا', descEn: 'Complete electrical and mechanical maintenance', descAr: 'صيانة كهربائية وميكانيكية شاملة' },
-      { titleEn: 'Facade Maintenance', titleAr: 'صيانة الواجهات', descEn: 'Cleaning, repair, and restoration', descAr: 'تنظيف وإصلاح وترميم' },
-      { titleEn: 'Infrastructure', titleAr: 'بنية تحتية', descEn: 'Roads, lighting, and utility networks', descAr: 'طرق وإضاءة وشبكات' },
-    ],
-    stats: [
-      { value: '42+', labelEn: 'Elevators Maintained', labelAr: 'مصعد نصونه' },
-      { value: '24/7', labelEn: 'Emergency Response', labelAr: 'استجابة طوارئ' },
-      { value: '100%', labelEn: 'Uptime Guarantee', labelAr: 'ضمان التشغيل' },
-    ],
-    projects: ['Asmarat Compound', 'Suez Buildings', 'Agricultural Bank Branches'],
+    titleEn: 'Maintenance Services', titleAr: 'خدمات الصيانة',
+    subtitleEn: 'Preserving Value, Ensuring Performance', subtitleAr: 'الحفاظ على القيمة، ضمان الأداء',
+    descriptionEn: 'Our Maintenance division provides comprehensive solutions for residential compounds, commercial buildings, and government facilities.',
+    descriptionAr: 'قسم الصيانة يوفر حلولاً شاملة للمجمعات السكنية والمباني التجارية والمرافق الحكومية.',
+    featuresEn: ['Elevator Systems', 'Electromechanical', 'Facade Maintenance', 'Infrastructure'],
+    featuresAr: ['أنظمة المصاعد', 'كهرباء وميكانيكا', 'صيانة الواجهات', 'بنية تحتية'],
+    projectsEn: ['Asmarat Compound', 'Suez Buildings', 'Agricultural Bank'],
+    projectsAr: ['كمبوند أسمرات', 'عمارات السويس', 'البنك الزراعي'],
+    statsValue1: '42+', statsLabel1En: 'Elevators Maintained', statsLabel1Ar: 'مصعد نصونه',
+    statsValue2: '24/7', statsLabel2En: 'Emergency Response', statsLabel2Ar: 'استجابة طوارئ',
+    statsValue3: '100%', statsLabel3En: 'Uptime Guarantee', statsLabel3Ar: 'ضمان التشغيل',
     image: '/images/office-1.jpg'
   },
   'castings': {
-    titleEn: 'Castings & Hardware',
-    titleAr: 'المسبوكات والخردوات',
-    subtitleEn: 'Precision Manufacturing',
-    subtitleAr: 'تصنيع عالي الدقة',
-    descriptionEn: 'Our Castings division specializes in producing high-quality die cast castings, sand castings, and hardware components. Using advanced manufacturing techniques, we serve industrial clients across Egypt and the region.',
-    descriptionAr: 'قسم المسبوكات متخصص في إنتاج مسبوكات عالية الجودة بالقوالب والمسبوكات الرملية ومكونات الخردوات. باستخدام تقنيات تصنيع متقدمة، نخدم العملاء الصناعيين في مصر والمنطقة.',
-    features: [
-      { titleEn: 'Die Cast Production', titleAr: 'إنتاج المسبوكات بالقوالب', descEn: 'High-precision aluminum and zinc casting', descAr: 'سبك الألمنيوم والزنك عالي الدقة' },
-      { titleEn: 'Sand Casting', titleAr: 'المسبوكات الرملية', descEn: 'Custom casting for various applications', descAr: 'سبك مخصص لتطبيقات مختلفة' },
-      { titleEn: 'Stamp Manufacturing', titleAr: 'تصنيع الإسطمبات', descEn: 'Production dies and molds', descAr: 'قوالب الإنتاج' },
-      { titleEn: 'Quality Control', titleAr: 'مراقبة الجودة', descEn: 'Strict quality standards at every stage', descAr: 'معايير جودة صارمة في كل مرحلة' },
-    ],
-    stats: [
-      { value: '1000+', labelEn: 'Parts Produced Monthly', labelAr: 'قطعة شهرياً' },
-      { value: '99%', labelEn: 'Quality Rate', labelAr: 'معدل الجودة' },
-      { value: '10+', labelEn: 'Years Experience', labelAr: 'سنة خبرة' },
-    ],
-    projects: ['Die Cast Products', 'Sand Cast Components', 'Industrial Hardware'],
+    titleEn: 'Castings & Hardware', titleAr: 'المسبوكات والخردوات',
+    subtitleEn: 'Precision Manufacturing', subtitleAr: 'تصنيع عالي الدقة',
+    descriptionEn: 'Our Castings division specializes in producing high-quality die cast castings, sand castings, and hardware components for industrial applications.',
+    descriptionAr: 'قسم المسبوكات متخصص في إنتاج مسبوكات عالية الجودة بالقوالب والمسبوكات الرملية ومكونات الخردوات.',
+    featuresEn: ['Die Cast Production', 'Sand Casting', 'Stamp Manufacturing', 'Quality Control'],
+    featuresAr: ['إنتاج المسبوكات بالقوالب', 'المسبوكات الرملية', 'تصنيع الإسطمبات', 'مراقبة الجودة'],
+    projectsEn: ['Die Cast Products', 'Sand Cast Components', 'Industrial Hardware'],
+    projectsAr: ['منتجات المسبوكات', 'قطع المسبوكات الرملية', 'الخردوات الصناعية'],
+    statsValue1: '1000+', statsLabel1En: 'Parts Monthly', statsLabel1Ar: 'قطعة شهرياً',
+    statsValue2: '99%', statsLabel2En: 'Quality Rate', statsLabel2Ar: 'معدل الجودة',
+    statsValue3: '10+', statsLabel3En: 'Years Experience', statsLabel3Ar: 'سنة خبرة',
     image: '/images/construction-2.jpg'
   },
   'aluminum': {
-    titleEn: 'Aluminum Profiles',
-    titleAr: 'قطاعات الألومنيوم',
-    subtitleEn: 'Excellence in Extrusion',
-    subtitleAr: 'التميز في البثق',
-    descriptionEn: 'Our Aluminum Profiles division produces high-quality aluminum profiles using the hot extrusion method. Available in various sizes, shapes, and surface treatments for architectural, industrial, and transportation applications.',
-    descriptionAr: 'قسم قطاعات الألومنيوم ينتج قطاعات ألومنيوم عالية الجودة باستخدام طريقة البثق الساخن. متوفرة بأحجام وأشكال ومعالجات سطح مختلفة للاستخدامات المعمارية والصناعية والنقل.',
-    features: [
-      { titleEn: 'Hot Extrusion', titleAr: 'البثق الساخن', descEn: 'Precision extrusion for various profiles', descAr: 'بثق عالي الدقة لقطاعات مختلفة' },
-      { titleEn: 'Surface Treatment', titleAr: 'معالجة الأسطح', descEn: 'Anodizing, powder coating, and finishing', descAr: 'أكسدة وتغية بالبودرة وتشطيب' },
-      { titleEn: 'Custom Shapes', titleAr: 'أشكال مخصصة', descEn: 'Tailored profiles for specific needs', descAr: 'قطاعات مخصصة لاحتياجات محددة' },
-      { titleEn: 'Architectural Systems', titleAr: 'أنظمة معمارية', descEn: 'Windows, doors, and curtain walls', descAr: 'نوافذ وأبواب وواجهات زجاجية' },
-    ],
-    stats: [
-      { value: '500+', labelEn: 'Profile Designs', labelAr: 'تصميم قطاع' },
-      { value: '50+', labelEn: 'Surface Colors', labelAr: 'لون سطح' },
-      { value: '100%', labelEn: 'Quality Certified', labelAr: 'معتمد الجودة' },
-    ],
-    projects: ['Architectural Applications', 'Industrial Profiles', 'Transportation Systems'],
+    titleEn: 'Aluminum Profiles', titleAr: 'قطاعات الألومنيوم',
+    subtitleEn: 'Excellence in Extrusion', subtitleAr: 'التميز في البثق',
+    descriptionEn: 'Our Aluminum Profiles division produces high-quality aluminum profiles using the hot extrusion method for architectural, industrial, and transportation applications.',
+    descriptionAr: 'قسم قطاعات الألومنيوم ينتج قطاعات ألومنيوم عالية الجودة باستخدام طريقة البثق الساخن للاستخدامات المعمارية والصناعية والنقل.',
+    featuresEn: ['Hot Extrusion', 'Surface Treatment', 'Custom Shapes', 'Architectural Systems'],
+    featuresAr: ['البثق الساخن', 'معالجة الأسطح', 'أشكال مخصصة', 'أنظمة معمارية'],
+    projectsEn: ['Architectural Applications', 'Industrial Profiles', 'Transportation'],
+    projectsAr: ['تطبيقات معمارية', 'قطاعات صناعية', 'أنظمة النقل'],
+    statsValue1: '500+', statsLabel1En: 'Profile Designs', statsLabel1Ar: 'تصميم قطاع',
+    statsValue2: '50+', statsLabel2En: 'Surface Colors', statsLabel2Ar: 'لون سطح',
+    statsValue3: '100%', statsLabel3En: 'Quality Certified', statsLabel3Ar: 'معتمد الجودة',
     image: '/images/construction-1.jpg'
   }
 }
@@ -133,7 +92,10 @@ const divisionsData: Record<string, any> = {
 const DivisionPage = () => {
   const { id } = useParams<{ id: string }>()
   const { t } = useLanguage()
-  const division = divisionsData[id || '']
+  const { content } = useContent()
+  
+  const apiDivision = content.divisions?.[id || '']
+  const division = apiDivision && Object.keys(apiDivision).length > 0 ? { ...defaultDivisions[id || 'real-estate'], ...apiDivision } : defaultDivisions[id || '']
 
   if (!division) {
     return (
@@ -145,6 +107,11 @@ const DivisionPage = () => {
       </div>
     )
   }
+
+  const featuresEn = division.featuresEn || []
+  const featuresAr = division.featuresAr || []
+  const projectsEn = division.projectsEn || []
+  const projectsAr = division.projectsAr || []
 
   return (
     <div className="min-h-screen bg-[#0a0a1a]">
@@ -178,12 +145,18 @@ const DivisionPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4 sm:gap-8 mb-12 sm:mb-16">
-          {division.stats.map((stat: any, i: number) => (
-            <div key={i} className="text-center p-4 sm:p-6 bg-[#121226]/50 border border-[#d4a017]/20">
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017] mb-2">{stat.value}</div>
-              <div className="text-gray-400 text-xs sm:text-sm">{t(stat.labelEn, stat.labelAr)}</div>
-            </div>
-          ))}
+          <div className="text-center p-4 sm:p-6 bg-[#121226]/50 border border-[#d4a017]/20">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017] mb-2">{division.statsValue1}</div>
+            <div className="text-gray-400 text-xs sm:text-sm">{t(division.statsLabel1En, division.statsLabel1Ar)}</div>
+          </div>
+          <div className="text-center p-4 sm:p-6 bg-[#121226]/50 border border-[#d4a017]/20">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017] mb-2">{division.statsValue2}</div>
+            <div className="text-gray-400 text-xs sm:text-sm">{t(division.statsLabel2En, division.statsLabel2Ar)}</div>
+          </div>
+          <div className="text-center p-4 sm:p-6 bg-[#121226]/50 border border-[#d4a017]/20">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017] mb-2">{division.statsValue3}</div>
+            <div className="text-gray-400 text-xs sm:text-sm">{t(division.statsLabel3En, division.statsLabel3Ar)}</div>
+          </div>
         </div>
 
         {/* Description */}
@@ -196,10 +169,9 @@ const DivisionPage = () => {
         <div className="mb-12 sm:mb-16">
           <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-6">{t('Our Services', 'خدماتنا')}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {division.features.map((feature: any, i: number) => (
+            {featuresEn.map((feature: string, i: number) => (
               <div key={i} className="bg-[#121226]/50 border border-[#d4a017]/20 p-5 sm:p-6 hover:border-[#d4a017]/50 transition-colors">
-                <h3 className="text-white text-base sm:text-lg font-semibold mb-2">{t(feature.titleEn, feature.titleAr)}</h3>
-                <p className="text-gray-500 text-xs sm:text-sm">{t(feature.descEn, feature.descAr)}</p>
+                <h3 className="text-white text-base sm:text-lg font-semibold mb-2">{t(feature, featuresAr[i] || feature)}</h3>
               </div>
             ))}
           </div>
@@ -209,9 +181,9 @@ const DivisionPage = () => {
         <div className="mb-12 sm:mb-16">
           <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-6">{t('Featured Projects', 'مشاريع مميزة')}</h2>
           <div className="flex flex-wrap gap-2 sm:gap-3">
-            {division.projects.map((project: string, i: number) => (
+            {projectsEn.map((project: string, i: number) => (
               <span key={i} className="px-3 sm:px-4 py-2 bg-[#d4a017]/10 text-[#d4a017] border border-[#d4a017]/20 text-xs sm:text-sm">
-                {project}
+                {t(project, projectsAr[i] || project)}
               </span>
             ))}
           </div>

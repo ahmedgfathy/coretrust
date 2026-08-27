@@ -1,7 +1,9 @@
 import { useLanguage } from '../context/LanguageContext'
+import { useContent } from '../hooks/useContent'
 
 const About = () => {
   const { t } = useLanguage()
+  const { content } = useContent()
 
   const features = [
     { 
@@ -50,28 +52,19 @@ const About = () => {
               </span>
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-              {t('Who We Are', 'من نحن')}
+              {t(content.about.titleEn, content.about.titleAr)}
             </h2>
             <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">
               {t('Founded by Architect Mohamed Yehia in 2004', 'أسسها المهندس محمد يحيى عام 2004')}
             </p>
             <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
-              {t(
-                'Architect Mohamed Yehia Group was established in 2004 in cooperation with Gulf Countries. We specialize in real estate development, architectural design, construction, interior design, and maintenance services.',
-                'تأسست مجموعة المهندس محمد يحيى في عام 2004 بالتعاون مع دول الخليج. نحن متخصصون في التطوير العقاري والتصميم المعماري والبناء والتصميم الداخلي وخدمات الصيانة.'
-              )}
+              {t(content.about.descriptionEn, content.about.descriptionAr)}
             </p>
             <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
-              {t(
-                'With over 20 years of experience and more than 90 completed projects, we have expanded internationally to Saudi Arabia, Oman, Guinea, and Tanzania. Our portfolio includes residential towers, luxury villas, commercial complexes, airport facilities, and government buildings.',
-                'مع أكثر من 20 عامًا من الخبرة وأكثر من 90 مشروعًا مكتملاً، توسعنا دولياً في المملكة العربية المتحدة وعمان وغينيا وتنزانيا. تتضمن محفظتنا أبراجاً سكنية وفيلات فاخرة ومجمعات تجارية ومنشآت مطارات ومباني حكومية.'
-              )}
+              {t(content.about.missionEn, content.about.missionAr)}
             </p>
             <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8">
-              {t(
-                'We operate through 6 specialized divisions: Real Estate Development, Contracting & Construction, Interior Design, Maintenance Services, Castings & Hardware, and Aluminum Profiles.',
-                'نعمل من خلال 6 أقسام متخصصة: التطوير العقاري والمقاولات والبناء والتصميم الداخلي وخدمات الصيانة والمسبوكات والخردوات وقطاعات الألومنيوم.'
-              )}
+              {t(content.about.visionEn, content.about.visionAr)}
             </p>
             <a href="#contact" className="btn-gold inline-block">
               {t('Get Free Consultation', 'احصل على استشارة مجانية')}

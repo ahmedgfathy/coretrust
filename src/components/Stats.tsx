@@ -1,13 +1,15 @@
 import { useLanguage } from '../context/LanguageContext'
+import { useContent } from '../hooks/useContent'
 
 const Stats = () => {
   const { t } = useLanguage()
+  const { content } = useContent()
 
   const stats = [
-    { number: '90+', label: t('Projects Completed', 'مشاريع مكتملة') },
-    { number: '20+', label: t('Years Experience', 'سنوات خبرة') },
-    { number: '6', label: t('Service Divisions', 'أقسام الخدمات') },
-    { number: '4+', label: t('Countries Served', 'دول نخدمها') },
+    { number: content.stats.value1 || '90+', label: t(content.stats.label1En || 'Projects Completed', content.stats.label1Ar || 'مشاريع مكتملة') },
+    { number: content.stats.value2 || '20+', label: t(content.stats.label2En || 'Years Experience', content.stats.label2Ar || 'سنوات خبرة') },
+    { number: content.stats.value3 || '6', label: t(content.stats.label3En || 'Service Divisions', content.stats.label3Ar || 'أقسام الخدمات') },
+    { number: content.stats.value4 || '4+', label: t(content.stats.label4En || 'Countries Served', content.stats.label4Ar || 'دول نخدمها') },
   ]
 
   return (

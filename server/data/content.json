@@ -5,25 +5,154 @@
     "subtitleEn": "Est. 2004 - Architect Mohamed Yehia Group",
     "subtitleAr": "تأسست عام 2004 - مجموعة المهندس محمد يحيى",
     "descriptionEn": "A multidisciplinary real estate and engineering company established in 2004 in cooperation with Gulf Countries. Over 90 projects completed across Egypt and abroad.",
-    "descriptionAr": "شركة عقارية وهندسية متعددة التخصصات تأسست عام 2004 بالتعاون مع دول الخليج. أكثر من 90 مشروع منجز في مصر وخارجها."
+    "descriptionAr": "شركة عقارية وهندسية متعددة التخصصات تأسست عام 2004 بالتعاون مع دول الخليج. أكثر من 90 مشروع منجز في مصر وخارجها.",
+    "video": "/bg-video.mp4"
   },
   "about": {
     "titleEn": "Who We Are",
     "titleAr": "من نحن",
-    "descriptionEn": "Architect Mohamed Yehia Group was established in 2004 in cooperation with Gulf Countries. The company has completed more than 90 projects throughout the Arab Republic of Egypt and abroad covering different types of buildings. The company is keen to be a leading organization in the field of real estate and engineering.",
-    "descriptionAr": "تأسست مجموعة المهندس محمد يحيى في عام 2004 بالتعاون مع دول الخليج. أنجزت الشركة أكثر من 90 مشروع في جميع أنحاء جمهورية مصر العربية وخارجها تغطي أنماطًا مختلفة من المباني. تحرص الشركة على أن تكون مؤسسة رائدة في مجال العقارات والهندسة.",
+    "descriptionEn": "Architect Mohamed Yehia Group was established in 2004 in cooperation with Gulf Countries. The company has completed more than 90 projects throughout the Arab Republic of Egypt and abroad covering different types of buildings.",
+    "descriptionAr": "تأسست مجموعة المهندس محمد يحيى في عام 2004 بالتعاون مع دول الخليج. أنجزت الشركة أكثر من 90 مشروع في جميع أنحاء جمهورية مصر العربية وخارجها تغطي أنماطًا مختلفة من المباني.",
     "missionEn": "To be unique in engineering and real estate fields by using the latest technologies while working within sustainability guidelines.",
     "missionAr": "أن نكون فريدين في المجال الهندسي والعقاري باستخدام أحدث التقنيات أثناء العمل ضمن إرشادات الاستدامة.",
     "visionEn": "To be a leading architecture firm, contractor and real estate agency in Egypt, reaching Africa in the near future.",
     "visionAr": "أن نكون شركة معمارية رائدة ومقاول ووكالة عقارية في مصر، للوصول إلى أفريقيا في المستقبل القريب."
   },
+  "clients": {
+    "titleEn": "Trusted Partners",
+    "titleAr": "شركاء موثوقون",
+    "descriptionEn": "We are proud to work with leading organizations across Egypt and the Gulf region.",
+    "descriptionAr": "نحن فخورون بالعمل مع المؤسسات الرائدة في مصر ودول الخليج."
+  },
   "services": {
     "titleEn": "Our Divisions",
     "titleAr": "أقسامنا",
-    "descriptionEn": "A multidisciplinary company with 6 specialized divisions covering all aspects of real estate and construction.",
-    "descriptionAr": "شركة متعددة التخصصات مع 6 أقسام متخصصة تغطي جميع جوانب العقارات والبناء."
+    "descriptionEn": "A multidisciplinary company with 6 specialized divisions serving Egypt and international markets since 2004.",
+    "descriptionAr": "شركة متعددة التخصصات مع 6 أقسام متخصصة تخدم مصر والأسواق الدولية منذ عام 2004."
+  },
+  "divisions": {
+    "real-estate": {
+      "titleEn": "Real Estate Development",
+      "titleAr": "التطوير العقاري",
+      "subtitleEn": "Building Tomorrow's Landmarks",
+      "subtitleAr": "بناء معالم الغد",
+      "descriptionEn": "Our Real Estate Development division is dedicated to creating distinctive properties across Egypt. From luxury residential towers to commercial complexes and coastal resorts, we combine innovative design with strategic location selection.",
+      "descriptionAr": "قسم التطوير العقاري مكرس لإنشاء عقارات مميزة في جميع أنحاء مصر. من الأبراج السكنية الفاخرة إلى المجمعات التجارية والمنتجعات الساحلية، نجمع بين التصميم المبتكر واختيار الموقع الاستراتيجي.",
+      "featuresEn": ["Site Research & Evaluation", "Architectural Design", "Project Execution", "Delivery & Handover"],
+      "featuresAr": ["بحث وتقييم المواقع", "التصميم المعماري", "تنفيذ المشاريع", "التسليم"],
+      "projectsEn": ["Sabbia Resort", "Core Complex", "La Nova Towers", "Obour Building"],
+      "projectsAr": ["منتجع سببيا", "مجمع كور", "أبراج لانوفا", "مبنى العبور"],
+      "statsValue1": "90+", "statsLabel1En": "Projects Completed", "statsLabel1Ar": "مشروع منجز",
+      "statsValue2": "20+", "statsLabel2En": "Years Experience", "statsLabel2Ar": "سنة خبرة",
+      "statsValue3": "15+", "statsLabel3En": "Cities Covered", "statsLabel3Ar": "مدينة نغطيها",
+      "image": "/images/sabbia-resort.jpg"
+    },
+    "contracting": {
+      "titleEn": "Contracting & Construction",
+      "titleAr": "المقاولات والبناء",
+      "subtitleEn": "Quality Execution, Lasting Results",
+      "subtitleAr": "تنفيذ عالي الجودة، نتائج دائمة",
+      "descriptionEn": "Our Contracting division executes projects with precision and quality. From residential buildings to government facilities and infrastructure projects.",
+      "descriptionAr": "قسم المقاولات ينفذ المشاريع بدقة وجودة. من المباني السكنية إلى المرافق الحكومية ومشاريع البنية التحتية.",
+      "featuresEn": ["Residential Construction", "Government Projects", "Structural Works", "Road & Infrastructure"],
+      "featuresAr": ["البناء السكني", "المشاريع الحكومية", "أعمال هيكلية", "طرق وبنية تحتية"],
+      "projectsEn": ["Agricultural Bank", "Suez Governorate", "Civil Defense"],
+      "projectsAr": ["البنك الزراعي", "محافظة السويس", "الدفاع المدني"],
+      "statsValue1": "50+", "statsLabel1En": "Buildings Constructed", "statsLabel1Ar": "مبنى تم بناؤه",
+      "statsValue2": "10+", "statsLabel2En": "Gov. Projects", "statsLabel2Ar": "مشاريع حكومية",
+      "statsValue3": "100%", "statsLabel3En": "On-Time Delivery", "statsLabel3Ar": "تسليم في الموعد",
+      "image": "/images/construction-1.jpg"
+    },
+    "interior-design": {
+      "titleEn": "Interior Design & Execution",
+      "titleAr": "التصميم الداخلي والتنفيذ",
+      "subtitleEn": "Creating Inspiring Spaces",
+      "subtitleAr": "إنشاء مساحات ملهمة",
+      "descriptionEn": "Our Interior Design division transforms spaces into functional, elegant, and personalized environments using 3D design solutions and premium materials.",
+      "descriptionAr": "قسم التصميم الداخلي يحول المساحات إلى بيئات عملية وأنيقة ومخصصة باستخدام حلول التصميم ثلاثية الأبعاد والمواد الفاخرة.",
+      "featuresEn": ["3D Design Solutions", "Luxury Finishes", "Custom Furniture", "Complete Execution"],
+      "featuresAr": ["حلول تصميم ثلاثية الأبعاد", "تشطيبات فاخرة", "أثاث مخصص", "تنفيذ كامل"],
+      "projectsEn": ["Nesreen Tafesh Center", "Moroccan Bath Spa", "Dr. Youssef Apartment"],
+      "projectsAr": ["مركز نسرين طافش", "سبا الحمام المغربي", "شقة د. يوسف"],
+      "statsValue1": "100+", "statsLabel1En": "Interiors Designed", "statsLabel1Ar": "تصميم داخلي",
+      "statsValue2": "50+", "statsLabel2En": "Villas Finished", "statsLabel2Ar": "فيلا تم تشطيبها",
+      "statsValue3": "100%", "statsLabel3En": "Client Satisfaction", "statsLabel3Ar": "رضا العملاء",
+      "image": "/images/interior-design.jpg"
+    },
+    "maintenance": {
+      "titleEn": "Maintenance Services",
+      "titleAr": "خدمات الصيانة",
+      "subtitleEn": "Preserving Value, Ensuring Performance",
+      "subtitleAr": "الحفاظ على القيمة، ضمان الأداء",
+      "descriptionEn": "Our Maintenance division provides comprehensive solutions for residential compounds, commercial buildings, and government facilities.",
+      "descriptionAr": "قسم الصيانة يوفر حلولاً شاملة للمجمعات السكنية والمباني التجارية والمرافق الحكومية.",
+      "featuresEn": ["Elevator Systems", "Electromechanical", "Facade Maintenance", "Infrastructure"],
+      "featuresAr": ["أنظمة المصاعد", "كهرباء وميكانيكا", "صيانة الواجهات", "بنية تحتية"],
+      "projectsEn": ["Asmarat Compound", "Suez Buildings", "Agricultural Bank"],
+      "projectsAr": ["كمبوند أسمرات", "عمارات السويس", "البنك الزراعي"],
+      "statsValue1": "42+", "statsLabel1En": "Elevators Maintained", "statsLabel1Ar": "مصعد نصونه",
+      "statsValue2": "24/7", "statsLabel2En": "Emergency Response", "statsLabel2Ar": "استجابة طوارئ",
+      "statsValue3": "100%", "statsLabel3En": "Uptime Guarantee", "statsLabel3Ar": "ضمان التشغيل",
+      "image": "/images/office-1.jpg"
+    },
+    "castings": {
+      "titleEn": "Castings & Hardware",
+      "titleAr": "المسبوكات والخردوات",
+      "subtitleEn": "Precision Manufacturing",
+      "subtitleAr": "تصنيع عالي الدقة",
+      "descriptionEn": "Our Castings division specializes in producing high-quality die cast castings, sand castings, and hardware components for industrial applications.",
+      "descriptionAr": "قسم المسبوكات متخصص في إنتاج مسبوكات عالية الجودة بالقوالب والمسبوكات الرملية ومكونات الخردوات.",
+      "featuresEn": ["Die Cast Production", "Sand Casting", "Stamp Manufacturing", "Quality Control"],
+      "featuresAr": ["إنتاج المسبوكات بالقوالب", "المسبوكات الرملية", "تصنيع الإسطمبات", "مراقبة الجودة"],
+      "projectsEn": ["Die Cast Products", "Sand Cast Components", "Industrial Hardware"],
+      "projectsAr": ["منتجات المسبوكات", "قطع المسبوكات الرملية", "الخردوات الصناعية"],
+      "statsValue1": "1000+", "statsLabel1En": "Parts Monthly", "statsLabel1Ar": "قطعة شهرياً",
+      "statsValue2": "99%", "statsLabel2En": "Quality Rate", "statsLabel2Ar": "معدل الجودة",
+      "statsValue3": "10+", "statsLabel3En": "Years Experience", "statsLabel3Ar": "سنة خبرة",
+      "image": "/images/construction-2.jpg"
+    },
+    "aluminum": {
+      "titleEn": "Aluminum Profiles",
+      "titleAr": "قطاعات الألومنيوم",
+      "subtitleEn": "Excellence in Extrusion",
+      "subtitleAr": "التميز في البثق",
+      "descriptionEn": "Our Aluminum Profiles division produces high-quality aluminum profiles using the hot extrusion method for architectural, industrial, and transportation applications.",
+      "descriptionAr": "قسم قطاعات الألومنيوم ينتج قطاعات ألومنيوم عالية الجودة باستخدام طريقة البثق الساخن للاستخدامات المعمارية والصناعية والنقل.",
+      "featuresEn": ["Hot Extrusion", "Surface Treatment", "Custom Shapes", "Architectural Systems"],
+      "featuresAr": ["البثق الساخن", "معالجة الأسطح", "أشكال مخصصة", "أنظمة معمارية"],
+      "projectsEn": ["Architectural Applications", "Industrial Profiles", "Transportation"],
+      "projectsAr": ["تطبيقات معمارية", "قطاعات صناعية", "أنظمة النقل"],
+      "statsValue1": "500+", "statsLabel1En": "Profile Designs", "statsLabel1Ar": "تصميم قطاع",
+      "statsValue2": "50+", "statsLabel2En": "Surface Colors", "statsLabel2Ar": "لون سطح",
+      "statsValue3": "100%", "statsLabel3En": "Quality Certified", "statsLabel3Ar": "معتمد الجودة",
+      "image": "/images/construction-1.jpg"
+    }
+  },
+  "stats": {
+    "titleEn": "Our Achievements",
+    "titleAr": "إنجازاتنا",
+    "value1": "90+", "label1En": "Projects Completed", "label1Ar": "مشروع منجز",
+    "value2": "20+", "label2En": "Years of Excellence", "label2Ar": "عاماً من التميز",
+    "value3": "6", "label3En": "Specialized Divisions", "label3Ar": "أقسام متخصصة",
+    "value4": "15+", "label4En": "Cities Across Egypt", "label4Ar": "مدينة في مصر"
+  },
+  "timeline": {
+    "titleEn": "Our Journey",
+    "titleAr": "رحلتنا",
+    "descriptionEn": "From our founding in 2004 to today, we have continuously grown and delivered excellence.",
+    "descriptionAr": "من تأسيسنا في 2004 حتى اليوم، نمونا باستمرار ونقدم التميز."
+  },
+  "cta": {
+    "titleEn": "Start Your Project Today",
+    "titleAr": "ابدأ مشروعك اليوم",
+    "descriptionEn": "Ready to bring your vision to life? Contact us for a free consultation and let's build something extraordinary together.",
+    "descriptionAr": "مستعد لتحويل رؤيتك إلى واقع؟ تواصل معنا لاستشارة مجانية ودعنا نبني شيئاً استثنائياً معاً.",
+    "buttonEn": "Get Free Consultation",
+    "buttonAr": "احصل على استشارة مجانية"
   },
   "contact": {
+    "titleEn": "Contact Us",
+    "titleAr": "تواصل معنا",
     "addressEn": "Zaher Towers Bldg 2, Apt 316B, Maamoun St., Nasr City, Cairo",
     "addressAr": "أبراج زاهر برج 2 شقة 316 ب، شارع المأمون، مدينة نصر، القاهرة",
     "phone": "02-20776044",
@@ -32,9 +161,8 @@
     "instagram": "https://instagram.com/mohamed_yehia_group",
     "linkedin": "https://linkedin.com/company/mohamed-yehia-group"
   },
-  "social": {
-    "facebook": "https://facebook.com/mohamedyehiagroup",
-    "instagram": "https://instagram.com/mohamed_yehia_group",
-    "linkedin": "https://linkedin.com/company/mohamed-yehia-group"
+  "footer": {
+    "copyrightEn": "© 2024 Architect Mohamed Yehia Group. All rights reserved.",
+    "copyrightAr": "© 2024 مجموعة المهندس محمد يحيى. جميع الحقوق محفوظة."
   }
 }
