@@ -6,11 +6,10 @@ import { api } from '../admin/api'
 const categories = [
   { id: 'all', en: 'All', ar: 'الكل' },
   { id: 'real-estate-development', en: 'Real Estate', ar: 'التطوير العقاري' },
-  { id: 'contracting-construction', en: 'Contracting', ar: 'المقاولات' },
+  { id: 'government-projects', en: 'Government', ar: 'المشاريع الحكومية' },
+  { id: 'contracting', en: 'Contracting', ar: 'المقاولات' },
   { id: 'interior-design', en: 'Interior Design', ar: 'التصميم الداخلي' },
-  { id: 'maintenance', en: 'Maintenance', ar: 'الصيانة' },
-  { id: 'castings-hardware', en: 'Castings', ar: 'السباكة' },
-  { id: 'aluminum-profiles', en: 'Aluminum', ar: 'الألومنيوم' },
+  { id: 'finishing-works', en: 'Finishing', ar: 'التشطيبات' },
 ]
 
 const ProjectsPage = () => {
