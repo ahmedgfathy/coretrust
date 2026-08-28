@@ -1,12 +1,7 @@
 node_modules/
-dist/
-.env
-*.log
-.DS_Store
-Thumbs.db
-
-# Large files to ignore
 public/Company Profile.pdf
+public/bg-video.mp4
 public/images-source/
+supabase/
+scripts/
 .vercel
-.env*

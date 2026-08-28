@@ -7,12 +7,11 @@ const AdminDashboard = () => {
   const [recentProjects, setRecentProjects] = useState<any[]>([])
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken') || ''
     const loadData = async () => {
       try {
         const [projects, images] = await Promise.all([
           api.getProjects(),
-          api.getImages(token)
+          api.getImages()
         ])
         setStats({ projects: projects.length, images: images.length })
         setRecentProjects(projects.slice(0, 5))
@@ -25,7 +24,6 @@ const AdminDashboard = () => {
 
   return (
     <div className="space-y-6">
-      {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-[#121226] border border-[#d4a017]/20 p-6">
           <div className="flex items-center justify-between">
@@ -84,7 +82,6 @@ const AdminDashboard = () => {
         </Link>
       </div>
 
-      {/* Recent Projects */}
       <div className="bg-[#121226] border border-[#d4a017]/20">
         <div className="px-6 py-4 border-b border-[#d4a017]/20 flex items-center justify-between">
           <h2 className="text-white font-semibold">Recent Projects</h2>
@@ -105,8 +102,8 @@ const AdminDashboard = () => {
                     <img src={project.image} alt="" className="w-12 h-12 object-cover" />
                   )}
                   <div>
-                    <p className="text-white text-sm font-medium">{project.titleEn || project.title?.en || 'Untitled'}</p>
-                    <p className="text-gray-500 text-xs">{project.categoryEn || project.category?.en || ''}</p>
+                    <p className="text-white text-sm font-medium">{project.titleEn || 'Untitled'}</p>
+                    <p className="text-gray-500 text-xs">{project.categoryEn || ''}</p>
                   </div>
                 </div>
                 <Link to={`/admin/projects/edit/${project.id}`} className="text-[#d4a017] text-sm hover:underline">

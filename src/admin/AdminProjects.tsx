@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
 import { api } from './api'
 
 const AdminProjects = () => {
@@ -7,7 +6,7 @@ const AdminProjects = () => {
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
   const [editingProject, setEditingProject] = useState<any>(null)
-  const navigate = useNavigate()
+  const [uploadingImage, setUploadingImage] = useState(false)
 
   const [form, setForm] = useState({
     titleEn: '',
@@ -40,24 +39,12 @@ const AdminProjects = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const token = localStorage.getItem('adminToken') || ''
-
-    const formData = new FormData()
-    Object.entries(form).forEach(([key, value]) => {
-      if (key !== 'image') formData.append(key, value)
-    })
-
-    // Handle image upload
-    const imageInput = document.getElementById('project-image') as HTMLInputElement
-    if (imageInput?.files?.[0]) {
-      formData.append('image', imageInput.files[0])
-    }
 
     try {
       if (editingProject) {
-        await api.updateProject(editingProject.id, formData, token)
+        await api.updateProject(editingProject.id, form)
       } else {
-        await api.createProject(formData, token)
+        await api.createProject(form)
       }
       setShowModal(false)
       setEditingProject(null)
@@ -70,9 +57,8 @@ const AdminProjects = () => {
 
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this project?')) return
-    const token = localStorage.getItem('adminToken') || ''
     try {
-      await api.deleteProject(id, token)
+      await api.deleteProject(id)
       loadProjects()
     } catch (err) {
       console.error('Failed to delete project:', err)
@@ -82,14 +68,14 @@ const AdminProjects = () => {
   const handleEdit = (project: any) => {
     setEditingProject(project)
     setForm({
-      titleEn: project.titleEn || project.title?.en || '',
-      titleAr: project.titleAr || project.title?.ar || '',
-      categoryEn: project.categoryEn || project.category?.en || '',
-      categoryAr: project.categoryAr || project.category?.ar || '',
-      locationEn: project.locationEn || project.location?.en || '',
-      locationAr: project.locationAr || project.location?.ar || '',
-      descriptionEn: project.descriptionEn || project.description?.en || '',
-      descriptionAr: project.descriptionAr || project.description?.ar || '',
+      titleEn: project.titleEn || '',
+      titleAr: project.titleAr || '',
+      categoryEn: project.categoryEn || '',
+      categoryAr: project.categoryAr || '',
+      locationEn: project.locationEn || '',
+      locationAr: project.locationAr || '',
+      descriptionEn: project.descriptionEn || '',
+      descriptionAr: project.descriptionAr || '',
       year: project.year || '',
       status: project.status || 'current',
       image: project.image || ''
@@ -111,9 +97,23 @@ const AdminProjects = () => {
     setShowModal(true)
   }
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    setUploadingImage(true)
+    try {
+      const result = await api.uploadImage(file)
+      setForm({ ...form, image: result.url })
+    } catch (err) {
+      console.error('Failed to upload image:', err)
+    } finally {
+      setUploadingImage(false)
+    }
+  }
+
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-white">Projects</h1>
         <button onClick={openNew} className="btn-gold text-sm">
@@ -121,7 +121,6 @@ const AdminProjects = () => {
         </button>
       </div>
 
-      {/* Projects Table */}
       <div className="bg-[#121226] border border-[#d4a017]/20 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -153,11 +152,11 @@ const AdminProjects = () => {
                       )}
                     </td>
                     <td className="px-6 py-4">
-                      <p className="text-white text-sm">{project.titleEn || project.title?.en}</p>
-                      <p className="text-gray-500 text-xs">{project.titleAr || project.title?.ar}</p>
+                      <p className="text-white text-sm">{project.titleEn}</p>
+                      <p className="text-gray-500 text-xs">{project.titleAr}</p>
                     </td>
                     <td className="px-6 py-4 text-gray-400 text-sm">
-                      {project.categoryEn || project.category?.en}
+                      {project.categoryEn}
                     </td>
                     <td className="px-6 py-4 text-gray-400 text-sm">{project.year}</td>
                     <td className="px-6 py-4">
@@ -187,7 +186,6 @@ const AdminProjects = () => {
         </div>
       </div>
 
-      {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/70" onClick={() => setShowModal(false)} />
@@ -326,10 +324,13 @@ const AdminProjects = () => {
                 <label className="block text-gray-400 text-sm mb-2">Project Image</label>
                 <input
                   type="file"
-                  id="project-image"
                   accept="image/*"
+                  onChange={handleImageUpload}
                   className="w-full bg-[#0a0a1a] border border-[#d4a017]/30 text-white px-4 py-2 text-sm focus:outline-none focus:border-[#d4a017]"
                 />
+                {uploadingImage && (
+                  <p className="text-[#d4a017] text-xs mt-2">Uploading...</p>
+                )}
                 {form.image && (
                   <img src={form.image} alt="Preview" className="mt-2 w-32 h-24 object-cover" />
                 )}

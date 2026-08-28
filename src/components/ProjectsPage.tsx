@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
+import { supabase } from '../lib/supabase'
 
 const categories = [
   { id: 'all', en: 'All', ar: 'الكل' },
@@ -29,10 +30,12 @@ const ProjectsPage = () => {
   const { t } = useLanguage()
 
   useEffect(() => {
-    fetch('/api/projects')
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data) && data.length > 0) {
+    supabase
+      .from('projects')
+      .select('*')
+      .order('createdAt', { ascending: false })
+      .then(({ data, error }) => {
+        if (data && data.length > 0) {
           setProjects(data)
         } else {
           setProjects(fallbackProjects)

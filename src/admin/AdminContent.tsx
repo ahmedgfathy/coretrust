@@ -23,9 +23,8 @@ const AdminContent = () => {
   const handleSave = async () => {
     setSaving(true)
     setMessage('')
-    const token = localStorage.getItem('adminToken') || ''
     try {
-      await api.updateContent(activeTab, content[activeTab], token)
+      await api.updateContent(activeTab, content[activeTab])
       setMessage('Saved successfully!')
       setTimeout(() => setMessage(''), 3000)
     } catch (err) {
@@ -184,7 +183,6 @@ const AdminContent = () => {
       )}
 
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* Tabs */}
         <div className="lg:w-48 flex-shrink-0">
           <div className="bg-[#121226] border border-[#d4a017]/20 p-2 flex lg:flex-col gap-2 overflow-x-auto">
             {tabs.map((tab) => (
@@ -203,7 +201,6 @@ const AdminContent = () => {
           </div>
         </div>
 
-        {/* Content */}
         <div className="flex-1 bg-[#121226] border border-[#d4a017]/20 p-6">
           <h2 className="text-white font-semibold mb-6">
             {activeTab === 'divisions' ? 'Divisions Content' : tabs.find(t => t.id === activeTab)?.name}

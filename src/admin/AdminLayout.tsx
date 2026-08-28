@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate, Outlet } from 'react-router-dom'
+import { supabase } from '../lib/supabase'
 
 const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -7,14 +8,17 @@ const AdminLayout = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken')
-    if (!token) {
-      navigate('/admin')
+    const checkAuth = async () => {
+      const { data } = await supabase.auth.getSession()
+      if (!data.session) {
+        navigate('/admin')
+      }
     }
+    checkAuth()
   }, [navigate])
 
-  const handleLogout = () => {
-    localStorage.removeItem('adminToken')
+  const handleLogout = async () => {
+    await supabase.auth.signOut()
     localStorage.removeItem('adminUser')
     navigate('/admin')
   }
@@ -28,10 +32,8 @@ const AdminLayout = () => {
 
   return (
     <div className="min-h-screen bg-[#0a0a1a] flex">
-      {/* Sidebar */}
       <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-[#121226] border-r border-[#d4a017]/20 transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
         <div className="flex flex-col h-full">
-          {/* Logo */}
           <div className="p-6 border-b border-[#d4a017]/20">
             <Link to="/admin/dashboard" className="flex items-center gap-3">
               <img
@@ -43,7 +45,6 @@ const AdminLayout = () => {
             </Link>
           </div>
 
-          {/* Navigation */}
           <nav className="flex-1 p-4 space-y-1">
             {menuItems.map((item) => (
               <Link
@@ -64,7 +65,6 @@ const AdminLayout = () => {
             ))}
           </nav>
 
-          {/* Footer */}
           <div className="p-4 border-t border-[#d4a017]/20">
             <Link
               to="/"
@@ -89,9 +89,7 @@ const AdminLayout = () => {
         </div>
       </aside>
 
-      {/* Main Content */}
       <div className="flex-1 flex flex-col min-h-screen">
-        {/* Top Bar */}
         <header className="bg-[#121226] border-b border-[#d4a017]/20 px-4 py-4 flex items-center justify-between">
           <button
             className="lg:hidden text-[#d4a017] p-2"
@@ -109,13 +107,11 @@ const AdminLayout = () => {
           </div>
         </header>
 
-        {/* Page Content */}
         <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-auto">
           <Outlet />
         </main>
       </div>
 
-      {/* Mobile Overlay */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"

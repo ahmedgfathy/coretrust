@@ -16,7 +16,6 @@ const AdminLogin = () => {
 
     try {
       const result = await api.login(username, password)
-      localStorage.setItem('adminToken', result.token)
       localStorage.setItem('adminUser', JSON.stringify(result.user))
       navigate('/admin/dashboard')
     } catch (err) {
@@ -29,7 +28,6 @@ const AdminLogin = () => {
   return (
     <div className="min-h-screen bg-[#0a0a1a] flex items-center justify-center px-4">
       <div className="w-full max-w-md">
-        {/* Logo */}
         <div className="text-center mb-8">
           <img
             src="https://mygroup-eg.com/wp-content/uploads/2026/02/لقطة_شاشة_2026-02-15_160729-removebg-preview.png"
@@ -40,7 +38,6 @@ const AdminLogin = () => {
           <p className="text-gray-500 text-sm mt-2">Architect Mohamed Yehia Group</p>
         </div>
 
-        {/* Login Form */}
         <div className="bg-[#121226] border border-[#d4a017]/20 p-8">
           <h2 className="text-xl font-bold text-white mb-6 text-center">Sign In</h2>
           

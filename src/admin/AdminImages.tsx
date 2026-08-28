@@ -12,9 +12,8 @@ const AdminImages = () => {
   }, [])
 
   const loadImages = async () => {
-    const token = localStorage.getItem('adminToken') || ''
     try {
-      const data = await api.getImages(token)
+      const data = await api.getImages()
       setImages(data)
     } catch (err) {
       console.error('Failed to load images:', err)
@@ -28,11 +27,10 @@ const AdminImages = () => {
     if (!files || files.length === 0) return
 
     setUploading(true)
-    const token = localStorage.getItem('adminToken') || ''
 
     try {
       for (let i = 0; i < files.length; i++) {
-        await api.uploadImage(files[i], token)
+        await api.uploadImage(files[i])
       }
       loadImages()
     } catch (err) {
@@ -45,9 +43,8 @@ const AdminImages = () => {
 
   const handleDelete = async (filename: string) => {
     if (!confirm('Are you sure you want to delete this image?')) return
-    const token = localStorage.getItem('adminToken') || ''
     try {
-      await api.deleteImage(filename, token)
+      await api.deleteImage(filename)
       loadImages()
     } catch (err) {
       console.error('Failed to delete:', err)
@@ -83,7 +80,6 @@ const AdminImages = () => {
         </div>
       </div>
 
-      {/* Images Grid */}
       <div className="bg-[#121226] border border-[#d4a017]/20 p-6">
         {loading ? (
           <div className="text-center py-12 text-gray-500">Loading images...</div>
@@ -94,7 +90,7 @@ const AdminImages = () => {
             {images.map((img) => (
               <div key={img.filename} className="group relative aspect-square bg-[#0a0a1a] border border-[#d4a017]/10 overflow-hidden">
                 <img
-                  src={api.getImageUrl(img.filename)}
+                  src={img.url}
                   alt={img.filename}
                   className="w-full h-full object-cover"
                 />
@@ -106,7 +102,7 @@ const AdminImages = () => {
                   <div className="flex gap-2">
                     <button
                       onClick={() => {
-                        navigator.clipboard.writeText(api.getImageUrl(img.filename))
+                        navigator.clipboard.writeText(img.url)
                         alert('URL copied!')
                       }}
                       className="px-2 py-1 bg-[#d4a017]/20 text-[#d4a017] text-xs hover:bg-[#d4a017]/30"
