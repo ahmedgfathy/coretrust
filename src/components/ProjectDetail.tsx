@@ -11,7 +11,7 @@ const ProjectDetail = () => {
 
   useEffect(() => {
     api.getProjects().then(projects => {
-      const found = projects.find((p: any) => p.id === id)
+      const found = projects.find((p: any) => String(p.id) === String(id))
       setProject(found)
       setLoading(false)
     }).catch(() => setLoading(false))
