@@ -13,7 +13,7 @@ const Stats = () => {
   ]
 
   return (
-    <section className="py-14 sm:py-18 lg:py-20 bg-brand-50 relative overflow-hidden">
+    <section className="py-14 sm:py-18 lg:py-20 bg-white relative overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-brand-200 to-transparent"></div>
         <div className="absolute top-0 left-2/4 w-px h-full bg-gradient-to-b from-transparent via-brand-200 to-transparent"></div>

@@ -51,7 +51,7 @@ const Services = () => {
   const divisions = content.divisions && Object.keys(content.divisions).length > 0 ? content.divisions : defaultDivisions
 
   return (
-    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-brand-50/30 relative overflow-hidden">
+    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-200 to-transparent"></div>
         <div className="absolute top-2/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-200 to-transparent"></div>

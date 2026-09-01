@@ -51,7 +51,7 @@ const ProjectsPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-50 via-white to-brand-50/30"></div>
+        <div className="absolute inset-0 bg-white"></div>
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-200 to-transparent"></div>
           <div className="absolute top-2/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-200 to-transparent"></div>

@@ -29,7 +29,7 @@ const Projects = () => {
   }, [])
 
   return (
-    <section id="projects" className="py-16 sm:py-20 lg:py-24 bg-brand-50/30 relative overflow-hidden">
+    <section id="projects" className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-14 lg:mb-16">
           <div className="flex items-center justify-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">

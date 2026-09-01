@@ -11,7 +11,7 @@ const Hero = () => {
         <source src={content.hero.video || '/bg-video.mp4'} type="video/mp4" />
       </video>
 
-      <div className="absolute inset-0 bg-gradient-to-br from-white/85 via-white/75 to-brand-50/80"></div>
+      <div className="absolute inset-0 bg-black/40"></div>
 
       <div className="relative z-10 h-full flex items-center">
         <div className="w-full px-5 sm:px-8 lg:px-20 pt-28 sm:pt-32 lg:pt-40 pb-32 sm:pb-0">
