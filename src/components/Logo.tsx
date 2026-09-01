@@ -5,18 +5,19 @@ const Logo = () => {
   const isArabic = language === 'ar'
 
   return (
-    <a href="#home" className="flex items-center gap-2 sm:gap-3 lg:gap-4">
+    <a href="#home" className="flex items-center gap-3 sm:gap-4 lg:gap-5">
       <div className="relative flex-shrink-0">
-        <div className="h-12 sm:h-16 md:h-18 lg:h-20 w-auto flex items-center justify-center">
-          <span className="text-brand-600 font-bold text-xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
+        <div className="h-14 sm:h-18 md:h-20 lg:h-24 w-auto flex items-center justify-center">
+          <span className="text-brand-600 font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight" style={{ fontFamily: 'Playfair Display, serif', textShadow: '0 2px 8px rgba(14,165,23,0.15)' }}>
             C
           </span>
         </div>
       </div>
       <span
-        className={`font-bold text-sm sm:text-lg md:text-xl lg:text-2xl tracking-[0.1em] sm:tracking-[0.15em] lg:tracking-[0.2em] hidden sm:block whitespace-nowrap text-brand-600 ${isArabic ? 'font-[Cairo]' : ''}`}
+        className={`font-black text-base sm:text-xl md:text-2xl lg:text-3xl tracking-[0.08em] sm:tracking-[0.12em] lg:tracking-[0.15em] hidden sm:block whitespace-nowrap text-brand-600 ${isArabic ? 'font-[Cairo]' : ''}`}
         style={{
           fontFamily: isArabic ? 'Cairo, sans-serif' : 'Playfair Display, serif',
+          textShadow: '0 2px 8px rgba(14,165,23,0.15)',
         }}
       >
         {t('CORETRUST', 'كورتراست')}
