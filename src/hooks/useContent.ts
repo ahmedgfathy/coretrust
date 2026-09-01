@@ -17,8 +17,8 @@ const defaultContent: ContentData = {
   hero: {
     titleEn: 'Innovating Spaces, Building Futures',
     titleAr: 'ابتكار المساحات، بناء المستقبل',
-    subtitleEn: 'Est. 2004 - Architect Mohamed Yehia Group',
-    subtitleAr: 'تأسست عام 2004 - مجموعة المهندس محمد يحيى',
+    subtitleEn: 'Est. 2004 - CoreTrust',
+    subtitleAr: 'تأسست عام 2004 - كورتراست',
     descriptionEn: 'A multidisciplinary real estate and engineering company established in 2004 in cooperation with Gulf Countries. Over 90 projects completed across Egypt and abroad.',
     descriptionAr: 'شركة عقارية وهندسية متعددة التخصصات تأسست عام 2004 بالتعاون مع دول الخليج. أكثر من 90 مشروع منجز في مصر وخارجها.',
     video: '/bg-video.mp4'
@@ -26,8 +26,8 @@ const defaultContent: ContentData = {
   about: {
     titleEn: 'Who We Are',
     titleAr: 'من نحن',
-    descriptionEn: 'Architect Mohamed Yehia Group was established in 2004 in cooperation with Gulf Countries. The company has completed more than 90 projects throughout the Arab Republic of Egypt and abroad.',
-    descriptionAr: 'تأسست مجموعة المهندس محمد يحيى في عام 2004 بالتعاون مع دول الخليج. أنجزت الشركة أكثر من 90 مشروع في جميع أنحاء جمهورية مصر العربية وخارجها.',
+    descriptionEn: 'CoreTrust was established in 2004 in cooperation with Gulf Countries. The company has completed more than 90 projects throughout the Arab Republic of Egypt and abroad.',
+    descriptionAr: 'تم تأسيس كورتراست في عام 2004 بالتعاون مع دول الخليج. أنجزت الشركة أكثر من 90 مشروع في جميع أنحاء جمهورية مصر العربية وخارجها.',
     missionEn: 'To be unique in engineering and real estate fields by using the latest technologies while working within sustainability guidelines.',
     missionAr: 'أن نكون فريدين في المجال الهندسي والعقاري باستخدام أحدث التقنيات أثناء العمل ضمن إرشادات الاستدامة.',
     visionEn: 'To be a leading architecture firm, contractor and real estate agency in Egypt, reaching Africa in the near future.',
@@ -74,7 +74,7 @@ const defaultContent: ContentData = {
     addressEn: 'Zaher Towers Bldg 2, Apt 316B, Maamoun St., Nasr City, Cairo',
     addressAr: 'أبراج زاهر برج 2 شقة 316 ب، شارع المأمون، مدينة نصر، القاهرة',
     phone: '02-20776044',
-    email: 'info@mygroup-eg.com',
+    email: 'info@coretrust-eg.com',
     facebook: 'https://facebook.com/mohamedyehiagroup',
     instagram: 'https://instagram.com/mohamed_yehia_group',
     linkedin: 'https://linkedin.com/company/mohamed-yehia-group'

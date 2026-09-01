@@ -29,17 +29,15 @@ const AdminLayout = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-[#0a0a1a] flex">
-      <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-[#121226] border-r border-[#d4a017]/20 transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
+    <div className="min-h-screen bg-white flex">
+      <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-dark-800 border-r border-dark-700 transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
         <div className="flex flex-col h-full">
-          <div className="p-6 border-b border-[#d4a017]/20">
+          <div className="p-6 border-b border-dark-700">
             <Link to="/admin/dashboard" className="flex items-center gap-3">
-              <img
-                src="https://mygroup-eg.com/wp-content/uploads/2026/02/لقطة_شاشة_2026-02-15_160729-removebg-preview.png"
-                alt="Logo"
-                className="h-10"
-              />
-              <span className="text-[#d4a017] font-bold text-sm">Admin Panel</span>
+              <div className="w-10 h-10 bg-brand-600 text-white flex items-center justify-center text-lg font-bold" style={{ fontFamily: 'Playfair Display, serif' }}>
+                C
+              </div>
+              <span className="text-brand-400 font-bold text-sm">Admin Panel</span>
             </Link>
           </div>
 
@@ -50,8 +48,8 @@ const AdminLayout = () => {
                 to={item.href}
                 className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors ${
                   location.pathname === item.href
-                    ? 'bg-[#d4a017]/10 text-[#d4a017] border-l-2 border-[#d4a017]'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ? 'bg-brand-600/10 text-brand-400 border-l-2 border-brand-500'
+                    : 'text-dark-300 hover:text-white hover:bg-white/5'
                 }`}
                 onClick={() => setSidebarOpen(false)}
               >
@@ -63,10 +61,10 @@ const AdminLayout = () => {
             ))}
           </nav>
 
-          <div className="p-4 border-t border-[#d4a017]/20">
+          <div className="p-4 border-t border-dark-700">
             <Link
               to="/"
-              className="flex items-center gap-2 text-gray-500 hover:text-white text-sm mb-3 transition-colors"
+              className="flex items-center gap-2 text-dark-400 hover:text-white text-sm mb-3 transition-colors"
               target="_blank"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,7 +74,7 @@ const AdminLayout = () => {
             </Link>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 text-gray-500 hover:text-red-400 text-sm transition-colors"
+              className="flex items-center gap-2 text-dark-400 hover:text-red-400 text-sm transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -88,24 +86,24 @@ const AdminLayout = () => {
       </aside>
 
       <div className="flex-1 flex flex-col min-h-screen">
-        <header className="bg-[#121226] border-b border-[#d4a017]/20 px-4 py-4 flex items-center justify-between">
+        <header className="bg-white border-b border-brand-100 px-4 py-4 flex items-center justify-between">
           <button
-            className="lg:hidden text-[#d4a017] p-2"
+            className="lg:hidden text-brand-600 p-2"
             onClick={() => setSidebarOpen(!sidebarOpen)}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <h1 className="text-white font-semibold">
+          <h1 className="text-dark-800 font-semibold">
             {menuItems.find(m => location.pathname === m.href)?.name || 'Dashboard'}
           </h1>
-          <div className="text-gray-500 text-sm">
+          <div className="text-dark-400 text-sm">
             {JSON.parse(localStorage.getItem('adminUser') || '{}').username}
           </div>
         </header>
 
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-auto">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-auto bg-brand-50/30">
           <Outlet />
         </main>
       </div>

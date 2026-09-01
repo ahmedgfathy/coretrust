@@ -26,46 +26,44 @@ const AdminLogin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a1a] flex items-center justify-center px-4">
+    <div className="min-h-screen bg-white flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <img
-            src="https://mygroup-eg.com/wp-content/uploads/2026/02/لقطة_شاشة_2026-02-15_160729-removebg-preview.png"
-            alt="Logo"
-            className="h-16 mx-auto mb-4"
-          />
-          <h1 className="text-2xl font-bold text-white">Admin Panel</h1>
-          <p className="text-gray-500 text-sm mt-2">Architect Mohamed Yehia Group</p>
+          <div className="w-16 h-16 bg-brand-600 text-white flex items-center justify-center mx-auto mb-4 text-2xl font-bold" style={{ fontFamily: 'Playfair Display, serif' }}>
+            C
+          </div>
+          <h1 className="text-2xl font-bold text-dark-800">Admin Panel</h1>
+          <p className="text-dark-400 text-sm mt-2">CoreTrust</p>
         </div>
 
-        <div className="bg-[#121226] border border-[#d4a017]/20 p-8">
-          <h2 className="text-xl font-bold text-white mb-6 text-center">Sign In</h2>
+        <div className="bg-brand-50 border border-brand-100 p-8">
+          <h2 className="text-xl font-bold text-dark-800 mb-6 text-center">Sign In</h2>
           
           {error && (
-            <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 mb-6 text-sm">
+            <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 mb-6 text-sm">
               {error}
             </div>
           )}
 
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-gray-400 text-sm mb-2">Username</label>
+              <label className="block text-dark-500 text-sm mb-2">Username</label>
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full bg-[#0a0a1a] border border-[#d4a017]/30 text-white px-4 py-3 focus:outline-none focus:border-[#d4a017] transition-colors"
+                className="w-full bg-white border border-brand-200 text-dark-800 px-4 py-3 focus:outline-none focus:border-brand-500 transition-colors"
                 required
               />
             </div>
 
             <div className="mb-6">
-              <label className="block text-gray-400 text-sm mb-2">Password</label>
+              <label className="block text-dark-500 text-sm mb-2">Password</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-[#0a0a1a] border border-[#d4a017]/30 text-white px-4 py-3 focus:outline-none focus:border-[#d4a017] transition-colors"
+                className="w-full bg-white border border-brand-200 text-dark-800 px-4 py-3 focus:outline-none focus:border-brand-500 transition-colors"
                 required
               />
             </div>
@@ -80,8 +78,8 @@ const AdminLogin = () => {
           </form>
         </div>
 
-        <p className="text-center text-gray-600 text-xs mt-6">
-          © 2024 Mohamed Yahia Group. All rights reserved.
+        <p className="text-center text-dark-400 text-xs mt-6">
+          © 2024 CoreTrust. All rights reserved.
         </p>
       </div>
     </div>
