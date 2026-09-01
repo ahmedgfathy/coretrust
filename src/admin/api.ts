@@ -1,183 +1,130 @@
-import { supabase } from '../lib/supabase'
+const API_BASE = '/api'
 
 export const api = {
-  // Auth - using Supabase Auth
   login: async (username: string, password: string) => {
-    const email = `${username}@cortex-admin.local`
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
+    const res = await fetch(`${API_BASE}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
     })
-    if (error) throw new Error(error.message)
-    return {
-      token: data.session.access_token,
-      user: { id: data.user.id, username, role: 'admin' }
+    if (!res.ok) {
+      const err = await res.json()
+      throw new Error(err.error || 'Login failed')
     }
+    return res.json()
   },
 
-  verify: async (_token: string) => {
-    const { data, error } = await supabase.auth.getSession()
-    if (error || !data.session) throw new Error('Not authenticated')
-    return { valid: true, user: data.session.user }
+  verify: async (token: string) => {
+    const res = await fetch(`${API_BASE}/auth/verify`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    if (!res.ok) throw new Error('Not authenticated')
+    return res.json()
   },
 
-  // Projects
   getProjects: async () => {
-    const { data, error } = await supabase
-      .from('projects')
-      .select('*')
-      .order('createdAt', { ascending: false })
-    if (error) throw error
-    return data || []
+    const res = await fetch(`${API_BASE}/projects`)
+    if (!res.ok) throw new Error('Failed to fetch projects')
+    return res.json()
   },
 
   getProject: async (id: string) => {
-    const { data, error } = await supabase
-      .from('projects')
-      .select('*')
-      .eq('id', id)
-      .single()
-    if (error) throw error
-    return data
+    const res = await fetch(`${API_BASE}/projects/${id}`)
+    if (!res.ok) throw new Error('Project not found')
+    return res.json()
   },
 
   createProject: async (projectData: Record<string, any>) => {
-    const { data, error } = await supabase
-      .from('projects')
-      .insert([{
-        titleEn: projectData.titleEn || '',
-        titleAr: projectData.titleAr || '',
-        categoryEn: projectData.categoryEn || '',
-        categoryAr: projectData.categoryAr || '',
-        locationEn: projectData.locationEn || '',
-        locationAr: projectData.locationAr || '',
-        descriptionEn: projectData.descriptionEn || '',
-        descriptionAr: projectData.descriptionAr || '',
-        year: projectData.year || '',
-        status: projectData.status || 'current',
-        image: projectData.image || '',
-        gallery: projectData.gallery || [],
-        details: projectData.details || []
-      }])
-      .select()
-      .single()
-    if (error) throw error
-    return data
+    const token = JSON.parse(localStorage.getItem('adminUser') || '{}')?.token || ''
+    const res = await fetch(`${API_BASE}/projects`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(projectData)
+    })
+    if (!res.ok) throw new Error('Failed to create project')
+    return res.json()
   },
 
   updateProject: async (id: string, projectData: Record<string, any>) => {
-    const { data, error } = await supabase
-      .from('projects')
-      .update({
-        ...projectData,
-        updatedAt: new Date().toISOString()
-      })
-      .eq('id', id)
-      .select()
-      .single()
-    if (error) throw error
-    return data
+    const token = JSON.parse(localStorage.getItem('adminUser') || '{}')?.token || ''
+    const res = await fetch(`${API_BASE}/projects/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(projectData)
+    })
+    if (!res.ok) throw new Error('Failed to update project')
+    return res.json()
   },
 
   deleteProject: async (id: string) => {
-    const { error } = await supabase
-      .from('projects')
-      .delete()
-      .eq('id', id)
-    if (error) throw error
+    const token = JSON.parse(localStorage.getItem('adminUser') || '{}')?.token || ''
+    const res = await fetch(`${API_BASE}/projects/${id}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    if (!res.ok) throw new Error('Failed to delete project')
     return { success: true }
   },
 
-  // Content
   getContent: async () => {
-    const { data, error } = await supabase
-      .from('content')
-      .select('data')
-      .eq('id', 'main')
-      .single()
-    if (error) throw error
-    return data?.data || {}
+    const res = await fetch(`${API_BASE}/content`)
+    if (!res.ok) throw new Error('Failed to fetch content')
+    return res.json()
   },
 
   updateContent: async (section: string, sectionData: any) => {
-    // First get current content
-    const { data: current } = await supabase
-      .from('content')
-      .select('data')
-      .eq('id', 'main')
-      .single()
-
-    const currentData = current?.data || {}
-    const updatedData = { ...currentData, [section]: sectionData }
-
-    const { data, error } = await supabase
-      .from('content')
-      .upsert({
-        id: 'main',
-        data: updatedData,
-        updatedAt: new Date().toISOString()
-      })
-      .select('data')
-      .single()
-    if (error) throw error
-    return data?.data?.[section] || sectionData
+    const token = JSON.parse(localStorage.getItem('adminUser') || '{}')?.token || ''
+    const res = await fetch(`${API_BASE}/content/${section}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(sectionData)
+    })
+    if (!res.ok) throw new Error('Failed to update content')
+    return res.json()
   },
 
-  // Images - using Supabase Storage
   getImages: async () => {
-    const { data, error } = await supabase
-      .storage
-      .from('images')
-      .list('', {
-        limit: 100,
-        sortBy: { column: 'created_at', order: 'desc' }
-      })
-    if (error) throw error
-    return (data || []).map((file: any) => ({
-      filename: file.name,
-      size: file.metadata?.size || 0,
-      url: supabase.storage.from('images').getPublicUrl(file.name).data.publicUrl
-    }))
+    const token = JSON.parse(localStorage.getItem('adminUser') || '{}')?.token || ''
+    const res = await fetch(`${API_BASE}/images`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    if (!res.ok) throw new Error('Failed to fetch images')
+    return res.json()
   },
 
   uploadImage: async (file: File) => {
-    const ext = file.name.split('.').pop()
-    const filename = `${Date.now()}-${Math.random().toString(36).substring(7)}.${ext}`
-
-    const { error } = await supabase
-      .storage
-      .from('images')
-      .upload(filename, file, {
-        cacheControl: '3600',
-        upsert: false
-      })
-    if (error) throw error
-
-    const { data: urlData } = supabase
-      .storage
-      .from('images')
-      .getPublicUrl(filename)
-
-    return {
-      filename,
-      url: urlData.publicUrl
-    }
+    const token = JSON.parse(localStorage.getItem('adminUser') || '{}')?.token || ''
+    const formData = new FormData()
+    formData.append('image', file)
+    const res = await fetch(`${API_BASE}/upload`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: formData
+    })
+    if (!res.ok) throw new Error('Failed to upload image')
+    return res.json()
   },
 
   deleteImage: async (filename: string) => {
-    const { error } = await supabase
-      .storage
-      .from('images')
-      .remove([filename])
-    if (error) throw error
+    const token = JSON.parse(localStorage.getItem('adminUser') || '{}')?.token || ''
+    const res = await fetch(`${API_BASE}/images/${filename}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    if (!res.ok) throw new Error('Failed to delete image')
     return { success: true }
   },
 
   getImageUrl: (filename: string) => {
-    const { data } = supabase
-      .storage
-      .from('images')
-      .getPublicUrl(filename)
-    return data.publicUrl
+    return `/images/${filename}`
   }
 }

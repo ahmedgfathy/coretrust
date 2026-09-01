@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { supabase } from '../lib/supabase'
 
 interface ContentData {
   hero: any
@@ -91,24 +90,21 @@ export function useContent() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    supabase
-      .from('content')
-      .select('data')
-      .eq('id', 'main')
-      .single()
-      .then(({ data, error }) => {
-        if (data?.data && typeof data.data === 'object') {
+    fetch('/api/content')
+      .then(res => res.json())
+      .then(data => {
+        if (data && typeof data === 'object') {
           setContent({
-            hero: { ...defaultContent.hero, ...data.data.hero },
-            about: { ...defaultContent.about, ...data.data.about },
-            services: { ...defaultContent.services, ...data.data.services },
-            divisions: data.data.divisions || defaultContent.divisions,
-            clients: { ...defaultContent.clients, ...data.data.clients },
-            stats: { ...defaultContent.stats, ...data.data.stats },
-            timeline: { ...defaultContent.timeline, ...data.data.timeline },
-            cta: { ...defaultContent.cta, ...data.data.cta },
-            contact: { ...defaultContent.contact, ...data.data.contact },
-            footer: { ...defaultContent.footer, ...data.data.footer }
+            hero: { ...defaultContent.hero, ...data.hero },
+            about: { ...defaultContent.about, ...data.about },
+            services: { ...defaultContent.services, ...data.services },
+            divisions: data.divisions || defaultContent.divisions,
+            clients: { ...defaultContent.clients, ...data.clients },
+            stats: { ...defaultContent.stats, ...data.stats },
+            timeline: { ...defaultContent.timeline, ...data.timeline },
+            cta: { ...defaultContent.cta, ...data.cta },
+            contact: { ...defaultContent.contact, ...data.contact },
+            footer: { ...defaultContent.footer, ...data.footer }
           })
         }
         setLoading(false)

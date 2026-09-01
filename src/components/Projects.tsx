@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
-import { supabase } from '../lib/supabase'
 
 const fallbackProjects = [
   { id: '1', titleEn: 'Sabbia Resort', titleAr: 'منتجع سببيا', categoryEn: 'Real Estate Development', categoryAr: 'التطوير العقاري', locationEn: 'Marsa Matrouh', locationAr: 'مرسى مطروح', descriptionEn: 'Luxury resort with private beach and modern architecture.', descriptionAr: 'منتجع فاخر بشاطئ خاص وعمارة عصرية.', year: '2024', status: 'current', image: '/images/sabbia-resort.jpg' },
@@ -17,11 +16,9 @@ const Projects = () => {
   const [projects, setProjects] = useState<any[]>([])
 
   useEffect(() => {
-    supabase
-      .from('projects')
-      .select('*')
-      .order('createdAt', { ascending: false })
-      .then(({ data, error }) => {
+    fetch('/api/projects')
+      .then(res => res.json())
+      .then(data => {
         if (data && data.length > 0) {
           setProjects(data)
         } else {

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate, Outlet } from 'react-router-dom'
-import { supabase } from '../lib/supabase'
 
 const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -9,8 +8,8 @@ const AdminLayout = () => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const { data } = await supabase.auth.getSession()
-      if (!data.session) {
+      const user = JSON.parse(localStorage.getItem('adminUser') || '{}')
+      if (!user.token) {
         navigate('/admin')
       }
     }
@@ -18,7 +17,6 @@ const AdminLayout = () => {
   }, [navigate])
 
   const handleLogout = async () => {
-    await supabase.auth.signOut()
     localStorage.removeItem('adminUser')
     navigate('/admin')
   }
