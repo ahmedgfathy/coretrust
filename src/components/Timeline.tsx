@@ -56,27 +56,25 @@ const Timeline = () => {
   ]
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-[#0a0a1a] relative overflow-hidden">
-      {/* Background decoration */}
+    <section className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#d4a017]/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#d4a017]/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-100 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-100 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Header */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
           <div className="inline-flex items-center space-x-2 mb-4">
-            <div className="w-12 h-px bg-[#d4a017]"></div>
-            <span className="text-[#d4a017] text-sm uppercase tracking-[0.3em] font-medium">
+            <div className="w-12 h-px bg-brand-500"></div>
+            <span className="text-brand-600 text-sm uppercase tracking-[0.3em] font-medium">
               {t('Our Journey', 'رحلتنا')}
             </span>
-            <div className="w-12 h-px bg-[#d4a017]"></div>
+            <div className="w-12 h-px bg-brand-500"></div>
           </div>
-          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-dark-800 mb-4">
             {t('Our Company History', 'تاريخ شركتنا')}
           </h2>
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-dark-500 text-base sm:text-lg max-w-2xl mx-auto">
             {t('From 2004 to present, over 90 projects across Egypt and international markets.', 'من 2004 حتى الآن، أكثر من 90 مشروع في مصر والأسواق الدولية.')}
           </p>
         </div>
@@ -85,88 +83,76 @@ const Timeline = () => {
         <div className="hidden lg:block">
           {events.map((e, i) => (
             <div key={i} className={`relative flex items-center mb-16 last:mb-0 ${i % 2 === 0 ? '' : 'flex-row-reverse'}`}>
-              {/* Center line with year */}
               <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
-                <div className="bg-[#d4a017] text-black font-bold text-lg px-4 py-2 rounded-full" style={{ fontFamily: 'Playfair Display, serif' }}>
+                <div className="bg-brand-600 text-white font-bold text-lg px-4 py-2 rounded-full" style={{ fontFamily: 'Playfair Display, serif' }}>
                   {e.year}
                 </div>
               </div>
 
-              {/* Content Card */}
               <div className={`w-[45%] ${i % 2 === 0 ? 'pr-16' : 'pl-16'}`}>
-                <div className="group relative overflow-hidden bg-[#121226] border border-[#d4a017]/20 hover:border-[#d4a017]/50 transition-all duration-500">
-                  {/* Image */}
+                <div className="group relative overflow-hidden bg-white border border-brand-100 hover:border-brand-300 transition-all duration-500 shadow-sm">
                   <div className="relative h-48 overflow-hidden">
                     <img 
                       src={e.image} 
                       alt={e.title} 
                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121226] via-[#121226]/50 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="font-heading text-xl font-bold text-white">{e.title}</h3>
+                      <h3 className="font-heading text-xl font-bold text-dark-800">{e.title}</h3>
                     </div>
                   </div>
                   
-                  {/* Content */}
                   <div className="p-5">
-                    <p className="text-gray-400 text-sm leading-relaxed mb-4">{e.desc}</p>
+                    <p className="text-dark-500 text-sm leading-relaxed mb-4">{e.desc}</p>
                     <div className="flex flex-wrap gap-2">
                       {e.projects.map((p, j) => (
-                        <span key={j} className="text-xs px-3 py-1 bg-[#d4a017]/10 text-[#d4a017] border border-[#d4a017]/20 rounded-full">
+                        <span key={j} className="text-xs px-3 py-1 bg-brand-100 text-brand-700 border border-brand-200 rounded-full">
                           {p}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Decorative corner */}
-                  <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[#d4a017]/30 group-hover:border-[#d4a017]/60 transition-colors"></div>
-                  <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[#d4a017]/30 group-hover:border-[#d4a017]/60 transition-colors"></div>
+                  <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-brand-200 group-hover:border-brand-400 transition-colors"></div>
+                  <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-brand-200 group-hover:border-brand-400 transition-colors"></div>
                 </div>
               </div>
 
-              {/* Spacer for the other side */}
               <div className="w-[45%]"></div>
 
-              {/* Connecting line */}
-              <div className={`absolute top-1/2 transform -translate-y-1/2 w-[10%] h-px bg-gradient-to-r from-[#d4a017]/50 via-[#d4a017] to-[#d4a017]/50 ${i % 2 === 0 ? 'left-[45%]' : 'right-[45%]'}`}></div>
+              <div className={`absolute top-1/2 transform -translate-y-1/2 w-[10%] h-px bg-gradient-to-r from-brand-300 via-brand-500 to-brand-300 ${i % 2 === 0 ? 'left-[45%]' : 'right-[45%]'}`}></div>
             </div>
           ))}
         </div>
 
         {/* Timeline - Mobile/Tablet */}
         <div className="lg:hidden relative">
-          {/* Vertical line */}
-          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[#d4a017]/50 via-[#d4a017] to-[#d4a017]/50"></div>
+          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-brand-300 via-brand-500 to-brand-300"></div>
 
           <div className="space-y-8">
             {events.map((e, i) => (
               <div key={i} className="relative pl-16 sm:pl-20">
-                {/* Year badge */}
-                <div className="absolute left-0 top-0 bg-[#d4a017] text-black font-bold text-sm px-3 py-1.5 rounded-full" style={{ fontFamily: 'Playfair Display, serif' }}>
+                <div className="absolute left-0 top-0 bg-brand-600 text-white font-bold text-sm px-3 py-1.5 rounded-full" style={{ fontFamily: 'Playfair Display, serif' }}>
                   {e.year}
                 </div>
 
-                {/* Card */}
-                <div className="group bg-[#121226] border border-[#d4a017]/20 hover:border-[#d4a017]/50 transition-all duration-500 overflow-hidden">
-                  {/* Image */}
+                <div className="group bg-white border border-brand-100 hover:border-brand-300 transition-all duration-500 overflow-hidden shadow-sm">
                   <div className="relative h-40 overflow-hidden">
                     <img 
                       src={e.image} 
                       alt={e.title} 
                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121226] via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
                   </div>
 
-                  {/* Content */}
                   <div className="p-4">
-                    <h3 className="font-heading text-lg font-bold text-white mb-2">{e.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed mb-3">{e.desc}</p>
+                    <h3 className="font-heading text-lg font-bold text-dark-800 mb-2">{e.title}</h3>
+                    <p className="text-dark-500 text-sm leading-relaxed mb-3">{e.desc}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {e.projects.map((p, j) => (
-                        <span key={j} className="text-[10px] px-2 py-1 bg-[#d4a017]/10 text-[#d4a017] border border-[#d4a017]/20 rounded-full">
+                        <span key={j} className="text-[10px] px-2 py-1 bg-brand-100 text-brand-700 border border-brand-200 rounded-full">
                           {p}
                         </span>
                       ))}

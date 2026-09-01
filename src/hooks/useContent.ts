@@ -80,8 +80,8 @@ const defaultContent: ContentData = {
     linkedin: 'https://linkedin.com/company/mohamed-yehia-group'
   },
   footer: {
-    copyrightEn: '© 2024 Architect Mohamed Yehia Group. All rights reserved.',
-    copyrightAr: '© 2024 مجموعة المهندس محمد يحيى. جميع الحقوق محفوظة.'
+    copyrightEn: '© 2024 CoreTrust. All rights reserved.',
+    copyrightAr: '© 2024 كورتراست. جميع الحقوق محفوظة.'
   }
 }
 

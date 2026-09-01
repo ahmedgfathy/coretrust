@@ -13,7 +13,7 @@ const About = () => {
     },
     { 
       title: t('Contracting & Construction', 'المقاولات والبناء'), 
-      desc: t('Executing residential, commercial, and government projects with quality standards.', 'تنفيذ المشاريع السكنية والتجارية والحكومية وفقاً لمعايير الجودة.'), 
+      desc: t('Executing residential, commercial, and government projects with quality standards.', 'تنفيذ المشاريع السكنية والتجارية وال الحكومية وفقاً لمعايير الجودة.'), 
       icon: 'M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z' 
     },
     { 
@@ -39,31 +39,31 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-[#0a0a1a] relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-[#d4a017]/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-[#d4a017]/5 rounded-full blur-3xl"></div>
+    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-brand-50 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-brand-50 rounded-full blur-3xl"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
             <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
-              <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>
-              <span className="text-[#d4a017] text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">
+              <div className="w-8 sm:w-12 h-px bg-brand-500"></div>
+              <span className="text-brand-600 text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">
                 {t('About Us', 'من نحن')}
               </span>
             </div>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-dark-800 mb-4 sm:mb-6">
               {t(content.about.titleEn, content.about.titleAr)}
             </h2>
-            <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">
-              {t('Founded by Architect Mohamed Yehia in 2004', 'أسسها المهندس محمد يحيى عام 2004')}
+            <p className="text-dark-400 text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">
+              {t('Founded in 2004', 'تأسست عام 2004')}
             </p>
-            <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
+            <p className="text-dark-500 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
               {t(content.about.descriptionEn, content.about.descriptionAr)}
             </p>
-            <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
+            <p className="text-dark-500 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
               {t(content.about.missionEn, content.about.missionAr)}
             </p>
-            <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8">
+            <p className="text-dark-500 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8">
               {t(content.about.visionEn, content.about.visionAr)}
             </p>
             <a href="#contact" className="btn-gold inline-block">
@@ -72,14 +72,14 @@ const About = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
             {features.map((f, i) => (
-              <div key={i} className="bg-[#121226]/50 p-4 sm:p-5 border border-[#d4a017]/20 hover:border-[#d4a017]/50 transition-all duration-300 card-hover">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 bg-[#d4a017]/10 flex items-center justify-center mb-3 sm:mb-4 text-[#d4a017]">
+              <div key={i} className="bg-brand-50/50 p-4 sm:p-5 border border-brand-100 hover:border-brand-300 transition-all duration-300 card-hover">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 bg-brand-100 flex items-center justify-center mb-3 sm:mb-4 text-brand-600">
                   <svg className="w-5 sm:w-6 h-5 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={f.icon} />
                   </svg>
                 </div>
-                <h3 className="text-white font-semibold text-sm sm:text-base mb-1 sm:mb-2">{f.title}</h3>
-                <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">{f.desc}</p>
+                <h3 className="text-dark-800 font-semibold text-sm sm:text-base mb-1 sm:mb-2">{f.title}</h3>
+                <p className="text-dark-400 text-xs sm:text-sm leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>

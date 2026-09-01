@@ -99,9 +99,9 @@ const DivisionPage = () => {
 
   if (!division) {
     return (
-      <div className="min-h-screen bg-[#0a0a1a] flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <h1 className="font-heading text-4xl font-bold text-white mb-4">{t('Division Not Found', 'القسم غير موجود')}</h1>
+          <h1 className="font-heading text-4xl font-bold text-dark-800 mb-4">{t('Division Not Found', 'القسم غير موجود')}</h1>
           <Link to="/" className="btn-gold">{t('Return Home', 'العودة للرئيسية')}</Link>
         </div>
       </div>
@@ -114,15 +114,13 @@ const DivisionPage = () => {
   const projectsAr = division.projectsAr || []
 
   return (
-    <div className="min-h-screen bg-[#0a0a1a]">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-white">
       <div className="relative h-[60vh] sm:h-[70vh] overflow-hidden">
         <img src={division.image} alt={t(division.titleEn, division.titleAr)} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-[#0a0a1a]/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent"></div>
         
-        {/* Back Button */}
         <div className="absolute top-4 left-4 sm:top-8 sm:left-8 z-20">
-          <Link to="/#services" className="flex items-center space-x-2 text-[#d4a017] hover:text-[#f0d060] transition-colors">
+          <Link to="/#services" className="flex items-center space-x-2 text-brand-600 hover:text-brand-700 transition-colors">
             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
@@ -130,70 +128,63 @@ const DivisionPage = () => {
           </Link>
         </div>
 
-        {/* Title Overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8 lg:p-12">
           <div className="max-w-7xl mx-auto">
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-4">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark-800 mb-2 sm:mb-4">
               {t(division.titleEn, division.titleAr)}
             </h1>
-            <p className="text-[#d4a017] text-lg sm:text-xl font-medium">{t(division.subtitleEn, division.subtitleAr)}</p>
+            <p className="text-brand-600 text-lg sm:text-xl font-medium">{t(division.subtitleEn, division.subtitleAr)}</p>
           </div>
         </div>
       </div>
 
-      {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        {/* Stats */}
         <div className="grid grid-cols-3 gap-4 sm:gap-8 mb-12 sm:mb-16">
-          <div className="text-center p-4 sm:p-6 bg-[#121226]/50 border border-[#d4a017]/20">
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017] mb-2">{division.statsValue1}</div>
-            <div className="text-gray-400 text-xs sm:text-sm">{t(division.statsLabel1En, division.statsLabel1Ar)}</div>
+          <div className="text-center p-4 sm:p-6 bg-brand-50 border border-brand-100">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-600 mb-2">{division.statsValue1}</div>
+            <div className="text-dark-400 text-xs sm:text-sm">{t(division.statsLabel1En, division.statsLabel1Ar)}</div>
           </div>
-          <div className="text-center p-4 sm:p-6 bg-[#121226]/50 border border-[#d4a017]/20">
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017] mb-2">{division.statsValue2}</div>
-            <div className="text-gray-400 text-xs sm:text-sm">{t(division.statsLabel2En, division.statsLabel2Ar)}</div>
+          <div className="text-center p-4 sm:p-6 bg-brand-50 border border-brand-100">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-600 mb-2">{division.statsValue2}</div>
+            <div className="text-dark-400 text-xs sm:text-sm">{t(division.statsLabel2En, division.statsLabel2Ar)}</div>
           </div>
-          <div className="text-center p-4 sm:p-6 bg-[#121226]/50 border border-[#d4a017]/20">
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#d4a017] mb-2">{division.statsValue3}</div>
-            <div className="text-gray-400 text-xs sm:text-sm">{t(division.statsLabel3En, division.statsLabel3Ar)}</div>
+          <div className="text-center p-4 sm:p-6 bg-brand-50 border border-brand-100">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-600 mb-2">{division.statsValue3}</div>
+            <div className="text-dark-400 text-xs sm:text-sm">{t(division.statsLabel3En, division.statsLabel3Ar)}</div>
           </div>
         </div>
 
-        {/* Description */}
         <div className="mb-12 sm:mb-16">
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-6">{t('About This Division', 'عن هذا القسم')}</h2>
-          <p className="text-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed">{t(division.descriptionEn, division.descriptionAr)}</p>
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-dark-800 mb-6">{t('About This Division', 'عن هذا القسم')}</h2>
+          <p className="text-dark-500 text-sm sm:text-base lg:text-lg leading-relaxed">{t(division.descriptionEn, division.descriptionAr)}</p>
         </div>
 
-        {/* Features */}
         <div className="mb-12 sm:mb-16">
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-6">{t('Our Services', 'خدماتنا')}</h2>
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-dark-800 mb-6">{t('Our Services', 'خدماتنا')}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {featuresEn.map((feature: string, i: number) => (
-              <div key={i} className="bg-[#121226]/50 border border-[#d4a017]/20 p-5 sm:p-6 hover:border-[#d4a017]/50 transition-colors">
-                <h3 className="text-white text-base sm:text-lg font-semibold mb-2">{t(feature, featuresAr[i] || feature)}</h3>
+              <div key={i} className="bg-brand-50 border border-brand-100 p-5 sm:p-6 hover:border-brand-300 transition-colors">
+                <h3 className="text-dark-800 text-base sm:text-lg font-semibold mb-2">{t(feature, featuresAr[i] || feature)}</h3>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Projects */}
         <div className="mb-12 sm:mb-16">
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-6">{t('Featured Projects', 'مشاريع مميزة')}</h2>
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-dark-800 mb-6">{t('Featured Projects', 'مشاريع مميزة')}</h2>
           <div className="flex flex-wrap gap-2 sm:gap-3">
             {projectsEn.map((project: string, i: number) => (
-              <span key={i} className="px-3 sm:px-4 py-2 bg-[#d4a017]/10 text-[#d4a017] border border-[#d4a017]/20 text-xs sm:text-sm">
+              <span key={i} className="px-3 sm:px-4 py-2 bg-brand-100 text-brand-700 border border-brand-200 text-xs sm:text-sm">
                 {t(project, projectsAr[i] || project)}
               </span>
             ))}
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="bg-gradient-to-br from-[#d4a017]/20 to-[#d4a017]/5 border border-[#d4a017]/30 p-6 sm:p-8 text-center">
+        <div className="bg-brand-600 border border-brand-500 p-6 sm:p-8 text-center">
           <h3 className="font-heading text-xl sm:text-2xl font-bold text-white mb-4">{t('Start Your Project', 'ابدأ مشروعك')}</h3>
-          <p className="text-gray-400 text-sm sm:text-base mb-6">{t('Ready to work with us? Contact us for a free consultation.', 'مستعد للعمل معنا؟ تواصل معنا لاستشارة مجانية.')}</p>
-          <Link to="/#contact" className="btn-gold inline-block">{t('Get Free Consultation', 'احصل على استشارة مجانية')}</Link>
+          <p className="text-white/70 text-sm sm:text-base mb-6">{t('Ready to work with us? Contact us for a free consultation.', 'مستعد للعمل معنا؟ تواصل معنا لاستشارة مجانية.')}</p>
+          <Link to="/#contact" className="inline-block px-6 py-3 bg-white text-brand-600 hover:bg-brand-50 transition-colors font-semibold">{t('Get Free Consultation', 'احصل على استشارة مجانية')}</Link>
         </div>
       </div>
     </div>

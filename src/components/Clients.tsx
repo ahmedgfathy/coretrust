@@ -53,26 +53,24 @@ const Clients = () => {
   }, [])
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-[#0a0a1a] relative overflow-hidden border-t border-b border-[#d4a017]/10">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden border-t border-b border-brand-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
           <div className="flex items-center justify-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
-            <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>
-            <span className="text-[#d4a017] text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">
+            <div className="w-8 sm:w-12 h-px bg-brand-500"></div>
+            <span className="text-brand-600 text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium">
               {t('Our Clients', 'عملاؤنا')}
             </span>
-            <div className="w-8 sm:w-12 h-px bg-[#d4a017]"></div>
+            <div className="w-8 sm:w-12 h-px bg-brand-500"></div>
           </div>
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-dark-800 mb-4">
             {t('Trusted Partners', 'شركاء موثوقون')}
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-dark-500 text-sm sm:text-base max-w-2xl mx-auto">
             {t('We are proud to work with leading organizations across Egypt and the Gulf region.', 'نحن فخورون بالعمل مع المؤسسات الرائدة في مصر ودول الخليج.')}</p>
         </div>
       </div>
 
-      {/* Sliding Logos Container */}
       <div 
         ref={scrollRef}
         className="overflow-hidden whitespace-nowrap cursor-pointer"
@@ -80,7 +78,6 @@ const Clients = () => {
       >
         <style>{`.clients-scroll::-webkit-scrollbar { display: none; }`}</style>
         <div className="inline-flex items-center space-x-8 sm:space-x-12 lg:space-x-16 px-8 clients-scroll">
-          {/* Duplicate clients for seamless loop */}
           {[...clients, ...clients].map((client, index) => (
             <div 
               key={`${client.id}-${index}`} 
@@ -89,7 +86,7 @@ const Clients = () => {
               <img 
                 src={client.logo} 
                 alt={t(client.name, client.nameAr)}
-                className="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                className="w-full h-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
                 loading="lazy"
               />
             </div>
@@ -97,9 +94,8 @@ const Clients = () => {
         </div>
       </div>
 
-      {/* Gradient Overlays */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-r from-[#0a0a1a] to-transparent pointer-events-none"></div>
-      <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-l from-[#0a0a1a] to-transparent pointer-events-none"></div>
+      <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
     </section>
   )
 }
